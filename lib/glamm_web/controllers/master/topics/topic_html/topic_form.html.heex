@@ -1,0 +1,18 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:topic]} type="text" label="Topic" />
+  <.input
+    field={f[:topic_type]}
+    type="select"
+    label="Topic type"
+    prompt="Choose a value"
+    options={Ecto.Enum.values(Glamm.Master.Topic, :topic_type)}
+  />
+  <.input field={f[:auth_list]} type="text" label="Auth list" />
+  <.input field={f[:classification]} type="text" label="Classification" />
+  <:actions>
+    <.button>Save Topic</.button>
+  </:actions>
+</.simple_form>

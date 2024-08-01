@@ -1,0 +1,18 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:creator_name]} type="text" label="Creator name" />
+  <.input field={f[:creator_contact]} type="text" label="Creator contact" />
+  <.input field={f[:affiliation]} type="text" label="Affiliation" />
+  <.input
+    field={f[:creator_type]}
+    type="select"
+    label="Creator type"
+    prompt="Choose a value"
+    options={Ecto.Enum.values(Glamm.Master.Creator, :creator_type)}
+  />
+  <:actions>
+    <.button>Save Creator</.button>
+  </:actions>
+</.simple_form>

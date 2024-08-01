@@ -1,0 +1,30 @@
+<.header>
+  Listing Mst creator
+  <:actions>
+    <.link href={~p"/manage/mst_creator/new"}>
+      <.button>New Creator</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_creator"
+  rows={@mst_creator}
+  row_click={&JS.navigate(~p"/manage/mst_creator/#{&1}")}
+>
+  <:col :let={creator} label="Creator name"><%= creator.creator_name %></:col>
+  <:col :let={creator} label="Creator contact"><%= creator.creator_contact %></:col>
+  <:col :let={creator} label="Affiliation"><%= creator.affiliation %></:col>
+  <:col :let={creator} label="Creator type"><%= creator.creator_type %></:col>
+  <:action :let={creator}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_creator/#{creator}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_creator/#{creator}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={creator}>
+    <.link href={~p"/manage/mst_creator/#{creator}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

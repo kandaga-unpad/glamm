@@ -1,0 +1,18 @@
+<.header>
+  Creator <%= @creator.id %>
+  <:subtitle>This is a creator record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_creator/#{@creator}/edit"}>
+      <.button>Edit creator</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Creator name"><%= @creator.creator_name %></:item>
+  <:item title="Creator contact"><%= @creator.creator_contact %></:item>
+  <:item title="Affiliation"><%= @creator.affiliation %></:item>
+  <:item title="Creator type"><%= @creator.creator_type %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_creator"}>Back to mst_creator</.back>

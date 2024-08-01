@@ -1,0 +1,23 @@
+<.header>
+  Listing Mst publishers
+  <:actions>
+    <.link href={~p"/mst_publishers/new"}>
+      <.button>New Publisher</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="mst_publishers" rows={@mst_publishers} row_click={&JS.navigate(~p"/mst_publishers/#{&1}")}>
+  <:col :let={publisher} label="Place name"><%= publisher.place_name %></:col>
+  <:action :let={publisher}>
+    <div class="sr-only">
+      <.link navigate={~p"/mst_publishers/#{publisher}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/mst_publishers/#{publisher}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={publisher}>
+    <.link href={~p"/mst_publishers/#{publisher}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

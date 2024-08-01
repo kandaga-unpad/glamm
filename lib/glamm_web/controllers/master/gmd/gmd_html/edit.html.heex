@@ -1,0 +1,8 @@
+<.header>
+  Edit Gmd <%= @gmd.id %>
+  <:subtitle>Use this form to manage gmd records in your database.</:subtitle>
+</.header>
+
+<.gmd_form changeset={@changeset} action={~p"/manage/mst_gmd/#{@gmd}"} />
+
+<.back navigate={~p"/manage/mst_gmd"}>Back to mst_gmd</.back>

@@ -1,0 +1,18 @@
+<.header>
+  Topic <%= @topic.id %>
+  <:subtitle>This is a topic record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/mst_topics/#{@topic}/edit"}>
+      <.button>Edit topic</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Topic"><%= @topic.topic %></:item>
+  <:item title="Topic type"><%= @topic.topic_type %></:item>
+  <:item title="Auth list"><%= @topic.auth_list %></:item>
+  <:item title="Classification"><%= @topic.classification %></:item>
+</.list>
+
+<.back navigate={~p"/mst_topics"}>Back to mst_topics</.back>

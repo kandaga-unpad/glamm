@@ -1,0 +1,17 @@
+<.header>
+  Gmd <%= @gmd.id %>
+  <:subtitle>This is a gmd record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_gmd/#{@gmd}/edit"}>
+      <.button>Edit gmd</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Gmd code"><%= @gmd.gmd_code %></:item>
+  <:item title="Gmd name"><%= @gmd.gmd_name %></:item>
+  <:item title="Icon image"><%= @gmd.icon_image %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_gmd"}>Back to mst_gmd</.back>

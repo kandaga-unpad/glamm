@@ -1,0 +1,11 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:gmd_code]} type="text" label="Gmd code" />
+  <.input field={f[:gmd_name]} type="text" label="Gmd name" />
+  <.input field={f[:icon_image]} type="text" label="Icon image" />
+  <:actions>
+    <.button>Save Gmd</.button>
+  </:actions>
+</.simple_form>

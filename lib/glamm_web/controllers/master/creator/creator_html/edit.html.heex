@@ -1,0 +1,8 @@
+<.header>
+  Edit Creator <%= @creator.id %>
+  <:subtitle>Use this form to manage creator records in your database.</:subtitle>
+</.header>
+
+<.creator_form changeset={@changeset} action={~p"/manage/mst_creator/#{@creator}"} />
+
+<.back navigate={~p"/manage/mst_creator"}>Back to mst_creator</.back>

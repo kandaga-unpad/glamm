@@ -1,0 +1,25 @@
+<.header>
+  Listing Mst gmd
+  <:actions>
+    <.link href={~p"/manage/mst_gmd/new"}>
+      <.button>New Gmd</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="mst_gmd" rows={@mst_gmd} row_click={&JS.navigate(~p"/manage/mst_gmd/#{&1}")}>
+  <:col :let={gmd} label="Gmd code"><%= gmd.gmd_code %></:col>
+  <:col :let={gmd} label="Gmd name"><%= gmd.gmd_name %></:col>
+  <:col :let={gmd} label="Icon image"><%= gmd.icon_image %></:col>
+  <:action :let={gmd}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_gmd/#{gmd}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_gmd/#{gmd}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={gmd}>
+    <.link href={~p"/manage/mst_gmd/#{gmd}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
