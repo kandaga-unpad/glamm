@@ -1,0 +1,11 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:location_code]} type="text" label="Location code" />
+  <.input field={f[:location_name]} type="text" label="Location name" />
+  <.input field={f[:location_place]} type="text" label="Location place" />
+  <:actions>
+    <.button>Save Location</.button>
+  </:actions>
+</.simple_form>

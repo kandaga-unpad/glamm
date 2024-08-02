@@ -1,0 +1,10 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:rt_code]} type="text" label="Rt code" />
+  <.input field={f[:rt_description]} type="text" label="Rt description" />
+  <:actions>
+    <.button>Save Relation terms</.button>
+  </:actions>
+</.simple_form>

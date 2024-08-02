@@ -1,0 +1,8 @@
+<.header>
+  Edit Label <%= @label.id %>
+  <:subtitle>Use this form to manage label records in your database.</:subtitle>
+</.header>
+
+<.label_form changeset={@changeset} action={~p"/manage/mst_labels/#{@label}"} />
+
+<.back navigate={~p"/manage/mst_labels"}>Back to mst_labels</.back>

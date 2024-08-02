@@ -13,7 +13,7 @@
 
 :root {
   --text-color: dark;
-  --bg-color: orange;
+  --bg-color: pink;
 }
 
 /* This file is for your main application CSS */
@@ -71,21 +71,29 @@ h6 {
 }
 
 .tab-blocks {
-  @apply bg-orange-200 p-5 rounded-bl-lg rounded-br-lg flex gap-2;
-}
-
-.search-btn {
-  @apply bg-orange-500 text-white px-3 rounded-lg;
+  @apply bg-purple-200 p-5 rounded-bl-lg rounded-br-lg flex gap-2;
 }
 
 .search-tab-item {
-  @apply bg-orange-50 p-2 w-full text-center rounded-tl-lg rounded-tr-lg cursor-pointer transition-all hover:bg-orange-100;
+  @apply bg-purple-50 p-2 w-full text-center rounded-tl-lg rounded-tr-lg cursor-pointer transition-all hover:bg-zinc-100;
 }
 
 .active-tab-item {
-  @apply bg-orange-200 p-2 hover:bg-orange-200;
+  @apply bg-purple-200 p-2 hover:bg-purple-200;
 }
 
 .input-main-search {
-  @apply w-full p-2 rounded-md border-orange-500 focus:border-orange-500 focus:outline-none;
+  @apply w-full p-2 rounded-md border-purple-500 focus:border-purple-500 focus:outline-none;
+}
+
+.default-btn {
+  @apply bg-gradient-to-br from-pink-400 to-violet-500 py-2 px-4 rounded-lg text-white hover:bg-gradient-to-tl transition ease-in-out duration-300;
+}
+
+.default-menu {
+  @apply py-2 px-4 rounded-lg transition-all hover:bg-gray-500 w-full;
+}
+
+.active-menu {
+  @apply bg-gradient-to-br from-pink-400 to-violet-500 rounded-lg text-white;
 }

@@ -5,7 +5,7 @@ config :glamm, Glamm.Repo,
   username: System.get_env("DATABASE_USER") || "postgres",
   password: System.get_env("DATABASE_PASSWORD") || "postgres",
   hostname: System.get_env("DATABASE_HOST") || "localhost",
-  database: System.get_env("DATABASE_NAME") || "kandaglam_dev",
+  database: System.get_env("DATABASE_NAME") || "glamm_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

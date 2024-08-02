@@ -1,0 +1,33 @@
+<.header>
+  Listing Mst media types
+  <:actions>
+    <.link href={~p"/manage/mst_media_types/new"}>
+      <.button>New Media types</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_media_types"
+  rows={@mst_media_types}
+  row_click={&JS.navigate(~p"/manage/mst_media_types/#{&1}")}
+>
+  <:col :let={media_types} label="Media type"><%= media_types.media_type %></:col>
+  <:col :let={media_types} label="Code"><%= media_types.code %></:col>
+  <:col :let={media_types} label="Marc code"><%= media_types.marc_code %></:col>
+  <:action :let={media_types}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_media_types/#{media_types}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_media_types/#{media_types}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={media_types}>
+    <.link
+      href={~p"/manage/mst_media_types/#{media_types}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>

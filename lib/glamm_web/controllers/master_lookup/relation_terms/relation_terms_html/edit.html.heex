@@ -1,0 +1,11 @@
+<.header>
+  Edit Relation terms <%= @relation_terms.id %>
+  <:subtitle>Use this form to manage relation_terms records in your database.</:subtitle>
+</.header>
+
+<.relation_terms_form
+  changeset={@changeset}
+  action={~p"/manage/mst_relation_terms/#{@relation_terms}"}
+/>
+
+<.back navigate={~p"/manage/mst_relation_terms"}>Back to mst_relation_terms</.back>

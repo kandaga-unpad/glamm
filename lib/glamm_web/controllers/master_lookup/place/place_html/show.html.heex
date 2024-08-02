@@ -1,0 +1,15 @@
+<.header>
+  Place <%= @place.id %>
+  <:subtitle>This is a place record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_places/#{@place}/edit"}>
+      <.button>Edit place</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Place name"><%= @place.place_name %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_places"}>Back to mst_places</.back>

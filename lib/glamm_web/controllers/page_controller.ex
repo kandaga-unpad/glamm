@@ -8,4 +8,8 @@ defmodule GlammWeb.PageController do
   def about(conn, _params) do
     render(conn, :about)
   end
+
+  def manage(conn, _params) do
+    render(conn, :manage)
+  end
 end

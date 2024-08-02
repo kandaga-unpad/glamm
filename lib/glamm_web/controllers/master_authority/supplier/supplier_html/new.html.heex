@@ -1,0 +1,8 @@
+<.header>
+  New Supplier
+  <:subtitle>Use this form to manage supplier records in your database.</:subtitle>
+</.header>
+
+<.supplier_form changeset={@changeset} action={~p"/manage/mst_suppliers"} />
+
+<.back navigate={~p"/manage/mst_suppliers"}>Back to mst_suppliers</.back>

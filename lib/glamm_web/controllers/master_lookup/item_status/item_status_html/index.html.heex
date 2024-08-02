@@ -1,0 +1,34 @@
+<.header>
+  Listing Mst item status
+  <:actions>
+    <.link href={~p"/manage/mst_item_status/new"}>
+      <.button>New Item status</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_item_status"
+  rows={@mst_item_status}
+  row_click={&JS.navigate(~p"/manage/mst_item_status/#{&1}")}
+>
+  <:col :let={item_status} label="Item status"><%= item_status.item_status_id %></:col>
+  <:col :let={item_status} label="Status name"><%= item_status.status_name %></:col>
+  <:col :let={item_status} label="Rules"><%= item_status.rules %></:col>
+  <:col :let={item_status} label="Skip stock take"><%= item_status.skip_stock_take %></:col>
+  <:action :let={item_status}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_item_status/#{item_status}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_item_status/#{item_status}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={item_status}>
+    <.link
+      href={~p"/manage/mst_item_status/#{item_status}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>

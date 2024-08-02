@@ -1,0 +1,18 @@
+<.header>
+  Frequency <%= @frequency.id %>
+  <:subtitle>This is a frequency record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_frequency/#{@frequency}/edit"}>
+      <.button>Edit frequency</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Frequency"><%= @frequency.frequency %></:item>
+  <:item title="Language prefix"><%= @frequency.language_prefix %></:item>
+  <:item title="Time increment"><%= @frequency.time_increment %></:item>
+  <:item title="Time unit"><%= @frequency.time_unit %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_frequency"}>Back to mst_frequency</.back>

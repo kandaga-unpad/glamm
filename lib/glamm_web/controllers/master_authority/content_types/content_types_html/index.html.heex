@@ -1,0 +1,33 @@
+<.header>
+  Listing Mst content types
+  <:actions>
+    <.link href={~p"/manage/mst_content_types/new"}>
+      <.button>New Content types</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_content_types"
+  rows={@mst_content_types}
+  row_click={&JS.navigate(~p"/manage/mst_content_types/#{&1}")}
+>
+  <:col :let={content_types} label="Content type"><%= content_types.content_type %></:col>
+  <:col :let={content_types} label="Code"><%= content_types.code %></:col>
+  <:col :let={content_types} label="Mar code"><%= content_types.mar_code %></:col>
+  <:action :let={content_types}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_content_types/#{content_types}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_content_types/#{content_types}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={content_types}>
+    <.link
+      href={~p"/manage/mst_content_types/#{content_types}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>

@@ -1,0 +1,17 @@
+<.header>
+  Label <%= @label.id %>
+  <:subtitle>This is a label record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_labels/#{@label}/edit"}>
+      <.button>Edit label</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Label name"><%= @label.label_name %></:item>
+  <:item title="Label description"><%= @label.label_description %></:item>
+  <:item title="Label icon"><%= @label.label_icon %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_labels"}>Back to mst_labels</.back>

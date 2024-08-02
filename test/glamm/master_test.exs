@@ -476,4 +476,62 @@ defmodule Glamm.MasterTest do
       assert %Ecto.Changeset{} = Master.change_topic(topic)
     end
   end
+
+  describe "mst_locations" do
+    alias Glamm.Master.Location
+
+    import Glamm.MasterFixtures
+
+    @invalid_attrs %{location_code: nil, location_name: nil, location_place: nil}
+
+    test "list_mst_locations/0 returns all mst_locations" do
+      location = location_fixture()
+      assert Master.list_mst_locations() == [location]
+    end
+
+    test "get_location!/1 returns the location with given id" do
+      location = location_fixture()
+      assert Master.get_location!(location.id) == location
+    end
+
+    test "create_location/1 with valid data creates a location" do
+      valid_attrs = %{location_code: "some location_code", location_name: "some location_name", location_place: "some location_place"}
+
+      assert {:ok, %Location{} = location} = Master.create_location(valid_attrs)
+      assert location.location_code == "some location_code"
+      assert location.location_name == "some location_name"
+      assert location.location_place == "some location_place"
+    end
+
+    test "create_location/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Master.create_location(@invalid_attrs)
+    end
+
+    test "update_location/2 with valid data updates the location" do
+      location = location_fixture()
+      update_attrs = %{location_code: "some updated location_code", location_name: "some updated location_name", location_place: "some updated location_place"}
+
+      assert {:ok, %Location{} = location} = Master.update_location(location, update_attrs)
+      assert location.location_code == "some updated location_code"
+      assert location.location_name == "some updated location_name"
+      assert location.location_place == "some updated location_place"
+    end
+
+    test "update_location/2 with invalid data returns error changeset" do
+      location = location_fixture()
+      assert {:error, %Ecto.Changeset{}} = Master.update_location(location, @invalid_attrs)
+      assert location == Master.get_location!(location.id)
+    end
+
+    test "delete_location/1 deletes the location" do
+      location = location_fixture()
+      assert {:ok, %Location{}} = Master.delete_location(location)
+      assert_raise Ecto.NoResultsError, fn -> Master.get_location!(location.id) end
+    end
+
+    test "change_location/1 returns a location changeset" do
+      location = location_fixture()
+      assert %Ecto.Changeset{} = Master.change_location(location)
+    end
+  end
 end

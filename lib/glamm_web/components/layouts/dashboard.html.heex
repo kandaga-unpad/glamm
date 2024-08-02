@@ -1,0 +1,83 @@
+<main class="w-full h-full flex">
+  <aside class="max-w-60 w-full h-screen bg-zinc-800">
+    <div class="flex flex-col items-center my-10">
+      <svg width="4rem" height="4rem" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill="var(--ci-primary-color, #ffffff)"
+          d="M247.759,14.358,16,125.946V184H496V125.638ZM464,152H48v-5.946L248.241,49.642,464,146.362Z"
+          class="ci-primary"
+        />
+        <path
+          fill="var(--ci-primary-color, #ffffff)"
+          d="M16,496H496V392H16Zm32-72H464v40H48Z"
+          class="ci-primary"
+        />
+        <rect
+          width="32"
+          height="160"
+          x="72"
+          y="208"
+          fill="var(--ci-primary-color, #ffffff)"
+          class="ci-primary"
+        />
+        <rect
+          width="32"
+          height="160"
+          x="408"
+          y="208"
+          fill="var(--ci-primary-color, #ffffff)"
+          class="ci-primary"
+        />
+        <rect
+          width="32"
+          height="160"
+          x="184"
+          y="208"
+          fill="var(--ci-primary-color, #ffffff)"
+          class="ci-primary"
+        />
+        <rect
+          width="32"
+          height="160"
+          x="296"
+          y="208"
+          fill="var(--ci-primary-color, #ffffff)"
+          class="ci-primary"
+        />
+      </svg>
+      
+      <h5 class="text-white text-center">GLAMM</h5>
+    </div>
+    
+    <div class="flex flex-col items-center justify-center text-white w-full px-5 gap-3">
+      <.link href={~p"/manage"} class="default-menu active-menu">
+        Home
+      </.link>
+      
+      <.link class="default-menu w-full">
+        About
+      </.link>
+      
+      <.link class="default-menu">
+        Menu 1
+      </.link>
+      
+      <.link class="default-menu">
+        Menu 2
+      </.link>
+      
+      <.link class="default-menu">
+        Menu 3
+      </.link>
+    </div>
+     <.link navigate={~p"/"}>Back to Home</.link>
+  </aside>
+  
+  <section class="w-full p-4">
+    <.flash_group flash={@flash} /> <%= @inner_content %>
+  </section>
+</main>
+
+<footer class="flex flex-col items-center">
+  <p>Footer Text</p>
+</footer>

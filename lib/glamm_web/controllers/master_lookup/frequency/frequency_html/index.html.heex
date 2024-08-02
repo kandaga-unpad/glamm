@@ -1,0 +1,34 @@
+<.header>
+  Listing Mst frequency
+  <:actions>
+    <.link href={~p"/manage/mst_frequency/new"}>
+      <.button>New Frequency</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_frequency"
+  rows={@mst_frequency}
+  row_click={&JS.navigate(~p"/manage/mst_frequency/#{&1}")}
+>
+  <:col :let={frequency} label="Frequency"><%= frequency.frequency %></:col>
+  <:col :let={frequency} label="Language prefix"><%= frequency.language_prefix %></:col>
+  <:col :let={frequency} label="Time increment"><%= frequency.time_increment %></:col>
+  <:col :let={frequency} label="Time unit"><%= frequency.time_unit %></:col>
+  <:action :let={frequency}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_frequency/#{frequency}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_frequency/#{frequency}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={frequency}>
+    <.link
+      href={~p"/manage/mst_frequency/#{frequency}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>

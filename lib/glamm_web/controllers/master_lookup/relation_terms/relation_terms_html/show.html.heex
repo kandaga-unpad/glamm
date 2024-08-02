@@ -1,0 +1,16 @@
+<.header>
+  Relation terms <%= @relation_terms.id %>
+  <:subtitle>This is a relation_terms record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_relation_terms/#{@relation_terms}/edit"}>
+      <.button>Edit relation_terms</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Rt code"><%= @relation_terms.rt_code %></:item>
+  <:item title="Rt description"><%= @relation_terms.rt_description %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_relation_terms"}>Back to mst_relation_terms</.back>

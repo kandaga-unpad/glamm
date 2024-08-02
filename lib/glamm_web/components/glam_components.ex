@@ -112,7 +112,7 @@ defmodule GlammWeb.GlamComponents do
           />
         </div>
         
-        <button class="search-btn">
+        <button class="default-btn">
           Search
         </button>
       </div>

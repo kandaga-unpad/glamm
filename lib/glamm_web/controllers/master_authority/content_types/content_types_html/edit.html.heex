@@ -1,0 +1,11 @@
+<.header>
+  Edit Content types <%= @content_types.id %>
+  <:subtitle>Use this form to manage content_types records in your database.</:subtitle>
+</.header>
+
+<.content_types_form
+  changeset={@changeset}
+  action={~p"/manage/mst_content_types/#{@content_types}"}
+/>
+
+<.back navigate={~p"/manage/mst_content_types"}>Back to mst_content_types</.back>

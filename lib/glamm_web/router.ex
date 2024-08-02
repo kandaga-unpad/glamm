@@ -10,6 +10,16 @@ defmodule GlammWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :dashboard do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, html: {GlammWeb.Layouts, :root}
+    plug :put_layout, html: {GlammWeb.Layouts, :dashboard}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -22,14 +32,27 @@ defmodule GlammWeb.Router do
   end
 
   scope "/manage", GlammWeb do
-    pipe_through :browser
+    pipe_through :dashboard
 
+    # Master Authority Files
+    get "/", PageController, :manage
     resources "/mst_carrier_types", CarrierTypesController
     resources "/mst_creator", CreatorController
     resources "/mst_content_types", ContentTypesController
     resources "/mst_gmd", GMDController
+    resources "/mst_locations", LocationController
+    resources "/mst_media_types", MediaTypesController
     resources "/mst_publishers", PublisherController
     resources "/mst_suppliers", SupplierController
+    resources "/mst_topics", TopicController
+
+    # Master Lookup Files
+    resources "/mst_frequency", FrequencyController
+    resources "/mst_item_status", ItemStatusController
+    resources "/mst_labels", LabelController
+    resources "/mst_language", LanguageController
+    resources "/mst_places", PlaceController
+    resources "/mst_relation_terms", RelationTermsController
   end
 
   # Other scopes may use custom stacks.

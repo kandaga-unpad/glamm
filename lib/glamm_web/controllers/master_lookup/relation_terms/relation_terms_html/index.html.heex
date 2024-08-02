@@ -1,0 +1,32 @@
+<.header>
+  Listing Mst relation terms
+  <:actions>
+    <.link href={~p"/manage/mst_relation_terms/new"}>
+      <.button>New Relation terms</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_relation_terms"
+  rows={@mst_relation_terms}
+  row_click={&JS.navigate(~p"/manage/mst_relation_terms/#{&1}")}
+>
+  <:col :let={relation_terms} label="Rt code"><%= relation_terms.rt_code %></:col>
+  <:col :let={relation_terms} label="Rt description"><%= relation_terms.rt_description %></:col>
+  <:action :let={relation_terms}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_relation_terms/#{relation_terms}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_relation_terms/#{relation_terms}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={relation_terms}>
+    <.link
+      href={~p"/manage/mst_relation_terms/#{relation_terms}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>

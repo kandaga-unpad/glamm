@@ -1,0 +1,12 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:item_status_id]} type="text" label="Item status" />
+  <.input field={f[:status_name]} type="text" label="Status name" />
+  <.input field={f[:rules]} type="text" label="Rules" />
+  <.input field={f[:skip_stock_take]} type="checkbox" label="Skip stock take" />
+  <:actions>
+    <.button>Save Item status</.button>
+  </:actions>
+</.simple_form>

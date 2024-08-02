@@ -1,0 +1,33 @@
+<.header>
+  Listing Mst locations
+  <:actions>
+    <.link href={~p"/manage/mst_locations/new"}>
+      <.button>New Location</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_locations"
+  rows={@mst_locations}
+  row_click={&JS.navigate(~p"/manage/mst_locations/#{&1}")}
+>
+  <:col :let={location} label="Location code"><%= location.location_code %></:col>
+  <:col :let={location} label="Location name"><%= location.location_name %></:col>
+  <:col :let={location} label="Location place"><%= location.location_place %></:col>
+  <:action :let={location}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_locations/#{location}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_locations/#{location}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={location}>
+    <.link
+      href={~p"/manage/mst_locations/#{location}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>

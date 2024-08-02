@@ -1,0 +1,8 @@
+<.header>
+  Edit Place <%= @place.id %>
+  <:subtitle>Use this form to manage place records in your database.</:subtitle>
+</.header>
+
+<.place_form changeset={@changeset} action={~p"/manage/mst_places/#{@place}"} />
+
+<.back navigate={~p"/manage/mst_places"}>Back to mst_places</.back>

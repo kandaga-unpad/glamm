@@ -1,0 +1,8 @@
+<.header>
+  Edit Media types <%= @media_types.id %>
+  <:subtitle>Use this form to manage media_types records in your database.</:subtitle>
+</.header>
+
+<.media_types_form changeset={@changeset} action={~p"/manage/mst_media_types/#{@media_types}"} />
+
+<.back navigate={~p"/manage/mst_media_types"}>Back to mst_media_types</.back>

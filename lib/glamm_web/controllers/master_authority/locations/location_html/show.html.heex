@@ -1,0 +1,17 @@
+<.header>
+  Location <%= @location.id %>
+  <:subtitle>This is a location record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_locations/#{@location}/edit"}>
+      <.button>Edit location</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Location code"><%= @location.location_code %></:item>
+  <:item title="Location name"><%= @location.location_name %></:item>
+  <:item title="Location place"><%= @location.location_place %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_locations"}>Back to mst_locations</.back>

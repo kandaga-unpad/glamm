@@ -1,3 +1,6 @@
+<div class="bg-purple-200 px-3 py-1 text-sm font-semibold">
+  <p>Mini Banner Here</p>
+</div>
 <header
   class="px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-sm z-10 w-full"
   id="navigationHeader"
@@ -5,7 +8,7 @@
   <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
     <div class="flex items-center gap-2">
       <a href="/" class="flex items-center gap-2">
-        <img src={~p"/images/glamm.png"} width="36" />
+        <img src={~p"/images/glamm_icon.svg"} width="36" />
         <h5>GLAMM</h5>
       </a>
     </div>
@@ -34,11 +37,13 @@
 
     <div>
       <div>
-        <.button class="bg-zinc-700 hover:bg-zinc-600">
-          <.icon name="hero-calendar-days" />
-        </.button>
+        <.link navigate="/manage">
+          <.button class="bg-zinc-700 hover:bg-zinc-600">
+            <.icon name="hero-calendar-days" />
+          </.button>
+        </.link>
 
-        <.button class="ml-2 bg-orange-500 hover:bg-orange-400">Masuk</.button>
+        <.button class="ml-2 default-btn">Masuk</.button>
       </div>
     </div>
   </div>
@@ -52,7 +57,7 @@
 </main>
 
 <footer>
-  <div class="bg-zinc-700 py-3 text-center text-orange-200">
-    &copy; KandaGLAM <span id="footeryear"></span>
+  <div class="bg-zinc-700 py-3 text-center text-violet-200">
+    &copy; GLAMM <span id="footeryear"></span>
   </div>
 </footer>

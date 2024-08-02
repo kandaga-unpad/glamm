@@ -1,0 +1,25 @@
+<.header>
+  Listing Mst labels
+  <:actions>
+    <.link href={~p"/manage/mst_labels/new"}>
+      <.button>New Label</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="mst_labels" rows={@mst_labels} row_click={&JS.navigate(~p"/manage/mst_labels/#{&1}")}>
+  <:col :let={label} label="Label name"><%= label.label_name %></:col>
+  <:col :let={label} label="Label description"><%= label.label_description %></:col>
+  <:col :let={label} label="Label icon"><%= label.label_icon %></:col>
+  <:action :let={label}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_labels/#{label}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_labels/#{label}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={label}>
+    <.link href={~p"/manage/mst_labels/#{label}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

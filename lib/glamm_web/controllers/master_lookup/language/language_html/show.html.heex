@@ -1,0 +1,15 @@
+<.header>
+  Language <%= @language.id %>
+  <:subtitle>This is a language record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/manage/mst_language/#{@language}/edit"}>
+      <.button>Edit language</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Language name"><%= @language.language_name %></:item>
+</.list>
+
+<.back navigate={~p"/manage/mst_language"}>Back to mst_language</.back>

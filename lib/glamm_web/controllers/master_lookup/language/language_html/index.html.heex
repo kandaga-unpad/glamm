@@ -1,0 +1,31 @@
+<.header>
+  Listing Mst language
+  <:actions>
+    <.link href={~p"/manage/mst_language/new"}>
+      <.button>New Language</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="mst_language"
+  rows={@mst_language}
+  row_click={&JS.navigate(~p"/manage/mst_language/#{&1}")}
+>
+  <:col :let={language} label="Language name"><%= language.language_name %></:col>
+  <:action :let={language}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/mst_language/#{language}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/manage/mst_language/#{language}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={language}>
+    <.link
+      href={~p"/manage/mst_language/#{language}"}
+      method="delete"
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
