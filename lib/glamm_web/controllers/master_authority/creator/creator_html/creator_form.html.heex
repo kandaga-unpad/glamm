@@ -10,7 +10,7 @@
     type="select"
     label="Creator type"
     prompt="Choose a value"
-    options={Ecto.Enum.values(Glamm.Master.Creator, :creator_type)}
+    options={Ecto.Enum.values(Glamm.Master.Authority.Creator, :creator_type)}
   />
   <:actions>
     <.button>Save Creator</.button>
