@@ -120,48 +120,6 @@ defmodule GlammWeb.GlamComponents do
     """
   end
 
-  @doc """
-  Navigation Bar Component for GLAM (Gallery, Library, Archive, Museum)
-
-  ## Examples
-
-    <.nav_bar />
-  This component need :active menu and :list_menu props.
-  """
-  attr :active, :string, default: "home"
-  attr :list_menu, :list, default: ["home", "about", "manage"]
-
-  def nav_bar(assigns) do
-    ~H"""
-    <div class="w-full bg-white flex items-center my-5 p-5 rounded-lg gap-6">
-      <div class="nav-bar-logo">
-        <img src="/images/glamm_icon.svg" class="w-8 h-8" alt="GLAM Logo" />
-      </div>
-      
-      <div class="w-full text-violet-500 flex gap-4">
-        <.link href="/manage" class={["nav-bar-home-item", @active == "home" && "tab-active"]}>
-          Home
-        </.link>
-        
-        <.link href="/about" class={["nav-bar-home-item", @active == "about" && "tab-active"]}>
-          About
-        </.link>
-        
-        <.link
-          href="/manage/mst_gmd"
-          class={["nav-bar-home-item", @active == "about" && "tab-active"]}
-        >
-          Manage
-        </.link>
-        
-        <.link href="/" class={["nav-bar-home-item", @active == "about" && "tab-active"]}>
-          Back to Home
-        </.link>
-      </div>
-    </div>
-    """
-  end
-
   ## JS Commands
   def show_active_content(js \\ %JS{}, to) do
     js

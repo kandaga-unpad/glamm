@@ -36,6 +36,7 @@ defmodule GlammWeb.Router do
 
     # Master Authority Files
     get "/", PageController, :manage
+    get "/master", PageController, :master
     resources "/mst_carrier_types", CarrierTypesController
     resources "/mst_creator", CreatorController
     resources "/mst_content_types", ContentTypesController

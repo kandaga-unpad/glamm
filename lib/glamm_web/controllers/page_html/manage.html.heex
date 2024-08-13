@@ -1,4 +1,4 @@
-<.flash_group flash={@flash} />
+<%!-- <.flash_group flash={@flash} /> --%>
 <.modal id="manage-btn">
   <h3>Hey There!</h3>
   
@@ -7,7 +7,47 @@
   </p>
 </.modal>
 
-<h6>Manage your GLAMM here</h6>
+<section>
+  <h6 class="text-center py-5">Manage your GLAMM</h6>
+  
+  <div class="grid grid-cols-2 gap-8">
+    <div class="glam-card">
+      <.icon name="hero-photo" class="w-32 h-32 glamm-gradient" />
+      <h5 class="text-emerald-600">Gallery</h5>
+      
+      <p class="text-sm pt-4">
+        Galleries can host a variety of exhibitions, ranging from contemporary art to historical pieces, and often include paintings, sculptures, photographs, and other visual media. They play a vital role in promoting cultural expression and fostering a deeper understanding of artistic practices and movements.
+      </p>
+    </div>
+    
+    <div class="glam-card">
+      <.icon name="hero-book-open" class="w-32 h-32 glamm-gradient" />
+      <h5 class="text-emerald-600">Library</h5>
+      
+      <p class="text-sm pt-4">
+        A library is a collection of materials, such as books, periodicals, and other resources, that are organized for use by the public. Libraries serve as repositories of knowledge and information, providing access to a wide range of materials for research, study, and leisure.
+      </p>
+    </div>
+    
+    <div class="glam-card">
+      <.icon name="hero-archive-box" class="w-32 h-32 glamm-gradient" />
+      <h5 class="text-emerald-600">Archive</h5>
+      
+      <p class="text-sm pt-4">
+        An archive is a collection of historical records, documents, and other materials that are preserved for research and reference purposes. Archives can include a wide range of materials, such as manuscripts, photographs, maps, and audiovisual recordings, and are often organized by subject, creator, or format.
+      </p>
+    </div>
+    
+    <div class="glam-card">
+      <.icon name="hero-globe-asia-australia" class="w-32 h-32 glamm-gradient" />
+      <h5 class="text-emerald-600">Museum</h5>
+      
+      <p class="text-sm pt-4">
+        A museum is an institution that collects, preserves, and exhibits objects and artifacts of cultural, historical, or scientific significance. Museums can include a wide range of collections, such as art, natural history, science, and technology, and often feature exhibitions, programs, and events for the public.
+      </p>
+    </div>
+  </div>
+</section>
 
 <.button class="default-btn" phx-click={show_modal("manage-btn")}>
   Click Me!

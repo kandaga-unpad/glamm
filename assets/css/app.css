@@ -52,6 +52,10 @@ h6 {
   @apply text-xl;
 }
 
+.glamm-gradient {
+  @apply bg-gradient-to-br from-blue-500 to-green-500;
+}
+
 .sticky-header {
   position: fixed;
   top: 0;
@@ -71,29 +75,33 @@ h6 {
 }
 
 .tab-blocks {
-  @apply bg-purple-200 p-5 rounded-bl-lg rounded-br-lg flex gap-2;
+  @apply bg-blue-100 p-5 rounded-bl-lg rounded-br-lg flex gap-2;
 }
 
 .search-tab-item {
-  @apply bg-purple-50 p-2 w-full text-center rounded-tl-lg rounded-tr-lg cursor-pointer transition-all hover:bg-zinc-100;
+  @apply bg-blue-50 p-2 w-full text-center rounded-tl-lg rounded-tr-lg cursor-pointer transition-all hover:bg-blue-100;
 }
 
 .active-tab-item {
-  @apply bg-purple-200 p-2 hover:bg-purple-200;
+  @apply bg-blue-100 p-2 hover:bg-blue-100;
 }
 
 .input-main-search {
-  @apply w-full p-2 rounded-md border-purple-500 focus:border-purple-500 focus:outline-none;
+  @apply w-full p-2 rounded-md border-blue-500 focus:border-blue-500 focus:outline-none;
 }
 
 .default-btn {
-  @apply bg-gradient-to-br from-pink-400 to-violet-500 py-2 px-4 rounded-lg text-white hover:bg-gradient-to-tl transition ease-in-out duration-300;
+  @apply glamm-gradient py-2 px-4 rounded-lg text-white hover:bg-gradient-to-tl transition ease-in-out duration-300;
 }
 
 .default-menu {
-  @apply py-2 px-4 rounded-lg transition-all hover:bg-gray-500 w-full;
+  @apply px-3 py-2 rounded-lg transition-all hover:bg-blue-100;
 }
 
 .active-menu {
-  @apply bg-gradient-to-br from-pink-400 to-violet-500 rounded-lg text-white;
+  @apply glamm-gradient rounded-lg text-white;
+}
+
+.glam-card {
+  @apply flex flex-col items-center rounded-lg bg-white shadow-lg p-12 text-justify;
 }

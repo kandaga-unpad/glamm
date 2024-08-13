@@ -12,4 +12,8 @@ defmodule GlammWeb.PageController do
   def manage(conn, _params) do
     render(conn, :manage)
   end
+
+  def master(conn, _params) do
+    render(conn, :master)
+  end
 end

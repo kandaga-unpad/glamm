@@ -86,6 +86,7 @@ defmodule GlammWeb do
       # Core UI components and translation
       import GlammWeb.CoreComponents
       import GlammWeb.GlamComponents
+      import GlammWeb.DashboardComponents
       import GlammWeb.Gettext
 
       # Shortcut for generating JS commands
