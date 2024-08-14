@@ -10,6 +10,7 @@ defmodule GlammWeb.PageController do
   end
 
   def manage(conn, _params) do
+    conn = conn |> assign(:current_uri, conn.request_path)
     render(conn, :manage)
   end
 

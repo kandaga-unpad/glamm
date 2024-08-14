@@ -1,6 +1,7 @@
 <div class="bg-blue-200 px-3 py-1 text-sm font-semibold">
   <p>If you need information about [Redacted]</p>
 </div>
+
 <header
   class="px-4 sm:px-6 lg:px-8 bg-white/90 backdrop-blur-sm z-10 w-full"
   id="navigationHeader"
@@ -12,29 +13,29 @@
         <h5>GLAMM</h5>
       </a>
     </div>
-
+    
     <div class="flex items-center gap-10 font-semibold leading-6 text-zinc-900">
       <div>
         <.link href={~p"/"}>
           Beranda
         </.link>
       </div>
-
+      
       <div>
         <.link href={~p"/about"}>
           Tentang
         </.link>
       </div>
-
+      
       <div>
         <p>Koleksi</p>
       </div>
-
+      
       <div>
         <p>Kontak</p>
       </div>
     </div>
-
+    
     <div>
       <div>
         <.link navigate="/manage">
@@ -42,17 +43,24 @@
             <.icon name="hero-calendar-days" />
           </.button>
         </.link>
-
-        <.button class="ml-2 default-btn">Masuk</.button>
+        
+        <%= if @current_user do %>
+          <.link navigate="/manage">
+            <.button class="default-btn"><%= @current_user.username %></.button>
+          </.link>
+        <% else %>
+          <.link navigate="/users/log_in">
+            <.button class="ml-2 default-btn">Masuk</.button>
+          </.link>
+        <% end %>
       </div>
     </div>
   </div>
 </header>
 
 <main class="content">
-  <div class="w-full">
-    <.flash_group flash={@flash} />
-    <%= @inner_content %>
+  <div class="w-full mb-10">
+    <.flash_group flash={@flash} /> <%= @inner_content %>
   </div>
 </main>
 

@@ -1,5 +1,5 @@
 <main class="w-full min-h-screen h-full flex flex-col bg-blue-100">
-  <section class="glamm-gradient text-white py-12">
+  <section class="glamm-gradient text-white py-24">
     <div class="max-w-7xl mx-auto">
       <h3>GLAMM Dashboard</h3>
     </div>
@@ -11,11 +11,45 @@
     </div>
     
     <div class="-mt-14">
-      <.nav_bar active_nav={@conn.request_path} />
+      <.nav_bar active_nav={@current_uri} />
     </div>
     
-    <div class="pb-10">
-      <%= @inner_content %>
+    <div class="pb-10 flex gap-5">
+      <%= if @current_uri |> String.contains?("master") or @current_uri |> String.contains?("mst") do %>
+        <div class="max-w-64 w-full">
+          <.side_bar_dashboard>
+            <h6>Authority Files</h6>
+            
+            <div class="flex flex-col gap-2">
+              <%= for item <- @master_authority do %>
+                <.link
+                  navigate={item.url}
+                  class={["default-menu", @current_uri == item.url && "active-menu"]}
+                >
+                  <%= item.name %>
+                </.link>
+              <% end %>
+            </div>
+            
+            <h6>Lookup Files</h6>
+            
+            <div class="flex flex-col gap-2">
+              <%= for lookup <- @master_lookup do %>
+                <.link
+                  navigate={lookup.url}
+                  class={["default-menu", @current_uri == lookup.url && "active-menu"]}
+                >
+                  <%= lookup.name %>
+                </.link>
+              <% end %>
+            </div>
+          </.side_bar_dashboard>
+        </div>
+      <% end %>
+      
+      <div class={"w-full " <> if @current_uri |> String.contains?("master") or @current_uri |> String.contains?("mst"), do: "default-card", else: ""}>
+        <%= @inner_content %>
+      </div>
     </div>
   </section>
 </main>

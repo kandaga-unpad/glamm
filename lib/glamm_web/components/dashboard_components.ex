@@ -23,8 +23,8 @@ defmodule GlammWeb.DashboardComponents do
         url: "/manage/master"
       },
       %{
-        name: "Bibliography",
-        url: "/manage/bibliography"
+        name: "Settings",
+        url: "/users/settings"
       }
     ]
 
@@ -55,16 +55,15 @@ defmodule GlammWeb.DashboardComponents do
   """
   attr :active_side, :string, default: "no value"
 
+  slot :inner_block
+
   def side_bar_dashboard(assigns) do
     ~H"""
-    <section>
-      <h5>Master</h5>
-      
-      <ul class="flex flex-col">
-        <%= for _ <- 1..5 do %>
-          <.link href="/manage#">Satu</.link>
-        <% end %>
-      </ul>
+    <section class="bg-white rounded-xl p-5 max-w-64 w-full h-full">
+      <div class="flex flex-col gap-2">
+        <h5>Master Files</h5>
+         <%= render_slot(@inner_block) %>
+      </div>
     </section>
     """
   end
