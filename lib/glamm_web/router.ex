@@ -62,6 +62,32 @@ defmodule GlammWeb.Router do
     resources "/mst_language", LanguageController
     resources "/mst_places", PlaceController
     resources "/mst_relation_terms", RelationTermsController
+
+    # Metadata Custom
+    live_session :metadata_schema,
+      on_mount: [
+        {GlammWeb.UserAuth, :ensure_authenticated},
+        {GlammWeb.Utils.SaveRequestUri, :save_request_uri}
+      ] do
+      # live "/metadata", MetadataDashboardLive.Index, :index
+      live "/metadata_vocabularies", VocabularyLive.Index, :index
+      live "/metadata_vocabularies/new", VocabularyLive.Index, :new
+      live "/metadata_vocabularies/:id/edit", VocabularyLive.Index, :edit
+      live "/metadata_vocabularies/:id", VocabularyLive.Show, :show
+      live "/metadata_vocabularies/:id/show/edit", VocabularyLive.Show, :edit
+
+      live "/metadata_properties", PropertyLive.Index, :index
+      live "/metadata_properties/new", PropertyLive.Index, :new
+      live "/metadata_properties/:id/edit", PropertyLive.Index, :edit
+      live "/metadata_properties/:id", PropertyLive.Show, :show
+      live "/metadata_properties/:id/show/edit", PropertyLive.Show, :edit
+
+      live "/resource_class", ResourceClassLive.Index, :index
+      live "/resource_class/new", ResourceClassLive.Index, :new
+      live "/resource_class/:id/edit", ResourceClassLive.Index, :edit
+      live "/resource_class/:id", ResourceClassLive.Show, :show
+      live "/resource_class/:id/show/edit", ResourceClassLive.Show, :edit
+    end
   end
 
   # Other scopes may use custom stacks.

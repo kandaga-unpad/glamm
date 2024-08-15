@@ -1,0 +1,48 @@
+<.header>
+  Listing Metadata properties
+  <:actions>
+    <.link patch={~p"/manage/metadata_properties/new"}>
+      <.button>New Property</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="metadata_properties"
+  rows={@streams.metadata_properties}
+  row_click={fn {_id, property} -> JS.navigate(~p"/manage/metadata_properties/#{property}") end}
+>
+  <:col :let={{_id, property}} label="Local name"><%= property.local_name %></:col>
+  <:col :let={{_id, property}} label="Label"><%= property.label %></:col>
+  <:col :let={{_id, property}} label="Information"><%= property.information %></:col>
+  <:action :let={{_id, property}}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/metadata_properties/#{property}"}>Show</.link>
+    </div>
+    <.link patch={~p"/manage/metadata_properties/#{property}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, property}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: property.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="property-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/metadata_properties")}
+>
+  <.live_component
+    module={GlammWeb.PropertyLive.FormComponent}
+    id={@property.id || :new}
+    title={@page_title}
+    action={@live_action}
+    property={@property}
+    patch={~p"/manage/metadata_properties"}
+  />
+</.modal>

@@ -2,6 +2,16 @@
   <section class="glamm-gradient text-white py-24">
     <div class="max-w-7xl mx-auto">
       <h3>GLAMM Dashboard</h3>
+      
+      <%= if @current_user do %>
+        <div>
+          <p>Hello, <%= @current_user.username %>!</p>
+        </div>
+      <% else %>
+        <div>
+          <p>Hello, Guest!</p>
+        </div>
+      <% end %>
     </div>
   </section>
   

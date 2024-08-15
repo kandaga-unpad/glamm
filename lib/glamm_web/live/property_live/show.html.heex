@@ -1,0 +1,36 @@
+<.header>
+  Property <%= @property.id %>
+  <:subtitle>This is a property record from your database.</:subtitle>
+  <:actions>
+    <.link
+      patch={~p"/manage/metadata_properties/#{@property}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
+      <.button>Edit property</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Local name"><%= @property.local_name %></:item>
+  <:item title="Label"><%= @property.label %></:item>
+  <:item title="Information"><%= @property.information %></:item>
+</.list>
+
+<.back navigate={~p"/manage/metadata_properties"}>Back to metadata_properties</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="property-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/metadata_properties/#{@property}")}
+>
+  <.live_component
+    module={GlammWeb.PropertyLive.FormComponent}
+    id={@property.id}
+    title={@page_title}
+    action={@live_action}
+    property={@property}
+    patch={~p"/manage/metadata_properties/#{@property}"}
+  />
+</.modal>

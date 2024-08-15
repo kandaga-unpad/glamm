@@ -25,6 +25,10 @@ defmodule GlammWeb.DashboardComponents do
       %{
         name: "Settings",
         url: "/users/settings"
+      },
+      %{
+        name: "Metadata",
+        url: "/manage/metadata"
       }
     ]
 
@@ -43,8 +47,15 @@ defmodule GlammWeb.DashboardComponents do
         <% end %>
       </div>
       
-      <div>
+      <div class="w-full max-w-36">
         <.link href="/" class="default-menu bg-red-400 hover:bg-red-500 text-white">Exit</.link>
+        <.link
+          href="/users/log_out"
+          method="delete"
+          class="default-menu bg-red-400 hover:bg-red-500 text-white"
+        >
+          Log out
+        </.link>
       </div>
     </div>
     """

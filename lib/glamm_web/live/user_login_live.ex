@@ -3,7 +3,7 @@ defmodule GlammWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <div class="mx-auto max-w-sm pt-5">
       <.header class="text-center">
         Log in to account
         <:subtitle>
