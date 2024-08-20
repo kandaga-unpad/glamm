@@ -23,12 +23,12 @@ defmodule GlammWeb.DashboardComponents do
         url: "/manage/master"
       },
       %{
-        name: "Settings",
-        url: "/users/settings"
-      },
-      %{
         name: "Metadata",
         url: "/manage/metadata"
+      },
+      %{
+        name: "Settings",
+        url: "/users/settings"
       }
     ]
 
@@ -41,7 +41,7 @@ defmodule GlammWeb.DashboardComponents do
       
       <div class="w-full text-blue-500 flex gap-4">
         <%= for menu <- @list_menu do %>
-          <.link href={menu.url} class={["default-menu", @active_nav == menu.url && "active-menu"]}>
+          <.link patch={menu.url} class={["default-menu", @active_nav == menu.url && "active-menu"]}>
             <%= menu.name %>
           </.link>
         <% end %>
@@ -65,14 +65,14 @@ defmodule GlammWeb.DashboardComponents do
   Component for Side Bar Menu
   """
   attr :active_side, :string, default: "no value"
-
+  attr :menu_name, :string, default: "Sidebar Menu"
   slot :inner_block
 
   def side_bar_dashboard(assigns) do
     ~H"""
     <section class="bg-white rounded-xl p-5 max-w-64 w-full h-full">
       <div class="flex flex-col gap-2">
-        <h5>Master Files</h5>
+        <h5><%= @menu_name %></h5>
          <%= render_slot(@inner_block) %>
       </div>
     </section>

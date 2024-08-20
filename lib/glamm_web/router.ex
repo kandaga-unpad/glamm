@@ -13,6 +13,7 @@ defmodule GlammWeb.Router do
     plug :fetch_current_user
     plug GlammWeb.Plugs.GetCurrentPath
     plug GlammWeb.Utils.SideBarMenuMaster
+    plug GlammWeb.Utils.DateUtils
   end
 
   pipeline :dashboard do
@@ -26,6 +27,7 @@ defmodule GlammWeb.Router do
     plug :fetch_current_user
     plug GlammWeb.Plugs.GetCurrentPath
     plug GlammWeb.Utils.SideBarMenuMaster
+    plug GlammWeb.Utils.DateUtils
   end
 
   pipeline :api do
@@ -69,7 +71,7 @@ defmodule GlammWeb.Router do
         {GlammWeb.UserAuth, :ensure_authenticated},
         {GlammWeb.Utils.SaveRequestUri, :save_request_uri}
       ] do
-      # live "/metadata", MetadataDashboardLive.Index, :index
+      live "/metadata", MetadataDashboardLive.Index, :index
       live "/metadata_vocabularies", VocabularyLive.Index, :index
       live "/metadata_vocabularies/new", VocabularyLive.Index, :new
       live "/metadata_vocabularies/:id/edit", VocabularyLive.Index, :edit

@@ -10,8 +10,24 @@ defmodule GlammWeb.MetadataDashboardLive.Index do
   end
 
   defp apply_action(socket, :index, _params) do
+    metadata_menu = [
+      %{
+        name: "Properties",
+        url: "/manage/metadata_properties"
+      },
+      %{
+        name: "Resource Class",
+        url: "/manage/resource_class"
+      },
+      %{
+        name: "Vocabularies",
+        url: "/manage/metadata_vocabularies"
+      }
+    ]
+
     socket
     |> assign(:page_title, "Dashboard")
+    |> assign(:metadata_menu, metadata_menu)
     |> assign(:dashboard, nil)
   end
 end

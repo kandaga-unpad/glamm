@@ -6,6 +6,23 @@ defmodule GlammWeb.PropertyLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
+    metadata_menu = [
+      %{
+        name: "Properties",
+        url: "/manage/metadata_properties"
+      },
+      %{
+        name: "Resource Class",
+        url: "/manage/resource_class"
+      },
+      %{
+        name: "Vocabularies",
+        url: "/manage/metadata_vocabularies"
+      }
+    ]
+
+    socket = socket |> assign(:metadata_menu, metadata_menu)
+
     {:ok, stream(socket, :metadata_properties, Metadata.list_metadata_properties())}
   end
 

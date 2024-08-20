@@ -7,6 +7,8 @@
   </:actions>
 </.header>
 
+<.back navigate={~p"/manage/master"}>Back to Master Files</.back>
+
 <.table id="mst_places" rows={@mst_places} row_click={&JS.navigate(~p"/manage/mst_places/#{&1}")}>
   <:col :let={place} label="Place name"><%= place.place_name %></:col>
   <:action :let={place}>

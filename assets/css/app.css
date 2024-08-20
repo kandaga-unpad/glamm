@@ -11,11 +11,6 @@
     sans-serif;
 }
 
-:root {
-  --text-color: dark;
-  --bg-color: pink;
-}
-
 /* This file is for your main application CSS */
 h1,
 h2,
@@ -54,6 +49,10 @@ h6 {
 
 .glamm-gradient {
   @apply bg-gradient-to-br from-blue-500 to-green-500;
+}
+
+.glam-text-gradient {
+  @apply bg-gradient-to-br from-blue-500 to-green-500 inline-block text-transparent bg-clip-text;
 }
 
 .sticky-header {
@@ -98,6 +97,10 @@ h6 {
   @apply px-3 py-2 rounded-lg transition-all hover:bg-blue-100;
 }
 
+.default-glam-menu {
+  @apply px-6 py-2 rounded-lg transition-all hover:bg-white;
+}
+
 .active-menu {
   @apply glamm-gradient rounded-lg text-white;
 }
@@ -108,4 +111,8 @@ h6 {
 
 .default-card {
   @apply bg-white w-full rounded-xl p-5;
+}
+
+.sidebar-size {
+  @apply w-full max-w-64;
 }

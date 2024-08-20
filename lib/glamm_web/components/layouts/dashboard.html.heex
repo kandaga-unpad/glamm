@@ -20,52 +20,77 @@
       <.flash_group flash={@flash} />
     </div>
     
-    <div class="-mt-14">
-      <.nav_bar active_nav={@current_uri} />
+    <div class="-mt-16">
+      <div class="max-w-7xl mx-auto flex gap-2 items-end justify-end w-full text-white">
+        <.link navigate={~p"/manage/master"} class="default-glam-menu hover:text-blue-500">
+          Gallery
+        </.link>
+        
+        <.link navigate={~p"/manage/metadata"} class="default-glam-menu hover:text-blue-500">
+          Library
+        </.link>
+        
+        <.link navigate={~p"/manage/master"} class="default-glam-menu hover:text-blue-500">
+          Archive
+        </.link>
+        
+        <.link navigate={~p"/manage/metadata"} class="default-glam-menu hover:text-blue-500">
+          Museum
+        </.link>
+      </div>
+       <.nav_bar active_nav={@current_uri} />
     </div>
     
-    <div class="pb-10 flex gap-5">
-      <%= if @current_uri |> String.contains?("master") or @current_uri |> String.contains?("mst") do %>
-        <div class="max-w-64 w-full">
-          <.side_bar_dashboard>
-            <h6>Authority Files</h6>
-            
-            <div class="flex flex-col gap-2">
-              <%= for item <- @master_authority do %>
-                <.link
-                  navigate={item.url}
-                  class={["default-menu", @current_uri == item.url && "active-menu"]}
-                >
-                  <%= item.name %>
-                </.link>
-              <% end %>
+    <section>
+      <div class="pb-10">
+        <%= if @current_uri |> String.contains?("master") or @current_uri |> String.contains?("mst") do %>
+          <div class="flex gap-5">
+            <div class="max-w-64 w-full">
+              <.side_bar_dashboard>
+                <h6>Authority Files</h6>
+                
+                <div class="flex flex-col gap-2">
+                  <%= for item <- @master_authority do %>
+                    <.link
+                      navigate={item.url}
+                      class={["default-menu", @current_uri == item.url && "active-menu"]}
+                    >
+                      <%= item.name %>
+                    </.link>
+                  <% end %>
+                </div>
+                
+                <h6>Lookup Files</h6>
+                
+                <div class="flex flex-col gap-2">
+                  <%= for lookup <- @master_lookup do %>
+                    <.link
+                      navigate={lookup.url}
+                      class={["default-menu", @current_uri == lookup.url && "active-menu"]}
+                    >
+                      <%= lookup.name %>
+                    </.link>
+                  <% end %>
+                </div>
+              </.side_bar_dashboard>
             </div>
             
-            <h6>Lookup Files</h6>
-            
-            <div class="flex flex-col gap-2">
-              <%= for lookup <- @master_lookup do %>
-                <.link
-                  navigate={lookup.url}
-                  class={["default-menu", @current_uri == lookup.url && "active-menu"]}
-                >
-                  <%= lookup.name %>
-                </.link>
-              <% end %>
+            <div class="default-card">
+              <%= @inner_content %>
             </div>
-          </.side_bar_dashboard>
-        </div>
-      <% end %>
-      
-      <div class={"w-full " <> if @current_uri |> String.contains?("master") or @current_uri |> String.contains?("mst"), do: "default-card", else: ""}>
-        <%= @inner_content %>
+          </div>
+        <% else %>
+          <div class="w-full">
+            <%= @inner_content %>
+          </div>
+        <% end %>
       </div>
-    </div>
+    </section>
   </section>
 </main>
 
 <footer class="flex flex-col items-center bg-zinc-800 text-white">
   <div class="py-5">
-    <p>Footer Text</p>
+    <p>GLAM Management | <%= Date.utc_today().year %></p>
   </div>
 </footer>

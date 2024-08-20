@@ -1,0 +1,77 @@
+<section class="flex gap-5">
+  <div class="sidebar-size">
+    <.side_bar_dashboard menu_name="Metadata List">
+      <h6>Authority Files</h6>
+
+      <div class="flex flex-col gap-2">
+        <%= for item <- @metadata_menu do %>
+          <.link
+            navigate={item.url}
+            class={["default-menu", @current_uri == item.url && "active-menu"]}
+          >
+            <%= item.name %>
+          </.link>
+        <% end %>
+      </div>
+    </.side_bar_dashboard>
+  </div>
+
+  <div class="default-card">
+    <.header>
+      Listing Resource class
+      <:actions>
+        <.link patch={~p"/manage/resource_class/new"}>
+          <.button>New Resource class</.button>
+        </.link>
+      </:actions>
+    </.header>
+
+    <.back navigate={~p"/manage/metadata"}>Back to Metadata</.back>
+
+    <.table
+      id="resource_class"
+      rows={@streams.resource_class_collection}
+      row_click={
+        fn {_id, resource_class} -> JS.navigate(~p"/manage/resource_class/#{resource_class}") end
+      }
+    >
+      <:col :let={{_id, resource_class}} label="Local name">
+        <%= resource_class.local_name %>
+      </:col>
+      <:col :let={{_id, resource_class}} label="Label"><%= resource_class.label %></:col>
+      <:col :let={{_id, resource_class}} label="Information">
+        <%= resource_class.information %>
+      </:col>
+      <:action :let={{_id, resource_class}}>
+        <div class="sr-only">
+          <.link navigate={~p"/manage/resource_class/#{resource_class}"}>Show</.link>
+        </div>
+        <.link patch={~p"/manage/resource_class/#{resource_class}/edit"}>Edit</.link>
+      </:action>
+      <:action :let={{id, resource_class}}>
+        <.link
+          phx-click={JS.push("delete", value: %{id: resource_class.id}) |> hide("##{id}")}
+          data-confirm="Are you sure?"
+        >
+          Delete
+        </.link>
+      </:action>
+    </.table>
+  </div>
+</section>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="resource_class-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/resource_class")}
+>
+  <.live_component
+    module={GlammWeb.ResourceClassLive.FormComponent}
+    id={@resource_class.id || :new}
+    title={@page_title}
+    action={@live_action}
+    resource_class={@resource_class}
+    patch={~p"/manage/resource_class"}
+  />
+</.modal>
