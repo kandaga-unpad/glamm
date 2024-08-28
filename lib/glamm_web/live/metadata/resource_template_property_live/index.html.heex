@@ -1,0 +1,91 @@
+<section class="flex gap-5">
+  <div class="sidebar-size">
+    <.side_bar_dashboard menu_name="Metadata List">
+      <div class="flex flex-col gap-2">
+        <%= for item <- @metadata_menu do %>
+          <.link
+            navigate={item.url}
+            class={["default-menu", @current_uri == item.url && "active-menu"]}
+          >
+            <%= item.name %>
+          </.link>
+        <% end %>
+      </div>
+    </.side_bar_dashboard>
+  </div>
+  <div class="default-card">
+    <.header>
+      Listing Resource template property
+      <:actions>
+        <.link patch={~p"/manage/resource_template_property/new"}>
+          <.button>New Resource template property</.button>
+        </.link>
+      </:actions>
+    </.header>
+
+    <.table
+      id="resource_template_property"
+      rows={@streams.resource_template_property_collection}
+      row_click={
+        fn {_id, resource_template_property} ->
+          JS.navigate(~p"/manage/resource_template_property/#{resource_template_property}")
+        end
+      }
+    >
+      <:col :let={{_id, resource_template_property}} label="Alternate label">
+        <%= resource_template_property.alternate_label %>
+      </:col>
+      <:col :let={{_id, resource_template_property}} label="Alternate information">
+        <%= resource_template_property.alternate_information %>
+      </:col>
+      <:col :let={{_id, resource_template_property}} label="Position">
+        <%= resource_template_property.position %>
+      </:col>
+      <:col :let={{_id, resource_template_property}} label="Data type">
+        <%= resource_template_property.data_type %>
+      </:col>
+      <:col :let={{_id, resource_template_property}} label="Is required">
+        <%= resource_template_property.is_required %>
+      </:col>
+      <:col :let={{_id, resource_template_property}} label="Is public">
+        <%= resource_template_property.is_public %>
+      </:col>
+      <:action :let={{_id, resource_template_property}}>
+        <div class="sr-only">
+          <.link navigate={~p"/manage/resource_template_property/#{resource_template_property}"}>
+            Show
+          </.link>
+        </div>
+        <.link patch={~p"/manage/resource_template_property/#{resource_template_property}/edit"}>
+          Edit
+        </.link>
+      </:action>
+      <:action :let={{id, resource_template_property}}>
+        <.link
+          phx-click={
+            JS.push("delete", value: %{id: resource_template_property.id}) |> hide("##{id}")
+          }
+          data-confirm="Are you sure?"
+        >
+          Delete
+        </.link>
+      </:action>
+    </.table>
+  </div>
+</section>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="resource_template_property-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/resource_template_property")}
+>
+  <.live_component
+    module={GlammWeb.ResourceTemplatePropertyLive.FormComponent}
+    id={@resource_template_property.id || :new}
+    title={@page_title}
+    action={@live_action}
+    resource_template_property={@resource_template_property}
+    patch={~p"/manage/resource_template_property"}
+  />
+</.modal>

@@ -29,4 +29,37 @@ defmodule GlammWeb.Utils.SideBarMenuMaster do
     |> assign(:master_authority, master_authority)
     |> assign(:master_lookup, master_lookup)
   end
+
+  def on_mount(:get_metadata_menu, _params, _session, socket) do
+    menu_data = get_metadata_menu()
+
+    socket = socket |> Phoenix.Component.assign(:metadata_menu, menu_data)
+
+    {:cont, socket}
+  end
+
+  defp get_metadata_menu do
+    [
+      %{
+        name: "Properties",
+        url: "/manage/metadata_properties"
+      },
+      %{
+        name: "Resource Class",
+        url: "/manage/resource_class"
+      },
+      %{
+        name: "Resource Template",
+        url: "/manage/resource_template"
+      },
+      %{
+        name: "Resource Template Property",
+        url: "/manage/resource_template_property"
+      },
+      %{
+        name: "Vocabularies",
+        url: "/manage/metadata_vocabularies"
+      }
+    ]
+  end
 end

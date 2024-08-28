@@ -52,4 +52,37 @@ defmodule Glamm.MetadataFixtures do
 
     resource_class
   end
+
+  @doc """
+  Generate a resource_template.
+  """
+  def resource_template_fixture(attrs \\ %{}) do
+    {:ok, resource_template} =
+      attrs
+      |> Enum.into(%{
+        label: "some label"
+      })
+      |> Glamm.Metadata.create_resource_template()
+
+    resource_template
+  end
+
+  @doc """
+  Generate a resource_template_property.
+  """
+  def resource_template_property_fixture(attrs \\ %{}) do
+    {:ok, resource_template_property} =
+      attrs
+      |> Enum.into(%{
+        alternate_information: "some alternate_information",
+        alternate_label: "some alternate_label",
+        data_type: ["option1", "option2"],
+        is_public: true,
+        is_required: true,
+        position: 42
+      })
+      |> Glamm.Metadata.create_resource_template_property()
+
+    resource_template_property
+  end
 end

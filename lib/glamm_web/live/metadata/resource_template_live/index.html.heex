@@ -1,0 +1,67 @@
+<section class="flex gap-5">
+  <div class="sidebar-size">
+    <.side_bar_dashboard menu_name="Metadata List">
+      <div class="flex flex-col gap-2">
+        <%= for item <- @metadata_menu do %>
+          <.link
+            navigate={item.url}
+            class={["default-menu", @current_uri == item.url && "active-menu"]}
+          >
+            <%= item.name %>
+          </.link>
+        <% end %>
+      </div>
+    </.side_bar_dashboard>
+  </div>
+  <div class="default-card">
+    <.header>
+      Listing Resource template
+      <:actions>
+        <.link patch={~p"/manage/resource_template/new"}>
+          <.button>New Resource template</.button>
+        </.link>
+      </:actions>
+    </.header>
+
+    <.table
+      id="resource_template"
+      rows={@streams.resource_template_collection}
+      row_click={
+        fn {_id, resource_template} ->
+          JS.navigate(~p"/manage/resource_template/#{resource_template}")
+        end
+      }
+    >
+      <:col :let={{_id, resource_template}} label="Label"><%= resource_template.label %></:col>
+      <:action :let={{_id, resource_template}}>
+        <div class="sr-only">
+          <.link navigate={~p"/manage/resource_template/#{resource_template}"}>Show</.link>
+        </div>
+        <.link patch={~p"/manage/resource_template/#{resource_template}/edit"}>Edit</.link>
+      </:action>
+      <:action :let={{id, resource_template}}>
+        <.link
+          phx-click={JS.push("delete", value: %{id: resource_template.id}) |> hide("##{id}")}
+          data-confirm="Are you sure?"
+        >
+          Delete
+        </.link>
+      </:action>
+    </.table>
+  </div>
+</section>
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="resource_template-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/resource_template")}
+>
+  <.live_component
+    module={GlammWeb.ResourceTemplateLive.FormComponent}
+    id={@resource_template.id || :new}
+    title={@page_title}
+    action={@live_action}
+    resource_template={@resource_template}
+    patch={~p"/manage/resource_template"}
+  />
+</.modal>

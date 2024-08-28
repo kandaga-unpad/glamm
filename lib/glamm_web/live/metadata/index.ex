@@ -1,7 +1,17 @@
 defmodule GlammWeb.MetadataDashboardLive.Index do
   use GlammWeb, :live_view_dashboard
 
+  alias Glamm.Metadata
+  # alias Glamm.Metadata.Property
+
   def mount(_params, _session, socket) do
+    count_properties = Metadata.list_metadata_properties() |> length()
+    count_vocabulaies = Metadata.list_metadata_vocabularies() |> length()
+
+    socket = socket |> assign(props: count_properties, vocabs: count_vocabulaies)
+
+    # dbg(socket)
+
     {:ok, stream(socket, :dashboard, %{})}
   end
 
@@ -10,24 +20,8 @@ defmodule GlammWeb.MetadataDashboardLive.Index do
   end
 
   defp apply_action(socket, :index, _params) do
-    metadata_menu = [
-      %{
-        name: "Properties",
-        url: "/manage/metadata_properties"
-      },
-      %{
-        name: "Resource Class",
-        url: "/manage/resource_class"
-      },
-      %{
-        name: "Vocabularies",
-        url: "/manage/metadata_vocabularies"
-      }
-    ]
-
     socket
     |> assign(:page_title, "Dashboard")
-    |> assign(:metadata_menu, metadata_menu)
     |> assign(:dashboard, nil)
   end
 end

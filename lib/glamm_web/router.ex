@@ -69,7 +69,8 @@ defmodule GlammWeb.Router do
     live_session :metadata_schema,
       on_mount: [
         {GlammWeb.UserAuth, :ensure_authenticated},
-        {GlammWeb.Utils.SaveRequestUri, :save_request_uri}
+        {GlammWeb.Utils.SaveRequestUri, :save_request_uri},
+        {GlammWeb.Utils.SideBarMenuMaster, :get_metadata_menu}
       ] do
       live "/metadata", MetadataDashboardLive.Index, :index
       live "/metadata_vocabularies", VocabularyLive.Index, :index
@@ -89,6 +90,18 @@ defmodule GlammWeb.Router do
       live "/resource_class/:id/edit", ResourceClassLive.Index, :edit
       live "/resource_class/:id", ResourceClassLive.Show, :show
       live "/resource_class/:id/show/edit", ResourceClassLive.Show, :edit
+
+      live "/resource_template", ResourceTemplateLive.Index, :index
+      live "/resource_template/new", ResourceTemplateLive.Index, :new
+      live "/resource_template/:id/edit", ResourceTemplateLive.Index, :edit
+      live "/resource_template/:id", ResourceTemplateLive.Show, :show
+      live "/resource_template/:id/show/edit", ResourceTemplateLive.Show, :edit
+
+      live "/resource_template_property", ResourceTemplatePropertyLive.Index, :index
+      live "/resource_template_property/new", ResourceTemplatePropertyLive.Index, :new
+      live "/resource_template_property/:id/edit", ResourceTemplatePropertyLive.Index, :edit
+      live "/resource_template_property/:id", ResourceTemplatePropertyLive.Show, :show
+      live "/resource_template_property/:id/show/edit", ResourceTemplatePropertyLive.Show, :edit
     end
   end
 
