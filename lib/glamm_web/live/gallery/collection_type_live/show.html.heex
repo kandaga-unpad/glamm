@@ -1,0 +1,35 @@
+<.header>
+  Collection type <%= @collection_type.id %>
+  <:subtitle>This is a collection_type record from your database.</:subtitle>
+  <:actions>
+    <.link
+      patch={~p"/manage/gallery/gal_collection_type/#{@collection_type}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
+      <.button>Edit collection_type</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Collection name"><%= @collection_type.collection_name %></:item>
+  <:item title="Description"><%= @collection_type.description %></:item>
+</.list>
+
+<.back navigate={~p"/manage/gallery/gal_collection_type"}>Back to gal_collection_type</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="collection_type-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/gallery/gal_collection_type/#{@collection_type}")}
+>
+  <.live_component
+    module={GlammWeb.CollectionTypeLive.FormComponent}
+    id={@collection_type.id}
+    title={@page_title}
+    action={@live_action}
+    collection_type={@collection_type}
+    patch={~p"/manage/gallery/gal_collection_type/#{@collection_type}"}
+  />
+</.modal>

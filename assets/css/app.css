@@ -51,6 +51,10 @@ h6 {
   @apply bg-gradient-to-br from-blue-500 to-green-500;
 }
 
+.gallery-gradient {
+  @apply bg-gradient-to-br from-purple-500 to-orange-500;
+}
+
 .glam-text-gradient {
   @apply bg-gradient-to-br from-blue-500 to-green-500 inline-block text-transparent bg-clip-text;
 }

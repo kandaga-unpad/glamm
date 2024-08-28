@@ -67,6 +67,15 @@ defmodule GlammWeb do
     end
   end
 
+  def live_view_gallery_dashboard do
+    quote do
+      use Phoenix.LiveView,
+        layout: {GlammWeb.Layouts, :gallery_dashboard}
+
+      unquote(html_helpers())
+    end
+  end
+
   def live_component do
     quote do
       use Phoenix.LiveComponent

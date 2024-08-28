@@ -17,17 +17,13 @@ defmodule GlammWeb.Router do
   end
 
   pipeline :dashboard do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_live_flash
-    plug :put_root_layout, html: {GlammWeb.Layouts, :root}
+    plug :browser
     plug :put_layout, html: {GlammWeb.Layouts, :dashboard}
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
-    plug :fetch_current_user
-    plug GlammWeb.Plugs.GetCurrentPath
-    plug GlammWeb.Utils.SideBarMenuMaster
-    plug GlammWeb.Utils.DateUtils
+  end
+
+  pipeline :gallery_dashboard do
+    plug :browser
+    # plug :put_layout, html: {GlammWeb.Layouts, :gallery_dashboard}
   end
 
   pipeline :api do
@@ -72,6 +68,8 @@ defmodule GlammWeb.Router do
         {GlammWeb.Utils.SaveRequestUri, :save_request_uri},
         {GlammWeb.Utils.SideBarMenuMaster, :get_metadata_menu}
       ] do
+      live "/gallery", GlamDashboardLive.Gallery, :index
+
       live "/metadata", MetadataDashboardLive.Index, :index
       live "/metadata_vocabularies", VocabularyLive.Index, :index
       live "/metadata_vocabularies/new", VocabularyLive.Index, :new
@@ -102,6 +100,51 @@ defmodule GlammWeb.Router do
       live "/resource_template_property/:id/edit", ResourceTemplatePropertyLive.Index, :edit
       live "/resource_template_property/:id", ResourceTemplatePropertyLive.Show, :show
       live "/resource_template_property/:id/show/edit", ResourceTemplatePropertyLive.Show, :edit
+    end
+  end
+
+  scope "/manage/gallery", GlammWeb do
+    pipe_through [:gallery_dashboard, :require_authenticated_user]
+
+    live_session :gallery,
+      on_mount: [
+        {GlammWeb.UserAuth, :ensure_authenticated},
+        {GlammWeb.Utils.SaveRequestUri, :save_request_uri}
+      ] do
+      live "/gal_assets", AssetsLive.Index, :index
+      live "/gal_assets/new", AssetsLive.Index, :new
+      live "/gal_assets/:id/edit", AssetsLive.Index, :edit
+      live "/gal_assets/:id", AssetsLive.Show, :show
+      live "/gal_assets/:id/show/edit", AssetsLive.Show, :edit
+
+      live "/gal_collection_type", CollectionTypeLive.Index, :index
+      live "/gal_collection_type/new", CollectionTypeLive.Index, :new
+      live "/gal_collection_type/:id/edit", CollectionTypeLive.Index, :edit
+      live "/gal_collection_type/:id", CollectionTypeLive.Show, :show
+      live "/gal_collection_type/:id/show/edit", CollectionTypeLive.Show, :edit
+
+      live "/gal_files", FilesLive.Index, :index
+      live "/gal_files/new", FilesLive.Index, :new
+      live "/gal_files/:id/edit", FilesLive.Index, :edit
+      live "/gal_files/:id", FilesLive.Show, :show
+      live "/gal_files/:id/show/edit", FilesLive.Show, :edit
+    end
+  end
+
+  scope "/manage/system", GlammWeb do
+    pipe_through [:dashboard, :require_authenticated_user]
+
+    live_session :system,
+      on_mount: [
+        {GlammWeb.UserAuth, :ensure_authenticated},
+        {GlammWeb.Utils.SaveRequestUri, :save_request_uri}
+      ] do
+      live "/nodes", NodeLive.Index, :index
+      live "/nodes/new", NodeLive.Index, :new
+      live "/nodes/:id/edit", NodeLive.Index, :edit
+
+      live "/nodes/:id", NodeLive.Show, :show
+      live "/nodes/:id/show/edit", NodeLive.Show, :edit
     end
   end
 

@@ -1,0 +1,34 @@
+<.header>
+  Node <%= @node.id %>
+  <:subtitle>This is a node record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/manage/system/nodes/#{@node}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit node</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @node.name %></:item>
+  <:item title="Abbr"><%= @node.abbr %></:item>
+  <:item title="Groups"><%= @node.groups %></:item>
+  <:item title="Image"><%= @node.image %></:item>
+</.list>
+
+<.back navigate={~p"/manage/system/nodes"}>Back to nodes</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="node-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/system/nodes/#{@node}")}
+>
+  <.live_component
+    module={GlammWeb.NodeLive.FormComponent}
+    id={@node.id}
+    title={@page_title}
+    action={@live_action}
+    node={@node}
+    patch={~p"/manage/system/nodes/#{@node}"}
+  />
+</.modal>
