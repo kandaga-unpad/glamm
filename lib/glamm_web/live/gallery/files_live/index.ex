@@ -1,5 +1,5 @@
 defmodule GlammWeb.FilesLive.Index do
-  use GlammWeb, :live_view_dashboard
+  use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery
   alias Glamm.Gallery.Files
@@ -28,7 +28,7 @@ defmodule GlammWeb.FilesLive.Index do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Gal files")
+    |> assign(:page_title, "Listing Gallery files")
     |> assign(:files, nil)
   end
 

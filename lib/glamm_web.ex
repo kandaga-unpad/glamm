@@ -70,9 +70,32 @@ defmodule GlammWeb do
   def live_view_gallery_dashboard do
     quote do
       use Phoenix.LiveView,
-        layout: {GlammWeb.Layouts, :gallery_dashboard}
+        layout: {GlammWeb.Layouts, :dashboard_gallery}
 
       unquote(html_helpers())
+    end
+  end
+
+  def live_view_library_dashboard do
+    quote do
+      use Phoenix.LiveView,
+        layout: {GlammWeb.Layouts, :dashboard_library}
+
+      unquote(html_helpers())
+    end
+  end
+
+  def live_view_archive_dashboard do
+    quote do
+      use Phoenix.LiveView,
+        layout: {GlammWeb.Layouts, :dashboard_archive}
+    end
+  end
+
+  def live_view_museum_dashboard do
+    quote do
+      use Phoenix.LiveView,
+        layout: {GlammWeb.Layouts, :dashboard_museum}
     end
   end
 

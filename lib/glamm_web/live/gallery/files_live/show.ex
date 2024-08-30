@@ -1,5 +1,5 @@
 defmodule GlammWeb.FilesLive.Show do
-  use GlammWeb, :live_view_dashboard
+  use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery
 

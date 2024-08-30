@@ -19,7 +19,7 @@ defmodule GlammWeb.AssetsLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:id]} type="text" label="Id" />
+        <%!-- <.input field={@form[:id]} type="text" label="Id" /> --%>
         <.input field={@form[:file_name]} type="text" label="File name" />
         <.input field={@form[:description]} type="text" label="Description" />
         <:actions>

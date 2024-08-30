@@ -52,7 +52,23 @@ h6 {
 }
 
 .gallery-gradient {
-  @apply bg-gradient-to-br from-purple-500 to-orange-500;
+  @apply bg-gradient-to-br from-purple-500 to-yellow-500;
+}
+
+.library-gradient {
+  @apply bg-gradient-to-br from-yellow-500 to-rose-500;
+}
+
+.archive-gradient {
+  @apply bg-gradient-to-br from-rose-500 to-emerald-500;
+}
+
+.museum-gradient {
+  @apply bg-gradient-to-br from-emerald-500 to-purple-500;
+}
+
+.active-glam-menu {
+  @apply bg-white text-blue-500;
 }
 
 .glam-text-gradient {

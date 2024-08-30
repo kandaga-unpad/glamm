@@ -1,5 +1,5 @@
 defmodule GlammWeb.AssetsLive.Index do
-  use GlammWeb, :live_view
+  use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery
   alias Glamm.Gallery.Assets
@@ -28,7 +28,7 @@ defmodule GlammWeb.AssetsLive.Index do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Gal assets")
+    |> assign(:page_title, "Listing Gallery assets")
     |> assign(:assets, nil)
   end
 

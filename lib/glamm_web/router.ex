@@ -21,11 +21,6 @@ defmodule GlammWeb.Router do
     plug :put_layout, html: {GlammWeb.Layouts, :dashboard}
   end
 
-  pipeline :gallery_dashboard do
-    plug :browser
-    # plug :put_layout, html: {GlammWeb.Layouts, :gallery_dashboard}
-  end
-
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -66,9 +61,13 @@ defmodule GlammWeb.Router do
       on_mount: [
         {GlammWeb.UserAuth, :ensure_authenticated},
         {GlammWeb.Utils.SaveRequestUri, :save_request_uri},
-        {GlammWeb.Utils.SideBarMenuMaster, :get_metadata_menu}
+        {GlammWeb.Utils.SideBarMenuMaster, :get_metadata_menu},
+        {GlammWeb.Utils.NavBarMenuLayout, :load_gallery_menu}
       ] do
       live "/gallery", GlamDashboardLive.Gallery, :index
+      live "/library", GlamDashboardLive.Library, :index
+      live "/archive", GlamDashboardLive.Archive, :index
+      live "/museum", GlamDashboardLive.Museum, :index
 
       live "/metadata", MetadataDashboardLive.Index, :index
       live "/metadata_vocabularies", VocabularyLive.Index, :index
@@ -104,12 +103,13 @@ defmodule GlammWeb.Router do
   end
 
   scope "/manage/gallery", GlammWeb do
-    pipe_through [:gallery_dashboard, :require_authenticated_user]
+    pipe_through [:dashboard, :require_authenticated_user]
 
     live_session :gallery,
       on_mount: [
         {GlammWeb.UserAuth, :ensure_authenticated},
-        {GlammWeb.Utils.SaveRequestUri, :save_request_uri}
+        {GlammWeb.Utils.SaveRequestUri, :save_request_uri},
+        {GlammWeb.Utils.NavBarMenuLayout, :load_gallery_menu}
       ] do
       live "/gal_assets", AssetsLive.Index, :index
       live "/gal_assets/new", AssetsLive.Index, :new

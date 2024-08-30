@@ -1,9 +1,9 @@
-defmodule GlammWeb.GlamDashboardLive.Gallery do
-  use GlammWeb, :live_view_gallery_dashboard
+defmodule GlammWeb.GlamDashboardLive.Library do
+  use GlammWeb, :live_view_library_dashboard
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :gallery_data, %{})}
+    {:ok, stream(socket, :library_data, %{})}
   end
 
   @impl true
@@ -13,7 +13,7 @@ defmodule GlammWeb.GlamDashboardLive.Gallery do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Gallery Dashboard")
-    |> assign(:gallery_collection, nil)
+    |> assign(:page_title, "Library Dashboard")
+    |> assign(:library_collection, nil)
   end
 end

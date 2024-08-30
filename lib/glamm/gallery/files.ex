@@ -22,6 +22,6 @@ defmodule Glamm.Gallery.Files do
   def changeset(files, attrs) do
     files
     |> cast(attrs, [:id, :file_title, :file_type, :file_url, :file_directory, :mime_type])
-    |> validate_required([:id, :file_title, :file_type, :file_url, :file_directory, :mime_type])
+    |> validate_required([:file_title, :file_type, :file_url, :file_directory, :mime_type])
   end
 end

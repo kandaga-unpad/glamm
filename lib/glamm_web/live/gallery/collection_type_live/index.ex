@@ -1,5 +1,5 @@
 defmodule GlammWeb.CollectionTypeLive.Index do
-  use GlammWeb, :live_view_dashboard
+  use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery
   alias Glamm.Gallery.CollectionType
@@ -28,7 +28,7 @@ defmodule GlammWeb.CollectionTypeLive.Index do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Gal collection type")
+    |> assign(:page_title, "Listing Gallery collection type")
     |> assign(:collection_type, nil)
   end
 

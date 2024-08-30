@@ -1,7 +1,7 @@
 <main class="w-full min-h-screen h-full flex flex-col bg-blue-100">
-  <section class="glamm-gradient text-white py-24">
+  <section class="museum-gradient text-white py-24">
     <div class="max-w-7xl mx-auto">
-      <h3>GLAMM Dashboard</h3>
+      <h3>Museum Collection</h3>
       
       <%= if @current_user do %>
         <div>
@@ -34,7 +34,13 @@
           Archive
         </.link>
         
-        <.link navigate={~p"/manage/museum"} class="default-glam-menu hover:text-blue-500">
+        <.link
+          navigate={~p"/manage/museum"}
+          class={[
+            "default-glam-menu hover:text-blue-500",
+            @current_uri == "/manage/museum" && "active-glam-menu"
+          ]}
+        >
           Museum
         </.link>
       </div>
