@@ -1,4 +1,4 @@
-<div class="default-card">
+<div>
   <.header>
     Listing Gallery collection type
     <:actions>
@@ -8,36 +8,46 @@
     </:actions>
   </.header>
 
-  <.table
-    id="gal_collection_type"
-    rows={@streams.gal_collection_type}
-    row_click={
-      fn {_id, collection_type} ->
-        JS.navigate(~p"/manage/gallery/gal_collection_type/#{collection_type}")
-      end
-    }
-  >
-    <:col :let={{_id, collection_type}} label="Collection name">
-      <%= collection_type.collection_name %>
-    </:col>
-    <:col :let={{_id, collection_type}} label="Description">
-      <%= collection_type.description %>
-    </:col>
-    <:action :let={{_id, collection_type}}>
-      <div class="sr-only">
-        <.link navigate={~p"/manage/gallery/gal_collection_type/#{collection_type}"}>Show</.link>
-      </div>
-      <.link patch={~p"/manage/gallery/gal_collection_type/#{collection_type}/edit"}>Edit</.link>
-    </:action>
-    <:action :let={{id, collection_type}}>
-      <.link
-        phx-click={JS.push("delete", value: %{id: collection_type.id}) |> hide("##{id}")}
-        data-confirm="Are you sure?"
-      >
-        Delete
-      </.link>
-    </:action>
-  </.table>
+  <%= if @total_collection_type > 0 do %>
+    <.table
+      id="gal_collection_type"
+      rows={@streams.gal_collection_type}
+      row_click={
+        fn {_id, collection_type} ->
+          JS.navigate(~p"/manage/gallery/gal_collection_type/#{collection_type}")
+        end
+      }
+    >
+      <:col :let={{_id, collection_type}} label="Collection name">
+        <%= collection_type.collection_name %>
+      </:col>
+      <:col :let={{_id, collection_type}} label="Description">
+        <%= collection_type.description %>
+      </:col>
+      <:action :let={{_id, collection_type}}>
+        <div class="sr-only">
+          <.link navigate={~p"/manage/gallery/gal_collection_type/#{collection_type}"}>
+            Show
+          </.link>
+        </div>
+        <.link patch={~p"/manage/gallery/gal_collection_type/#{collection_type}/edit"}>
+          Edit
+        </.link>
+      </:action>
+      <:action :let={{id, collection_type}}>
+        <.link
+          phx-click={JS.push("delete", value: %{id: collection_type.id}) |> hide("##{id}")}
+          data-confirm="Are you sure?"
+        >
+          Delete
+        </.link>
+      </:action>
+    </.table>
+  <% else %>
+    <div class="text-center text-2xl font-semibold">
+      Collection type is Empty
+    </div>
+  <% end %>
 </div>
 
 <.modal

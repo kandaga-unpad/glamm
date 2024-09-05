@@ -6,6 +6,8 @@ defmodule GlammWeb.AssetsLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
+    total_assets = Gallery.length_gal_assets()
+    socket = socket |> assign(:total_assets, total_assets)
     {:ok, stream(socket, :gal_assets, Gallery.list_gal_assets())}
   end
 

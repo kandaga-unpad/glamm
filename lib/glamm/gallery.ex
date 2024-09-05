@@ -21,6 +21,10 @@ defmodule Glamm.Gallery do
     Repo.all(CollectionType)
   end
 
+  def length_gal_collection_type do
+    Repo.aggregate(CollectionType, :count, :id)
+  end
+
   @doc """
   Gets a single collection_type.
 
@@ -117,6 +121,10 @@ defmodule Glamm.Gallery do
     Repo.all(Assets)
   end
 
+  def length_gal_assets do
+    Repo.aggregate(Assets, :count, :id)
+  end
+
   @doc """
   Gets a single assets.
 
@@ -211,6 +219,10 @@ defmodule Glamm.Gallery do
   """
   def list_gal_files do
     Repo.all(Files)
+  end
+
+  def length_gal_files do
+    Repo.aggregate(Files, :count, :id)
   end
 
   @doc """

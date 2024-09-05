@@ -6,6 +6,8 @@ defmodule GlammWeb.FilesLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
+    socket = socket |> assign(:total_files, Gallery.length_gal_files())
+
     {:ok, stream(socket, :gal_files, Gallery.list_gal_files())}
   end
 

@@ -6,6 +6,8 @@ defmodule GlammWeb.CollectionTypeLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
+    socket = socket |> assign(:total_collection_type, Gallery.length_gal_collection_type())
+
     {:ok, stream(socket, :gal_collection_type, Gallery.list_gal_collection_type())}
   end
 

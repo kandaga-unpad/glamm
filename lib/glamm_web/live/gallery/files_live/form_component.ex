@@ -19,7 +19,6 @@ defmodule GlammWeb.FilesLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:id]} type="text" label="Id" />
         <.input field={@form[:file_title]} type="text" label="File title" />
         <.input field={@form[:file_type]} type="text" label="File type" />
         <.input field={@form[:file_url]} type="text" label="File url" />

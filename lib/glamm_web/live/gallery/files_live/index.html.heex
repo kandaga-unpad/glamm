@@ -7,32 +7,38 @@
   </:actions>
 </.header>
 
-<.table
-  id="gal_files"
-  rows={@streams.gal_files}
-  row_click={fn {_id, files} -> JS.navigate(~p"/manage/gallery/gal_files/#{files}") end}
->
-  <:col :let={{_id, files}} label="Id"><%= files.id %></:col>
-  <:col :let={{_id, files}} label="File title"><%= files.file_title %></:col>
-  <:col :let={{_id, files}} label="File type"><%= files.file_type %></:col>
-  <:col :let={{_id, files}} label="File url"><%= files.file_url %></:col>
-  <:col :let={{_id, files}} label="File directory"><%= files.file_directory %></:col>
-  <:col :let={{_id, files}} label="Mime type"><%= files.mime_type %></:col>
-  <:action :let={{_id, files}}>
-    <div class="sr-only">
-      <.link navigate={~p"/manage/gallery/gal_files/#{files}"}>Show</.link>
-    </div>
-    <.link patch={~p"/manage/gallery/gal_files/#{files}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={{id, files}}>
-    <.link
-      phx-click={JS.push("delete", value: %{id: files.id}) |> hide("##{id}")}
-      data-confirm="Are you sure?"
-    >
-      Delete
-    </.link>
-  </:action>
-</.table>
+<%= if @total_files > 0 do %>
+  <.table
+    id="gal_files"
+    rows={@streams.gal_files}
+    row_click={fn {_id, files} -> JS.navigate(~p"/manage/gallery/gal_files/#{files}") end}
+  >
+    <:col :let={{_id, files}} label="Id"><%= files.id %></:col>
+    <:col :let={{_id, files}} label="File title"><%= files.file_title %></:col>
+    <:col :let={{_id, files}} label="File type"><%= files.file_type %></:col>
+    <:col :let={{_id, files}} label="File url"><%= files.file_url %></:col>
+    <:col :let={{_id, files}} label="File directory"><%= files.file_directory %></:col>
+    <:col :let={{_id, files}} label="Mime type"><%= files.mime_type %></:col>
+    <:action :let={{_id, files}}>
+      <div class="sr-only">
+        <.link navigate={~p"/manage/gallery/gal_files/#{files}"}>Show</.link>
+      </div>
+      <.link patch={~p"/manage/gallery/gal_files/#{files}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={{id, files}}>
+      <.link
+        phx-click={JS.push("delete", value: %{id: files.id}) |> hide("##{id}")}
+        data-confirm="Are you sure?"
+      >
+        Delete
+      </.link>
+    </:action>
+  </.table>
+<% else %>
+  <div class="text-center text-2xl font-semibold">
+    Files is Empty
+  </div>
+<% end %>
 
 <.modal
   :if={@live_action in [:new, :edit]}
