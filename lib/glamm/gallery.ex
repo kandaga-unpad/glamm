@@ -305,4 +305,394 @@ defmodule Glamm.Gallery do
   def change_files(%Files{} = files, attrs \\ %{}) do
     Files.changeset(files, attrs)
   end
+
+  alias Glamm.Gallery.Requisition
+  # alias Glamm.Accounts.User
+
+  @doc """
+  Returns the list of gal_requisitions.
+
+  ## Examples
+
+      iex> list_gal_requisitions()
+      [%Requisition{}, ...]
+
+  """
+  def list_gal_requisitions do
+    # Requisition |> Repo.all() |> Repo.preload(:users)
+    Repo.all(Requisition)
+  end
+
+  @doc """
+  Gets a single requisition.
+
+  Raises `Ecto.NoResultsError` if the Requisition does not exist.
+
+  ## Examples
+
+      iex> get_requisition!(123)
+      %Requisition{}
+
+      iex> get_requisition!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_requisition!(id), do: Repo.get!(Requisition, id)
+
+  @doc """
+  Creates a requisition.
+
+  ## Examples
+
+      iex> create_requisition(%{field: value})
+      {:ok, %Requisition{}}
+
+      iex> create_requisition(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_requisition(attrs \\ %{}) do
+    %Requisition{}
+    |> Requisition.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a requisition.
+
+  ## Examples
+
+      iex> update_requisition(requisition, %{field: new_value})
+      {:ok, %Requisition{}}
+
+      iex> update_requisition(requisition, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_requisition(%Requisition{} = requisition, attrs) do
+    requisition
+    |> Requisition.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a requisition.
+
+  ## Examples
+
+      iex> delete_requisition(requisition)
+      {:ok, %Requisition{}}
+
+      iex> delete_requisition(requisition)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_requisition(%Requisition{} = requisition) do
+    Repo.delete(requisition)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking requisition changes.
+
+  ## Examples
+
+      iex> change_requisition(requisition)
+      %Ecto.Changeset{data: %Requisition{}}
+
+  """
+  def change_requisition(%Requisition{} = requisition, attrs \\ %{}) do
+    Requisition.changeset(requisition, attrs)
+  end
+
+  def length_gal_requisition do
+    Repo.aggregate(Requisition, :count, :id)
+  end
+
+  alias Glamm.Gallery.Collection
+
+  @doc """
+  Returns the list of gal_collections.
+
+  ## Examples
+
+      iex> list_gal_collections()
+      [%Collection{}, ...]
+
+  """
+  def list_gal_collections do
+    Repo.all(Collection)
+  end
+
+  @doc """
+  Gets a single collection.
+
+  Raises `Ecto.NoResultsError` if the Collection does not exist.
+
+  ## Examples
+
+      iex> get_collection!(123)
+      %Collection{}
+
+      iex> get_collection!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_collection!(id), do: Repo.get!(Collection, id)
+
+  @doc """
+  Creates a collection.
+
+  ## Examples
+
+      iex> create_collection(%{field: value})
+      {:ok, %Collection{}}
+
+      iex> create_collection(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_collection(attrs \\ %{}) do
+    %Collection{}
+    |> Collection.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a collection.
+
+  ## Examples
+
+      iex> update_collection(collection, %{field: new_value})
+      {:ok, %Collection{}}
+
+      iex> update_collection(collection, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_collection(%Collection{} = collection, attrs) do
+    collection
+    |> Collection.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a collection.
+
+  ## Examples
+
+      iex> delete_collection(collection)
+      {:ok, %Collection{}}
+
+      iex> delete_collection(collection)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_collection(%Collection{} = collection) do
+    Repo.delete(collection)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking collection changes.
+
+  ## Examples
+
+      iex> change_collection(collection)
+      %Ecto.Changeset{data: %Collection{}}
+
+  """
+  def change_collection(%Collection{} = collection, attrs \\ %{}) do
+    Collection.changeset(collection, attrs)
+  end
+
+  alias Glamm.Gallery.Item
+
+  @doc """
+  Returns the list of gal_items.
+
+  ## Examples
+
+      iex> list_gal_items()
+      [%Item{}, ...]
+
+  """
+  def list_gal_items do
+    Repo.all(Item)
+  end
+
+  @doc """
+  Gets a single item.
+
+  Raises `Ecto.NoResultsError` if the Item does not exist.
+
+  ## Examples
+
+      iex> get_item!(123)
+      %Item{}
+
+      iex> get_item!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_item!(id), do: Repo.get!(Item, id)
+
+  @doc """
+  Creates a item.
+
+  ## Examples
+
+      iex> create_item(%{field: value})
+      {:ok, %Item{}}
+
+      iex> create_item(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_item(attrs \\ %{}) do
+    %Item{}
+    |> Item.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a item.
+
+  ## Examples
+
+      iex> update_item(item, %{field: new_value})
+      {:ok, %Item{}}
+
+      iex> update_item(item, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_item(%Item{} = item, attrs) do
+    item
+    |> Item.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a item.
+
+  ## Examples
+
+      iex> delete_item(item)
+      {:ok, %Item{}}
+
+      iex> delete_item(item)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_item(%Item{} = item) do
+    Repo.delete(item)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking item changes.
+
+  ## Examples
+
+      iex> change_item(item)
+      %Ecto.Changeset{data: %Item{}}
+
+  """
+  def change_item(%Item{} = item, attrs \\ %{}) do
+    Item.changeset(item, attrs)
+  end
+
+  alias Glamm.Gallery.ItemValue
+
+  @doc """
+  Returns the list of gal_item_value.
+
+  ## Examples
+
+      iex> list_gal_item_value()
+      [%ItemValue{}, ...]
+
+  """
+  def list_gal_item_value do
+    Repo.all(ItemValue)
+  end
+
+  @doc """
+  Gets a single item_value.
+
+  Raises `Ecto.NoResultsError` if the Item value does not exist.
+
+  ## Examples
+
+      iex> get_item_value!(123)
+      %ItemValue{}
+
+      iex> get_item_value!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_item_value!(id), do: Repo.get!(ItemValue, id)
+
+  @doc """
+  Creates a item_value.
+
+  ## Examples
+
+      iex> create_item_value(%{field: value})
+      {:ok, %ItemValue{}}
+
+      iex> create_item_value(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_item_value(attrs \\ %{}) do
+    %ItemValue{}
+    |> ItemValue.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a item_value.
+
+  ## Examples
+
+      iex> update_item_value(item_value, %{field: new_value})
+      {:ok, %ItemValue{}}
+
+      iex> update_item_value(item_value, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_item_value(%ItemValue{} = item_value, attrs) do
+    item_value
+    |> ItemValue.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a item_value.
+
+  ## Examples
+
+      iex> delete_item_value(item_value)
+      {:ok, %ItemValue{}}
+
+      iex> delete_item_value(item_value)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_item_value(%ItemValue{} = item_value) do
+    Repo.delete(item_value)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking item_value changes.
+
+  ## Examples
+
+      iex> change_item_value(item_value)
+      %Ecto.Changeset{data: %ItemValue{}}
+
+  """
+  def change_item_value(%ItemValue{} = item_value, attrs \\ %{}) do
+    ItemValue.changeset(item_value, attrs)
+  end
 end

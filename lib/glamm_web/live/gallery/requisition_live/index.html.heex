@@ -1,0 +1,69 @@
+<.header>
+  Listing Gal requisitions
+  <:actions>
+    <.link patch={~p"/manage/gallery/gal_requisitions/new"}>
+      <.button>New Requisition</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<%= if @total_requisitions > 0 do %>
+  <.table
+    id="gal_requisitions"
+    rows={@streams.gal_requisitions}
+    row_click={
+      fn {_id, requisition} ->
+        JS.navigate(~p"/manage/gallery/gal_requisitions/#{requisition}")
+      end
+    }
+  >
+    <:col :let={{_id, requisition}} label="Member name"><%= requisition.member_name %></:col>
+    <:col :let={{_id, requisition}} label="Identifier"><%= requisition.identifier %></:col>
+    <:col :let={{_id, requisition}} label="Title"><%= requisition.title %></:col>
+    <:col :let={{_id, requisition}} label="Creator"><%= requisition.creator %></:col>
+    <:col :let={{_id, requisition}} label="Owner"><%= requisition.owner %></:col>
+    <:col :let={{_id, requisition}} label="Year created"><%= requisition.year_created %></:col>
+    <:col :let={{_id, requisition}} label="Description"><%= requisition.description %></:col>
+    <:col :let={{_id, requisition}} label="Price currency">
+      <%= requisition.price_currency %>
+    </:col>
+    <:col :let={{_id, requisition}} label="Price"><%= requisition.price %></:col>
+    <:col :let={{_id, requisition}} label="Information"><%= requisition.information %></:col>
+    <:col :let={{_id, requisition}} label="Req state"><%= requisition.req_state %></:col>
+    <:action :let={{_id, requisition}}>
+      <div class="sr-only">
+        <.link navigate={~p"/manage/gallery/gal_requisitions/#{requisition}"}>Show</.link>
+      </div>
+      <.link patch={~p"/manage/gallery/gal_requisitions/#{requisition}/edit"}>Edit</.link>
+    </:action>
+    <:action :let={{id, requisition}}>
+      <.link
+        phx-click={JS.push("delete", value: %{id: requisition.id}) |> hide("##{id}")}
+        data-confirm="Are you sure?"
+      >
+        Delete
+      </.link>
+    </:action>
+  </.table>
+<% else %>
+  <div class="text-center text-2xl font-semibold">
+    Requisitions is Empty
+  </div>
+<% end %>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="requisition-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/gallery/gal_requisitions")}
+>
+  <.live_component
+    module={GlammWeb.RequisitionLive.FormComponent}
+    id={@requisition.id || :new}
+    title={@page_title}
+    action={@live_action}
+    requisition={@requisition}
+    users={@users}
+    patch={~p"/manage/gallery/gal_requisitions"}
+  />
+</.modal>

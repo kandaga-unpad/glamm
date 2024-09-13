@@ -22,12 +22,12 @@
     
     <div class="-mt-24">
       <div class="max-w-7xl mx-auto flex gap-2 items-end justify-end w-full text-white">
-        <.link navigate={~p"/manage/gallery"} class="default-glam-menu hover:text-blue-500">
+        <.link patch={~p"/manage/gallery"} class="default-glam-menu hover:text-blue-500">
           Gallery
         </.link>
         
         <.link
-          navigate={~p"/manage/library"}
+          patch={~p"/manage/library"}
           class={[
             "default-glam-menu hover:text-blue-500",
             @current_uri == "/manage/library" && "active-glam-menu"
@@ -36,11 +36,11 @@
           Library
         </.link>
         
-        <.link navigate={~p"/manage/archive"} class="default-glam-menu hover:text-blue-500">
+        <.link patch={~p"/manage/archive"} class="default-glam-menu hover:text-blue-500">
           Archive
         </.link>
         
-        <.link navigate={~p"/manage/museum"} class="default-glam-menu hover:text-blue-500">
+        <.link patch={~p"/manage/museum"} class="default-glam-menu hover:text-blue-500">
           Museum
         </.link>
       </div>
@@ -48,7 +48,15 @@
     </div>
     
     <section>
-      <div class="pb-10">
+      <div class="pb-10 flex gap-5">
+        <div class="default-card max-w-48">
+          <ul>
+            <%= for x <- 1..10 do %>
+              <li>Number <%= x %></li>
+            <% end %>
+          </ul>
+        </div>
+        
         <div class="default-card">
           <%= @inner_content %>
         </div>

@@ -111,6 +111,7 @@ defmodule GlammWeb.Router do
         {GlammWeb.Utils.SaveRequestUri, :save_request_uri},
         {GlammWeb.Utils.NavBarMenuLayout, :load_gallery_menu}
       ] do
+      # Gallery Metadata related
       live "/gal_assets", AssetsLive.Index, :index
       live "/gal_assets/new", AssetsLive.Index, :new
       live "/gal_assets/:id/edit", AssetsLive.Index, :edit
@@ -128,6 +129,32 @@ defmodule GlammWeb.Router do
       live "/gal_files/:id/edit", FilesLive.Index, :edit
       live "/gal_files/:id", FilesLive.Show, :show
       live "/gal_files/:id/show/edit", FilesLive.Show, :edit
+
+      live "/gal_requisitions", RequisitionLive.Index, :index
+      live "/gal_requisitions/new", RequisitionLive.Index, :new
+      live "/gal_requisitions/:id/edit", RequisitionLive.Index, :edit
+      live "/gal_requisitions/:id", RequisitionLive.Show, :show
+      live "/gal_requisitions/:id/show/edit", RequisitionLive.Show, :edit
+
+      # Gallery Collection related
+
+      live "/gal_collections/items/value", ItemValueLive.Index, :index
+      live "/gal_collections/items/value/new", ItemValueLive.Index, :new
+      live "/gal_collections/items/value/:id/edit", ItemValueLive.Index, :edit
+      live "/gal_collections/items/value/:id", ItemValueLive.Show, :show
+      live "/gal_collections/items/value/:id/show/edit", ItemValueLive.Show, :edit
+
+      live "/gal_collections/items", ItemLive.Index, :index
+      live "/gal_collections/items/new", ItemLive.Index, :new
+      live "/gal_collections/items/:id/edit", ItemLive.Index, :edit
+      live "/gal_collections/items/:id", ItemLive.Show, :show
+      live "/gal_collections/items/:id/show/edit", ItemLive.Show, :edit
+
+      live "/gal_collections", CollectionLive.Index, :index
+      live "/gal_collections/new", CollectionLive.Index, :new
+      live "/gal_collections/:id/edit", CollectionLive.Index, :edit
+      live "/gal_collections/:id", CollectionLive.Show, :show
+      live "/gal_collections/:id/show/edit", CollectionLive.Show, :edit
     end
   end
 

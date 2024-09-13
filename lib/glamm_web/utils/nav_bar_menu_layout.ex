@@ -17,6 +17,11 @@ defmodule GlammWeb.Utils.NavBarMenuLayout do
         id: 3,
         name: "Files",
         url: "/manage/gallery/gal_files"
+      },
+      %{
+        id: 4,
+        name: "Requisition",
+        url: "/manage/gallery/gal_requisitions"
       }
     ]
 

@@ -1,0 +1,50 @@
+<.header>
+  Listing Gal collections
+  <:actions>
+    <.link patch={~p"/manage/gallery/gal_collections/new"}>
+      <.button>New Collection</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table
+  id="gal_collections"
+  rows={@streams.gal_collections}
+  row_click={
+    fn {_id, collection} -> JS.navigate(~p"/manage/gallery/gal_collections/#{collection}") end
+  }
+>
+  <:col :let={{_id, collection}} label="Title"><%= collection.title %></:col>
+  <:col :let={{_id, collection}} label="Is public"><%= collection.is_public %></:col>
+  <:col :let={{_id, collection}} label="View scope"><%= collection.view_scope %></:col>
+  <:action :let={{_id, collection}}>
+    <div class="sr-only">
+      <.link navigate={~p"/manage/gallery/gal_collections/#{collection}"}>Show</.link>
+    </div>
+    <.link patch={~p"/manage/gallery/gal_collections/#{collection}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={{id, collection}}>
+    <.link
+      phx-click={JS.push("delete", value: %{id: collection.id}) |> hide("##{id}")}
+      data-confirm="Are you sure?"
+    >
+      Delete
+    </.link>
+  </:action>
+</.table>
+
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="collection-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/gallery/gal_collections")}
+>
+  <.live_component
+    module={GlammWeb.CollectionLive.FormComponent}
+    id={@collection.id || :new}
+    title={@page_title}
+    action={@live_action}
+    collection={@collection}
+    patch={~p"/manage/gallery/gal_collections"}
+  />
+</.modal>

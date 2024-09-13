@@ -1,0 +1,44 @@
+<.header>
+  Requisition <%= @requisition.id %>
+  <:subtitle>This is a requisition record from your database.</:subtitle>
+  <:actions>
+    <.link
+      patch={~p"/manage/gallery/gal_requisitions/#{@requisition}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
+      <.button>Edit requisition</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Member name"><%= @requisition.member_name %></:item>
+  <:item title="Identifier"><%= @requisition.identifier %></:item>
+  <:item title="Title"><%= @requisition.title %></:item>
+  <:item title="Creator"><%= @requisition.creator %></:item>
+  <:item title="Owner"><%= @requisition.owner %></:item>
+  <:item title="Year created"><%= @requisition.year_created %></:item>
+  <:item title="Description"><%= @requisition.description %></:item>
+  <:item title="Price currency"><%= @requisition.price_currency %></:item>
+  <:item title="Price"><%= @requisition.price %></:item>
+  <:item title="Information"><%= @requisition.information %></:item>
+  <:item title="Req state"><%= @requisition.req_state %></:item>
+</.list>
+
+<.back navigate={~p"/manage/gallery/gal_requisitions"}>Back to gal_requisitions</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="requisition-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/gallery/gal_requisitions/#{@requisition}")}
+>
+  <.live_component
+    module={GlammWeb.RequisitionLive.FormComponent}
+    id={@requisition.id}
+    title={@page_title}
+    action={@live_action}
+    requisition={@requisition}
+    patch={~p"/manage/gallery/gal_requisitions/#{@requisition}"}
+  />
+</.modal>

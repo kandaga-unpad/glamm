@@ -11,6 +11,10 @@
     sans-serif;
 }
 
+*:disabled {
+  @apply bg-gray-200 cursor-not-allowed;
+}
+
 /* This file is for your main application CSS */
 h1,
 h2,

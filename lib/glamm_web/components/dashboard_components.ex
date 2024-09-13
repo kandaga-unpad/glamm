@@ -36,7 +36,9 @@ defmodule GlammWeb.DashboardComponents do
     ~H"""
     <div class="w-full bg-white flex items-center my-5 p-5 rounded-lg gap-6">
       <div class="nav-bar-logo">
-        <img src="/images/glamm_icon.svg" class="w-8 h-8" alt="GLAM Logo" />
+        <.link patch="/manage">
+          <img src="/images/glamm_icon.svg" class="w-8 h-8" alt="GLAM Logo" />
+        </.link>
       </div>
       
       <div class="w-full text-blue-500 flex gap-4">

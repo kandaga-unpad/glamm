@@ -1,0 +1,38 @@
+<.header>
+  Item value <%= @item_value.id %>
+  <:subtitle>This is a item_value record from your database.</:subtitle>
+  <:actions>
+    <.link
+      patch={~p"/manage/gallery/gal_collections/items/value/#{@item_value}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
+      <.button>Edit item_value</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Type"><%= @item_value.type %></:item>
+  <:item title="Lang"><%= @item_value.lang %></:item>
+  <:item title="Value"><%= @item_value.value %></:item>
+  <:item title="Url"><%= @item_value.url %></:item>
+  <:item title="Scope view"><%= @item_value.scope_view %></:item>
+</.list>
+
+<.back navigate={~p"/manage/gallery/gal_collections/items/value"}>Back to gal_item_value</.back>
+
+<.modal
+  :if={@live_action == :edit}
+  id="item_value-modal"
+  show
+  on_cancel={JS.patch(~p"/manage/gallery/gal_collections/items/value/#{@item_value}")}
+>
+  <.live_component
+    module={GlammWeb.ItemValueLive.FormComponent}
+    id={@item_value.id}
+    title={@page_title}
+    action={@live_action}
+    item_value={@item_value}
+    patch={~p"/manage/gallery/gal_collections/items/value/#{@item_value}"}
+  />
+</.modal>
