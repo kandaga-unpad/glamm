@@ -30,7 +30,10 @@ defmodule Glamm.Gallery.Item do
       :order_date,
       :received_date,
       :invoice,
-      :invoice_date
+      :invoice_date,
+      :item_status,
+      :collection_id,
+      :supplier_id
     ])
     |> validate_required([
       :item_code,
@@ -38,7 +41,10 @@ defmodule Glamm.Gallery.Item do
       :order_date,
       :received_date,
       :invoice,
-      :invoice_date
+      :invoice_date,
+      :item_status,
+      :collection_id,
+      :supplier_id
     ])
   end
 end

@@ -2,7 +2,10 @@
   Assets <%= @assets.id %>
   <:subtitle>This is a assets record from your database.</:subtitle>
   <:actions>
-    <.link patch={~p"/manage/gallery/gal_assets/#{@assets}/show/edit"} phx-click={JS.push_focus()}>
+    <.link
+      patch={~p"/manage/gallery/metadata/assets/#{@assets}/show/edit"}
+      phx-click={JS.push_focus()}
+    >
       <.button>Edit assets</.button>
     </.link>
   </:actions>
@@ -14,13 +17,13 @@
   <:item title="Description"><%= @assets.description %></:item>
 </.list>
 
-<.back navigate={~p"/manage/gallery/gal_assets"}>Back to gal_assets</.back>
+<.back navigate={~p"/manage/gallery/metadata/assets"}>Back to gal_assets</.back>
 
 <.modal
   :if={@live_action == :edit}
   id="assets-modal"
   show
-  on_cancel={JS.patch(~p"/manage/gallery/gal_assets/#{@assets}")}
+  on_cancel={JS.patch(~p"/manage/gallery/metadata/assets/#{@assets}")}
 >
   <.live_component
     module={GlammWeb.AssetsLive.FormComponent}
@@ -28,6 +31,6 @@
     title={@page_title}
     action={@live_action}
     assets={@assets}
-    patch={~p"/manage/gallery/gal_assets/#{@assets}"}
+    patch={~p"/manage/gallery/metadata/assets/#{@assets}"}
   />
 </.modal>

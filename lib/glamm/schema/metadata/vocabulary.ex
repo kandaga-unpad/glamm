@@ -18,7 +18,7 @@ defmodule Glamm.Metadata.Vocabulary do
   @doc false
   def changeset(vocabulary, attrs) do
     vocabulary
-    |> cast(attrs, [:namespace_url, :prefix, :label, :information])
-    |> validate_required([:namespace_url, :prefix, :label, :information])
+    |> cast(attrs, [:namespace_url, :prefix, :label, :information, :owner_id])
+    |> validate_required([:namespace_url, :prefix, :label, :information, :owner_id])
   end
 end

@@ -1,7 +1,7 @@
 <.header>
   Listing Gal item value
   <:actions>
-    <.link patch={~p"/manage/gallery/gal_collections/items/value/new"}>
+    <.link patch={~p"/manage/gallery/collections/items/value/new"}>
       <.button>New Item value</.button>
     </.link>
   </:actions>
@@ -12,7 +12,7 @@
   rows={@streams.gal_item_value}
   row_click={
     fn {_id, item_value} ->
-      JS.navigate(~p"/manage/gallery/gal_collections/items/value/#{item_value}")
+      JS.navigate(~p"/manage/gallery/collections/items/value/#{item_value}")
     end
   }
 >
@@ -23,9 +23,9 @@
   <:col :let={{_id, item_value}} label="Scope view"><%= item_value.scope_view %></:col>
   <:action :let={{_id, item_value}}>
     <div class="sr-only">
-      <.link navigate={~p"/manage/gallery/gal_collections/items/value/#{item_value}"}>Show</.link>
+      <.link navigate={~p"/manage/gallery/collections/items/value/#{item_value}"}>Show</.link>
     </div>
-    <.link patch={~p"/manage/gallery/gal_collections/items/value/#{item_value}/edit"}>Edit</.link>
+    <.link patch={~p"/manage/gallery/collections/items/value/#{item_value}/edit"}>Edit</.link>
   </:action>
   <:action :let={{id, item_value}}>
     <.link
@@ -41,7 +41,7 @@
   :if={@live_action in [:new, :edit]}
   id="item_value-modal"
   show
-  on_cancel={JS.patch(~p"/manage/gallery/gal_collections/items/value")}
+  on_cancel={JS.patch(~p"/manage/gallery/collections/items/value")}
 >
   <.live_component
     module={GlammWeb.ItemValueLive.FormComponent}
@@ -49,6 +49,6 @@
     title={@page_title}
     action={@live_action}
     item_value={@item_value}
-    patch={~p"/manage/gallery/gal_collections/items/value"}
+    patch={~p"/manage/gallery/collections/items/value"}
   />
 </.modal>

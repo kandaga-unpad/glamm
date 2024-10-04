@@ -20,7 +20,7 @@ defmodule Glamm.Metadata.Property do
   @doc false
   def changeset(property, attrs) do
     property
-    |> cast(attrs, [:local_name, :label, :information])
-    |> validate_required([:local_name, :label, :information])
+    |> cast(attrs, [:local_name, :label, :information, :owner_id, :vocabulary_id])
+    |> validate_required([:local_name, :label, :information, :owner_id, :vocabulary_id])
   end
 end

@@ -32,7 +32,10 @@ defmodule Glamm.Metadata.ResourceTemplateProperty do
       :position,
       :data_type,
       :is_required,
-      :is_public
+      :is_public,
+      :owner_id,
+      :resource_template_id,
+      :property_id
     ])
     |> validate_required([
       :alternate_label,
@@ -40,7 +43,10 @@ defmodule Glamm.Metadata.ResourceTemplateProperty do
       :position,
       :data_type,
       :is_required,
-      :is_public
+      :is_public,
+      :owner_id,
+      :resource_template_id,
+      :property_id
     ])
   end
 end

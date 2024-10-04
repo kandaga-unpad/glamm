@@ -21,7 +21,7 @@ defmodule Glamm.Metadata.ResourceTemplate do
   @doc false
   def changeset(resource_template, attrs) do
     resource_template
-    |> cast(attrs, [:label])
-    |> validate_required([:label])
+    |> cast(attrs, [:label, :owner_id, :resource_class_id, :property_id])
+    |> validate_required([:label, :owner_id, :resource_class_id, :property_id])
   end
 end

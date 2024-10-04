@@ -5,23 +5,23 @@ defmodule GlammWeb.Utils.NavBarMenuLayout do
     gallery_menu = [
       %{
         id: 1,
-        name: "Collection Type",
-        url: "/manage/gallery/gal_collection_type"
+        name: "Gallery Home",
+        url: "/manage/gallery/home"
       },
       %{
         id: 2,
-        name: "Assets",
-        url: "/manage/gallery/gal_assets"
+        name: "Collection",
+        url: "/manage/gallery/collections"
       },
       %{
         id: 3,
-        name: "Files",
-        url: "/manage/gallery/gal_files"
+        name: "Metadata",
+        url: "/manage/gallery/metadata/collection_type"
       },
       %{
         id: 4,
         name: "Requisition",
-        url: "/manage/gallery/gal_requisitions"
+        url: "/manage/gallery/metadata/requisitions"
       }
     ]
 

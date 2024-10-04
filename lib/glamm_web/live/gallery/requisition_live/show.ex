@@ -1,4 +1,4 @@
-defmodule GlammWeb.RequisitionLive.Show do
+defmodule GlammWeb.Gallery.RequisitionLive.Show do
   use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery

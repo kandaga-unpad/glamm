@@ -27,7 +27,25 @@ defmodule Glamm.Gallery.ItemValue do
   @doc false
   def changeset(item_value, attrs) do
     item_value
-    |> cast(attrs, [:type, :lang, :value, :url, :scope_view])
-    |> validate_required([:type, :lang, :value, :url, :scope_view])
+    |> cast(attrs, [
+      :type,
+      :lang,
+      :value,
+      :url,
+      :scope_view,
+      :collection_id,
+      :item_id,
+      :property_id
+    ])
+    |> validate_required([
+      :type,
+      :lang,
+      :value,
+      :url,
+      :scope_view,
+      :collection_id,
+      :item_id,
+      :property_id
+    ])
   end
 end

@@ -3,7 +3,7 @@
   <:subtitle>This is a item_value record from your database.</:subtitle>
   <:actions>
     <.link
-      patch={~p"/manage/gallery/gal_collections/items/value/#{@item_value}/show/edit"}
+      patch={~p"/manage/gallery/collections/items/value/#{@item_value}/show/edit"}
       phx-click={JS.push_focus()}
     >
       <.button>Edit item_value</.button>
@@ -19,13 +19,13 @@
   <:item title="Scope view"><%= @item_value.scope_view %></:item>
 </.list>
 
-<.back navigate={~p"/manage/gallery/gal_collections/items/value"}>Back to gal_item_value</.back>
+<.back navigate={~p"/manage/gallery/collections/items/value"}>Back to gal_item_value</.back>
 
 <.modal
   :if={@live_action == :edit}
   id="item_value-modal"
   show
-  on_cancel={JS.patch(~p"/manage/gallery/gal_collections/items/value/#{@item_value}")}
+  on_cancel={JS.patch(~p"/manage/gallery/collections/items/value/#{@item_value}")}
 >
   <.live_component
     module={GlammWeb.ItemValueLive.FormComponent}
@@ -33,6 +33,6 @@
     title={@page_title}
     action={@live_action}
     item_value={@item_value}
-    patch={~p"/manage/gallery/gal_collections/items/value/#{@item_value}"}
+    patch={~p"/manage/gallery/collections/items/value/#{@item_value}"}
   />
 </.modal>

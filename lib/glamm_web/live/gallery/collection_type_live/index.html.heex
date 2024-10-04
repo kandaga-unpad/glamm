@@ -2,7 +2,7 @@
   <.header>
     Listing Gallery collection type
     <:actions>
-      <.link patch={~p"/manage/gallery/gal_collection_type/new"}>
+      <.link patch={~p"/manage/gallery/metadata/collection_type/new"}>
         <.button>New Collection type</.button>
       </.link>
     </:actions>
@@ -14,7 +14,7 @@
       rows={@streams.gal_collection_type}
       row_click={
         fn {_id, collection_type} ->
-          JS.navigate(~p"/manage/gallery/gal_collection_type/#{collection_type}")
+          JS.navigate(~p"/manage/gallery/metadata/collection_type/#{collection_type}")
         end
       }
     >
@@ -26,11 +26,11 @@
       </:col>
       <:action :let={{_id, collection_type}}>
         <div class="sr-only">
-          <.link navigate={~p"/manage/gallery/gal_collection_type/#{collection_type}"}>
+          <.link navigate={~p"/manage/gallery/metadata/collection_type/#{collection_type}"}>
             Show
           </.link>
         </div>
-        <.link patch={~p"/manage/gallery/gal_collection_type/#{collection_type}/edit"}>
+        <.link patch={~p"/manage/gallery/metadata/collection_type/#{collection_type}/edit"}>
           Edit
         </.link>
       </:action>
@@ -54,7 +54,7 @@
   :if={@live_action in [:new, :edit]}
   id="collection_type-modal"
   show
-  on_cancel={JS.patch(~p"/manage/gallery/gal_collection_type")}
+  on_cancel={JS.patch(~p"/manage/gallery/metadata/collection_type")}
 >
   <.live_component
     module={GlammWeb.CollectionTypeLive.FormComponent}
@@ -62,6 +62,6 @@
     title={@page_title}
     action={@live_action}
     collection_type={@collection_type}
-    patch={~p"/manage/gallery/gal_collection_type"}
+    patch={~p"/manage/gallery/metadata/collection_type"}
   />
 </.modal>

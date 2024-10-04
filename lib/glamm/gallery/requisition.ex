@@ -37,7 +37,8 @@ defmodule Glamm.Gallery.Requisition do
       :price_currency,
       :price,
       :information,
-      :req_state
+      :req_state,
+      :member_id
     ])
     |> validate_required([
       :member_name,
@@ -50,7 +51,8 @@ defmodule Glamm.Gallery.Requisition do
       :price_currency,
       :price,
       :information,
-      :req_state
+      :req_state,
+      :member_id
     ])
   end
 end

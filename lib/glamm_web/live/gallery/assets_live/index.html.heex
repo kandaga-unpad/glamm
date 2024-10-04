@@ -1,7 +1,7 @@
 <.header>
   Listing Gallery assets
   <:actions>
-    <.link patch={~p"/manage/gallery/gal_assets/new"}>
+    <.link patch={~p"/manage/gallery/metadata/assets/new"}>
       <.button>New Assets</.button>
     </.link>
   </:actions>
@@ -11,16 +11,16 @@
   <.table
     id="gal_assets"
     rows={@streams.gal_assets}
-    row_click={fn {_id, assets} -> JS.navigate(~p"/manage/gallery/gal_assets/#{assets}") end}
+    row_click={fn {_id, assets} -> JS.navigate(~p"/manage/gallery/metadata/assets/#{assets}") end}
   >
     <:col :let={{_id, assets}} label="Id"><%= assets.id %></:col>
     <:col :let={{_id, assets}} label="File name"><%= assets.file_name %></:col>
     <:col :let={{_id, assets}} label="Description"><%= assets.description %></:col>
     <:action :let={{_id, assets}}>
       <div class="sr-only">
-        <.link navigate={~p"/manage/gallery/gal_assets/#{assets}"}>Show</.link>
+        <.link navigate={~p"/manage/gallery/metadata/assets/#{assets}"}>Show</.link>
       </div>
-      <.link patch={~p"/manage/gallery/gal_assets/#{assets}/edit"}>Edit</.link>
+      <.link patch={~p"/manage/gallery/metadata/assets/#{assets}/edit"}>Edit</.link>
     </:action>
     <:action :let={{id, assets}}>
       <.link
@@ -41,7 +41,7 @@
   :if={@live_action in [:new, :edit]}
   id="assets-modal"
   show
-  on_cancel={JS.patch(~p"/manage/gallery/gal_assets")}
+  on_cancel={JS.patch(~p"/manage/gallery/metadata/assets")}
 >
   <.live_component
     module={GlammWeb.AssetsLive.FormComponent}
@@ -49,6 +49,6 @@
     title={@page_title}
     action={@live_action}
     assets={@assets}
-    patch={~p"/manage/gallery/gal_assets"}
+    patch={~p"/manage/gallery/metadata/assets"}
   />
 </.modal>

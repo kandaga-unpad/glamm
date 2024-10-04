@@ -437,7 +437,16 @@ defmodule Glamm.Gallery do
       ** (Ecto.NoResultsError)
 
   """
-  def get_collection!(id), do: Repo.get!(Collection, id)
+  def get_collection!(id) do
+    Collection
+    |> Repo.get!(id)
+    |> Repo.preload(:owner)
+    |> Repo.preload(:resource_class)
+    |> Repo.preload(:resource_template)
+    |> Repo.preload(:thumbnail)
+    |> Repo.preload(:collection_type)
+    |> Repo.preload(:node)
+  end
 
   @doc """
   Creates a collection.

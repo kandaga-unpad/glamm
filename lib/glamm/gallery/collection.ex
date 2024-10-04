@@ -34,7 +34,25 @@ defmodule Glamm.Gallery.Collection do
   @doc false
   def changeset(collection, attrs) do
     collection
-    |> cast(attrs, [:title, :is_public, :view_scope])
-    |> validate_required([:title, :is_public, :view_scope])
+    |> cast(attrs, [
+      :title,
+      :is_public,
+      :view_scope,
+      :owner_id,
+      :resource_class_id,
+      :resource_template_id,
+      :thumbnail_id,
+      :collection_type_id,
+      :node_id
+    ])
+    |> validate_required([
+      :title,
+      :is_public,
+      :view_scope,
+      :owner_id,
+      :resource_class_id,
+      :collection_type_id,
+      :node_id
+    ])
   end
 end

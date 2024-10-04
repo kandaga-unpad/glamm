@@ -26,7 +26,7 @@
           patch={~p"/manage/gallery"}
           class={[
             "default-glam-menu hover:text-blue-500",
-            @current_uri == "/manage/gallery" && "active-glam-menu"
+            @current_uri |> String.contains?("/manage/gallery") && "active-glam-menu"
           ]}
         >
           Gallery
@@ -49,13 +49,15 @@
     
     <section>
       <div class="pb-10 flex gap-5">
-        <div class="default-card max-w-48">
-          <ul>
-            <%= for x <- 1..10 do %>
-              <li>Number <%= x %></li>
-            <% end %>
-          </ul>
-        </div>
+        <%= if @current_uri != "/manage/gallery/home" do %>
+          <div class="default-card max-w-48">
+            <ul>
+              <%= for x <- 1..10 do %>
+                <li>Number <%= x %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         
         <div class="default-card">
           <%= @inner_content %>

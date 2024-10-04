@@ -1,7 +1,7 @@
 <.header>
   Listing Gal requisitions
   <:actions>
-    <.link patch={~p"/manage/gallery/gal_requisitions/new"}>
+    <.link patch={~p"/manage/gallery/metadata/requisitions/new"}>
       <.button>New Requisition</.button>
     </.link>
   </:actions>
@@ -13,7 +13,7 @@
     rows={@streams.gal_requisitions}
     row_click={
       fn {_id, requisition} ->
-        JS.navigate(~p"/manage/gallery/gal_requisitions/#{requisition}")
+        JS.navigate(~p"/manage/gallery/metadata/requisitions/#{requisition}")
       end
     }
   >
@@ -32,9 +32,9 @@
     <:col :let={{_id, requisition}} label="Req state"><%= requisition.req_state %></:col>
     <:action :let={{_id, requisition}}>
       <div class="sr-only">
-        <.link navigate={~p"/manage/gallery/gal_requisitions/#{requisition}"}>Show</.link>
+        <.link navigate={~p"/manage/gallery/metadata/requisitions/#{requisition}"}>Show</.link>
       </div>
-      <.link patch={~p"/manage/gallery/gal_requisitions/#{requisition}/edit"}>Edit</.link>
+      <.link patch={~p"/manage/gallery/metadata/requisitions/#{requisition}/edit"}>Edit</.link>
     </:action>
     <:action :let={{id, requisition}}>
       <.link
@@ -55,7 +55,7 @@
   :if={@live_action in [:new, :edit]}
   id="requisition-modal"
   show
-  on_cancel={JS.patch(~p"/manage/gallery/gal_requisitions")}
+  on_cancel={JS.patch(~p"/manage/gallery/metadata/requisitions")}
 >
   <.live_component
     module={GlammWeb.RequisitionLive.FormComponent}
@@ -64,6 +64,6 @@
     action={@live_action}
     requisition={@requisition}
     users={@users}
-    patch={~p"/manage/gallery/gal_requisitions"}
+    patch={~p"/manage/gallery/metadata/requisitions"}
   />
 </.modal>

@@ -1,4 +1,4 @@
-defmodule GlammWeb.AssetsLive.Index do
+defmodule GlammWeb.Gallery.AssetsLive.Index do
   use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery
