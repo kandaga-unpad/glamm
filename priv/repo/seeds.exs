@@ -44,17 +44,4 @@ for vocabulary <- vocab do
   Metadata.create_vocabulary(vocabulary)
 end
 
-_resource_class = [
-  %{
-    vocabulary_id: 1,
-    local_name: "Agent",
-    label: "Agent",
-    information: "A resource that acts or has the power to act."
-  },
-  %{
-    vocabulary_id: 2,
-    local_name: "Agent",
-    label: "Agent",
-    information: "A resource that acts or has the power to act."
-  }
-]
+resource_class = ~s()

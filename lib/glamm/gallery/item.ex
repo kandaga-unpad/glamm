@@ -3,6 +3,7 @@ defmodule Glamm.Gallery.Item do
   import Ecto.Changeset
 
   alias Glamm.Gallery.Collection
+  alias Glamm.Gallery.ItemValue
   alias Glamm.Master.Authority.Supplier
 
   schema "gal_items" do
@@ -13,6 +14,7 @@ defmodule Glamm.Gallery.Item do
     field :invoice, :string
     field :invoice_date, :date
     field :item_status, :string
+    has_many :item_value, ItemValue
     # field :collection_id, :id
     belongs_to :collection, Collection
     # field :supplier_id, :id

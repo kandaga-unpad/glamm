@@ -7,6 +7,7 @@ defmodule Glamm.Gallery.Collection do
   alias Glamm.Metadata.ResourceTemplate
   alias Glamm.Gallery.Assets
   alias Glamm.Gallery.CollectionType
+  alias Glamm.Gallery.Item
   alias Glamm.System.Node
 
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -15,6 +16,7 @@ defmodule Glamm.Gallery.Collection do
     field :title, :string
     field :is_public, :boolean, default: false
     field :view_scope, :string
+    has_many :items, Item
     # field :owner_id, :id
     belongs_to :owner, User
     # field :resource_class_id, :id
