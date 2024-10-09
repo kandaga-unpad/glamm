@@ -23,7 +23,7 @@
     <div class="-mt-24">
       <div class="max-w-7xl mx-auto flex gap-2 items-end justify-end w-full text-white">
         <.link
-          patch={~p"/manage/gallery"}
+          patch={~p"/manage/gallery/home"}
           class={[
             "default-glam-menu hover:text-blue-500",
             @current_uri |> String.contains?("/manage/gallery") && "active-glam-menu"
@@ -49,14 +49,37 @@
     
     <section>
       <div class="pb-10 flex gap-5">
-        <%= if @current_uri != "/manage/gallery/home" do %>
-          <div class="default-card max-w-48">
-            <ul>
-              <%= for x <- 1..10 do %>
-                <li>Number <%= x %></li>
-              <% end %>
-            </ul>
-          </div>
+        <%= cond do %>
+          <% @current_uri |> String.contains?("/manage/gallery/collections") -> %>
+            <.side_bar_dashboard menu_name="Collections">
+              <div class="flex w-full flex-col gap-4 mt-4">
+                <%= for menu <- @gallery_menu_collection do %>
+                  <.link
+                    navigate={menu.url}
+                    class={["default-menu", @current_uri == menu.url && "active-menu"]}
+                  >
+                    <%= menu.name %>
+                  </.link>
+                <% end %>
+              </div>
+            </.side_bar_dashboard>
+          <% @current_uri |> String.contains?("/manage/gallery/metadata") -> %>
+            <.side_bar_dashboard menu_name="Metadata">
+              <div class="flex w-full flex-col gap-4 mt-4">
+                <%= for menu <- @gallery_menu_metadata do %>
+                  <.link
+                    navigate={menu.url}
+                    class={["default-menu", @current_uri == menu.url && "active-menu"]}
+                  >
+                    <%= menu.name %>
+                  </.link>
+                <% end %>
+              </div>
+            </.side_bar_dashboard>
+          <% true -> %>
+            <div class="default-card max-w-48">
+              Default Card
+            </div>
         <% end %>
         
         <div class="default-card">

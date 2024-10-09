@@ -423,6 +423,10 @@ defmodule Glamm.Gallery do
     Repo.all(Collection)
   end
 
+  def length_gal_collections do
+    Repo.aggregate(Collection, :count, :id)
+  end
+
   @doc """
   Gets a single collection.
 
@@ -526,6 +530,10 @@ defmodule Glamm.Gallery do
   """
   def list_gal_items do
     Repo.all(Item)
+  end
+
+  def length_gal_items do
+    Repo.aggregate(Item, :count, :id)
   end
 
   @doc """

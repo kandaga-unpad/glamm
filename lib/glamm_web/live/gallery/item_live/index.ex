@@ -6,7 +6,12 @@ defmodule GlammWeb.Gallery.ItemLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :gal_items, Gallery.list_gal_items())}
+    socket =
+      socket
+      |> assign(:total_items, Gallery.length_gal_items())
+      |> stream(:gal_items, Gallery.list_gal_items())
+
+    {:ok, socket}
   end
 
   @impl true

@@ -113,6 +113,27 @@ defmodule GlammWeb.Router do
       ] do
       # Gallery Home
       live "/home", Gallery.HomeLive.Index, :index
+      live "/collections", Gallery.CollectionsHomeLive.Index, :index
+      live "/metadata", Gallery.MetadataLive.Index, :index
+
+      # Gallery Collection related
+      live "/collections/list", Gallery.CollectionLive.Index, :index
+      live "/collections/list/new", Gallery.CollectionLive.Index, :new
+      live "/collections/list/:id/edit", Gallery.CollectionLive.Index, :edit
+      live "/collections/list/:id", Gallery.CollectionLive.Show, :show
+      live "/collections/list/:id/show/edit", Gallery.CollectionLive.Show, :edit
+
+      live "/collections/items", Gallery.ItemLive.Index, :index
+      live "/collections/items/new", Gallery.ItemLive.Index, :new
+      live "/collections/items/:id/edit", Gallery.ItemLive.Index, :edit
+      live "/collections/items/:id", Gallery.ItemLive.Show, :show
+      live "/collections/items/:id/show/edit", Gallery.ItemLive.Show, :edit
+
+      live "/collections/requisitions", Gallery.RequisitionLive.Index, :index
+      live "/collections/requisitions/new", Gallery.RequisitionLive.Index, :new
+      live "/collections/requisitions/:id/edit", Gallery.RequisitionLive.Index, :edit
+      live "/collections/requisitions/:id", Gallery.RequisitionLive.Show, :show
+      live "/collections/requisitions/:id/show/edit", Gallery.RequisitionLive.Show, :edit
 
       # Gallery Metadata related
       live "/metadata/assets", Gallery.AssetsLive.Index, :index
@@ -133,31 +154,11 @@ defmodule GlammWeb.Router do
       live "/metadata/files/:id", Gallery.FilesLive.Show, :show
       live "/metadata/files/:id/show/edit", Gallery.FilesLive.Show, :edit
 
-      live "/metadata/requisitions", Gallery.RequisitionLive.Index, :index
-      live "/metadata/requisitions/new", Gallery.RequisitionLive.Index, :new
-      live "/metadata/requisitions/:id/edit", Gallery.RequisitionLive.Index, :edit
-      live "/metadata/requisitions/:id", Gallery.RequisitionLive.Show, :show
-      live "/metadata/requisitions/:id/show/edit", Gallery.RequisitionLive.Show, :edit
-
-      # Gallery Collection related
-
-      live "/collections/items/value", Gallery.ItemValueLive.Index, :index
-      live "/collections/items/value/new", Gallery.ItemValueLive.Index, :new
-      live "/collections/items/value/:id/edit", Gallery.ItemValueLive.Index, :edit
-      live "/collections/items/value/:id", Gallery.ItemValueLive.Show, :show
-      live "/collections/items/value/:id/show/edit", Gallery.ItemValueLive.Show, :edit
-
-      live "/collections/items", Gallery.ItemLive.Index, :index
-      live "/collections/items/new", Gallery.ItemLive.Index, :new
-      live "/collections/items/:id/edit", Gallery.ItemLive.Index, :edit
-      live "/collections/items/:id", Gallery.ItemLive.Show, :show
-      live "/collections/items/:id/show/edit", Gallery.ItemLive.Show, :edit
-
-      live "/collections", Gallery.CollectionLive.Index, :index
-      live "/collections/new", Gallery.CollectionLive.Index, :new
-      live "/collections/:id/edit", Gallery.CollectionLive.Index, :edit
-      live "/collections/:id", Gallery.CollectionLive.Show, :show
-      live "/collections/:id/show/edit", Gallery.CollectionLive.Show, :edit
+      live "/metadata/items/value", Gallery.ItemValueLive.Index, :index
+      live "/metadata/items/value/new", Gallery.ItemValueLive.Index, :new
+      live "/metadata/items/value/:id/edit", Gallery.ItemValueLive.Index, :edit
+      live "/metadata/items/value/:id", Gallery.ItemValueLive.Show, :show
+      live "/metadata/items/value/:id/show/edit", Gallery.ItemValueLive.Show, :edit
     end
   end
 
