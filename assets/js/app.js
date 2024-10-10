@@ -55,9 +55,9 @@ window.liveSocket = liveSocket;
 
 function handleScroll() {
   if (window.scrollY > sticky) {
-    header.classList.add("sticky-header");
+    header?.classList?.add("sticky-header");
   } else {
-    header.classList.remove("sticky-header");
+    header?.classList?.remove("sticky-header");
   }
 }
 

@@ -632,6 +632,10 @@ defmodule Glamm.Gallery do
     Repo.all(ItemValue)
   end
 
+  def length_gal_item_value do
+    Repo.aggregate(ItemValue, :count, :id)
+  end
+
   @doc """
   Gets a single item_value.
 
