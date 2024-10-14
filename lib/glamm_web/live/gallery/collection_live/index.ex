@@ -2,6 +2,8 @@ defmodule GlammWeb.Gallery.CollectionLive.Index do
   use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery
+  alias Glamm.System
+  alias Glamm.Metadata
   alias Glamm.Gallery.Collection
 
   @impl true
@@ -10,6 +12,10 @@ defmodule GlammWeb.Gallery.CollectionLive.Index do
       socket
       |> assign(:total_collections, Gallery.length_gal_collections())
       |> stream(:gal_collections, Gallery.list_gal_collections())
+      |> stream(:collection_type_list, Gallery.list_gal_collection_type())
+      |> stream(:resource_class_list, Metadata.list_resource_class())
+      |> stream(:resource_template_list, Metadata.list_resource_template())
+      |> stream(:node_list, System.list_nodes())
 
     {:ok, socket}
   end

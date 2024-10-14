@@ -15,6 +15,6 @@ defmodule Glamm.System.Node do
   def changeset(node, attrs) do
     node
     |> cast(attrs, [:name, :abbr, :groups, :image])
-    |> validate_required([:name, :abbr, :groups, :image])
+    |> validate_required([:name, :abbr])
   end
 end

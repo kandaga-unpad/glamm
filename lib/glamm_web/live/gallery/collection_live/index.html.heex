@@ -39,6 +39,10 @@
   </div>
 <% end %>
 
+<%= for node <- @streams.node_list do %>
+  <%= node %>
+<% end %>
+
 <.modal
   :if={@live_action in [:new, :edit]}
   id="collection-modal"
