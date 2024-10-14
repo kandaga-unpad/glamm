@@ -222,7 +222,7 @@ end
 # Populate the Resource Classes Metadata
 resource_class = [
   %{
-    "comment" => "A resource that acts or has the power to act.",
+    "information" => "A resource that acts or has the power to act.",
     "id" => 1,
     "label" => "Agent",
     "local_name" => "Agent",
@@ -230,7 +230,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A group of agents.",
+    "information" => "A group of agents.",
     "id" => 2,
     "label" => "Agent Class",
     "local_name" => "AgentClass",
@@ -238,7 +238,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A book, article, or other documentary resource.",
+    "information" => "A book, article, or other documentary resource.",
     "id" => 3,
     "label" => "Bibliographic Resource",
     "local_name" => "BibliographicResource",
@@ -246,7 +246,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A digital resource format.",
+    "information" => "A digital resource format.",
     "id" => 4,
     "label" => "File Format",
     "local_name" => "FileFormat",
@@ -254,7 +254,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A rate at which something recurs.",
+    "information" => "A rate at which something recurs.",
     "id" => 5,
     "label" => "Frequency",
     "local_name" => "Frequency",
@@ -262,7 +262,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "The extent or range of judicial, law enforcement, or other authority.",
+    "information" => "The extent or range of judicial, law enforcement, or other authority.",
     "id" => 6,
     "label" => "Jurisdiction",
     "local_name" => "Jurisdiction",
@@ -270,7 +270,8 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A legal document giving official permission to do something with a Resource.",
+    "information" =>
+      "A legal document giving official permission to do something with a Resource.",
     "id" => 7,
     "label" => "License Document",
     "local_name" => "LicenseDocument",
@@ -278,7 +279,8 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A system of signs, symbols, sounds, gestures, or rules used in communication.",
+    "information" =>
+      "A system of signs, symbols, sounds, gestures, or rules used in communication.",
     "id" => 8,
     "label" => "Linguistic System",
     "local_name" => "LinguisticSystem",
@@ -286,7 +288,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A spatial region or named place.",
+    "information" => "A spatial region or named place.",
     "id" => 9,
     "label" => "Location",
     "local_name" => "Location",
@@ -294,7 +296,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A location, period of time, or jurisdiction.",
+    "information" => "A location, period of time, or jurisdiction.",
     "id" => 10,
     "label" => "Location, Period, or Jurisdiction",
     "local_name" => "LocationPeriodOrJurisdiction",
@@ -302,7 +304,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A file format or physical medium.",
+    "information" => "A file format or physical medium.",
     "id" => 11,
     "label" => "Media Type",
     "local_name" => "MediaType",
@@ -310,7 +312,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A media type or extent.",
+    "information" => "A media type or extent.",
     "id" => 12,
     "label" => "Media Type or Extent",
     "local_name" => "MediaTypeOrExtent",
@@ -318,7 +320,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A process that is used to engender knowledge, attitudes, and skills.",
+    "information" => "A process that is used to engender knowledge, attitudes, and skills.",
     "id" => 13,
     "label" => "Method of Instruction",
     "local_name" => "MethodOfInstruction",
@@ -326,7 +328,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A method by which resources are added to a collection.",
+    "information" => "A method by which resources are added to a collection.",
     "id" => 14,
     "label" => "Method of Accrual",
     "local_name" => "MethodOfAccrual",
@@ -334,7 +336,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "An interval of time that is named or defined by its start and end dates.",
+    "information" => "An interval of time that is named or defined by its start and end dates.",
     "id" => 15,
     "label" => "Period of Time",
     "local_name" => "PeriodOfTime",
@@ -342,7 +344,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A physical material or carrier.",
+    "information" => "A physical material or carrier.",
     "id" => 16,
     "label" => "Physical Medium",
     "local_name" => "PhysicalMedium",
@@ -350,7 +352,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A material thing.",
+    "information" => "A material thing.",
     "id" => 17,
     "label" => "Physical Resource",
     "local_name" => "PhysicalResource",
@@ -358,7 +360,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" =>
+    "information" =>
       "A plan or course of action by an authority, intended to influence and determine decisions, actions, and other matters.",
     "id" => 18,
     "label" => "Policy",
@@ -367,7 +369,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" =>
+    "information" =>
       "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation.",
     "id" => 19,
     "label" => "Provenance Statement",
@@ -376,7 +378,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" =>
+    "information" =>
       "A statement about the intellectual property rights (IPR) held in or over a Resource, a legal document giving official permission to do something with a resource, or a statement about access rights.",
     "id" => 20,
     "label" => "Rights Statement",
@@ -385,7 +387,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "A dimension or extent, or a time taken to play or execute.",
+    "information" => "A dimension or extent, or a time taken to play or execute.",
     "id" => 21,
     "label" => "Size or Duration",
     "local_name" => "SizeOrDuration",
@@ -393,7 +395,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" =>
+    "information" =>
       "A basis for comparison; a reference point against which other things can be evaluated.",
     "id" => 22,
     "label" => "Standard",
@@ -402,7 +404,7 @@ resource_class = [
     "vocabulary_id" => 1
   },
   %{
-    "comment" => "An aggregation of resources.",
+    "information" => "An aggregation of resources.",
     "id" => 23,
     "label" => "Collection",
     "local_name" => "Collection",
@@ -410,7 +412,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "Data encoded in a defined structure.",
+    "information" => "Data encoded in a defined structure.",
     "id" => 24,
     "label" => "Dataset",
     "local_name" => "Dataset",
@@ -418,7 +420,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A non-persistent, time-based occurrence.",
+    "information" => "A non-persistent, time-based occurrence.",
     "id" => 25,
     "label" => "Event",
     "local_name" => "Event",
@@ -426,7 +428,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A visual representation other than text.",
+    "information" => "A visual representation other than text.",
     "id" => 26,
     "label" => "Image",
     "local_name" => "Image",
@@ -434,7 +436,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" =>
+    "information" =>
       "A resource requiring interaction from the user to be understood, executed, or experienced.",
     "id" => 27,
     "label" => "Interactive Resource",
@@ -443,7 +445,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A system that provides one or more functions.",
+    "information" => "A system that provides one or more functions.",
     "id" => 28,
     "label" => "Service",
     "local_name" => "Service",
@@ -451,7 +453,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A computer program in source or compiled form.",
+    "information" => "A computer program in source or compiled form.",
     "id" => 29,
     "label" => "Software",
     "local_name" => "Software",
@@ -459,7 +461,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A resource primarily intended to be heard.",
+    "information" => "A resource primarily intended to be heard.",
     "id" => 30,
     "label" => "Sound",
     "local_name" => "Sound",
@@ -467,7 +469,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A resource consisting primarily of words for reading.",
+    "information" => "A resource consisting primarily of words for reading.",
     "id" => 31,
     "label" => "Text",
     "local_name" => "Text",
@@ -475,7 +477,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "An inanimate, three-dimensional object or substance.",
+    "information" => "An inanimate, three-dimensional object or substance.",
     "id" => 32,
     "label" => "Physical Object",
     "local_name" => "PhysicalObject",
@@ -483,7 +485,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A static visual representation.",
+    "information" => "A static visual representation.",
     "id" => 33,
     "label" => "Still Image",
     "local_name" => "StillImage",
@@ -491,7 +493,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" =>
+    "information" =>
       "A series of visual representations imparting an impression of motion when shown in succession.",
     "id" => 34,
     "label" => "Moving Image",
@@ -500,7 +502,7 @@ resource_class = [
     "vocabulary_id" => 2
   },
   %{
-    "comment" => "A scholarly academic article, typically published in a journal.",
+    "information" => "A scholarly academic article, typically published in a journal.",
     "id" => 35,
     "label" => "Academic Article",
     "local_name" => "AcademicArticle",
@@ -508,7 +510,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A written composition in prose, usually nonfiction, on a specific topic, forming an independent part of a book or other publication, as a newspaper or magazine.",
     "id" => 36,
     "label" => "Article",
@@ -517,7 +519,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "An audio document; aka record.",
+    "information" => "An audio document; aka record.",
     "id" => 37,
     "label" => "audio document",
     "local_name" => "AudioDocument",
@@ -525,7 +527,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "An audio-visual document; film, video, and so forth.",
+    "information" => "An audio-visual document; film, video, and so forth.",
     "id" => 38,
     "label" => "audio-visual document",
     "local_name" => "AudioVisualDocument",
@@ -533,7 +535,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "Draft legislation presented for discussion to a legal body.",
+    "information" => "Draft legislation presented for discussion to a legal body.",
     "id" => 39,
     "label" => "Bill",
     "local_name" => "Bill",
@@ -541,7 +543,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A written or printed work of fiction or nonfiction, usually on sheets of paper fastened or bound together within covers.",
     "id" => 40,
     "label" => "Book",
@@ -550,7 +552,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A section of a book.",
+    "information" => "A section of a book.",
     "id" => 41,
     "label" => "Book Section",
     "local_name" => "BookSection",
@@ -558,7 +560,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A written argument submitted to a court.",
+    "information" => "A written argument submitted to a court.",
     "id" => 42,
     "label" => "Brief",
     "local_name" => "Brief",
@@ -566,7 +568,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A chapter of a book.",
+    "information" => "A chapter of a book.",
     "id" => 43,
     "label" => "Chapter",
     "local_name" => "Chapter",
@@ -574,7 +576,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A collection of statutes.",
+    "information" => "A collection of statutes.",
     "id" => 44,
     "label" => "Code",
     "local_name" => "Code",
@@ -582,7 +584,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A document that simultaneously contains other documents.",
+    "information" => "A document that simultaneously contains other documents.",
     "id" => 45,
     "label" => "Collected Document",
     "local_name" => "CollectedDocument",
@@ -590,7 +592,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A collection of Documents or Collections",
+    "information" => "A collection of Documents or Collections",
     "id" => 46,
     "label" => "Collection",
     "local_name" => "Collection",
@@ -598,7 +600,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A meeting for consultation or discussion.",
+    "information" => "A meeting for consultation or discussion.",
     "id" => 47,
     "label" => "Conference",
     "local_name" => "Conference",
@@ -606,7 +608,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A collection of legal cases.",
+    "information" => "A collection of legal cases.",
     "id" => 48,
     "label" => "Court Reporter",
     "local_name" => "CourtReporter",
@@ -614,7 +616,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A document (noun) is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information.",
     "id" => 49,
     "label" => "Document",
@@ -623,7 +625,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "a distinct part of a larger document or collected document.",
+    "information" => "a distinct part of a larger document or collected document.",
     "id" => 50,
     "label" => "document part",
     "local_name" => "DocumentPart",
@@ -631,7 +633,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "The status of the publication of a document.",
+    "information" => "The status of the publication of a document.",
     "id" => 51,
     "label" => "Document Status",
     "local_name" => "DocumentStatus",
@@ -639,7 +641,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "An edited book.",
+    "information" => "An edited book.",
     "id" => 52,
     "label" => "Edited Book",
     "local_name" => "EditedBook",
@@ -647,7 +649,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A written communication addressed to a person or organization and transmitted electronically.",
     "id" => 53,
     "label" => "EMail",
@@ -656,7 +658,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => nil,
+    "information" => nil,
     "id" => 54,
     "label" => "Event",
     "local_name" => "Event",
@@ -664,7 +666,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A passage selected from a larger work.",
+    "information" => "A passage selected from a larger work.",
     "id" => 55,
     "label" => "Excerpt",
     "local_name" => "Excerpt",
@@ -672,7 +674,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "aka movie.",
+    "information" => "aka movie.",
     "id" => 56,
     "label" => "Film",
     "local_name" => "Film",
@@ -680,7 +682,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "An instance or a session in which testimony and arguments are presented, esp. before an official, as a judge in a lawsuit.",
     "id" => 57,
     "label" => "Hearing",
@@ -689,7 +691,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A document that presents visual or diagrammatic information.",
+    "information" => "A document that presents visual or diagrammatic information.",
     "id" => 58,
     "label" => "Image",
     "local_name" => "Image",
@@ -697,7 +699,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A formalized discussion between two or more people.",
+    "information" => "A formalized discussion between two or more people.",
     "id" => 59,
     "label" => "Interview",
     "local_name" => "Interview",
@@ -705,7 +707,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "something that is printed or published and distributed, esp. a given number of a periodical",
     "id" => 60,
     "label" => "Issue",
@@ -714,7 +716,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A periodical of scholarly journal Articles.",
+    "information" => "A periodical of scholarly journal Articles.",
     "id" => 61,
     "label" => "Journal",
     "local_name" => "Journal",
@@ -722,7 +724,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A document accompanying a legal case.",
+    "information" => "A document accompanying a legal case.",
     "id" => 62,
     "label" => "Legal Case Document",
     "local_name" => "LegalCaseDocument",
@@ -730,7 +732,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A document containing an authoritative determination (as a decree or judgment) made after consideration of facts or law.",
     "id" => 63,
     "label" => "Decision",
@@ -739,7 +741,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A legal document; for example, a court decision, a brief, and so forth.",
+    "information" => "A legal document; for example, a court decision, a brief, and so forth.",
     "id" => 64,
     "label" => "Legal Document",
     "local_name" => "LegalDocument",
@@ -747,7 +749,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A legal document proposing or enacting a law or a group of laws.",
+    "information" => "A legal document proposing or enacting a law or a group of laws.",
     "id" => 65,
     "label" => "Legislation",
     "local_name" => "Legislation",
@@ -755,7 +757,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A written or printed communication addressed to a person or organization and usually transmitted by mail.",
     "id" => 66,
     "label" => "Letter",
@@ -764,7 +766,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A periodical of magazine Articles. A magazine is a publication that is issued periodically, usually bound in a paper cover, and typically contains essays, stories, poems, etc., by many writers, and often photographs and drawings, frequently specializing in a particular subject or area, as hobbies, news, or sports.",
     "id" => 67,
     "label" => "Magazine",
@@ -773,7 +775,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A small reference book, especially one giving instructions.",
+    "information" => "A small reference book, especially one giving instructions.",
     "id" => 68,
     "label" => "Manual",
     "local_name" => "Manual",
@@ -781,7 +783,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "An unpublished Document, which may also be submitted to a publisher for publication.",
     "id" => 69,
     "label" => "Manuscript",
@@ -790,7 +792,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A graphical depiction of geographic features.",
+    "information" => "A graphical depiction of geographic features.",
     "id" => 70,
     "label" => "Map",
     "local_name" => "Map",
@@ -798,7 +800,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A loose, thematic, collection of Documents, often Books.",
+    "information" => "A loose, thematic, collection of Documents, often Books.",
     "id" => 71,
     "label" => "Multivolume Book",
     "local_name" => "MultiVolumeBook",
@@ -806,7 +808,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A periodical of documents, usually issued daily or weekly, containing current news, editorials, feature articles, and usually advertising.",
     "id" => 72,
     "label" => "Newspaper",
@@ -815,7 +817,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "Notes or annotations about a resource.",
+    "information" => "Notes or annotations about a resource.",
     "id" => 73,
     "label" => "Note",
     "local_name" => "Note",
@@ -823,7 +825,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A document describing the exclusive right granted by a government to an inventor to manufacture, use, or sell an invention for a certain number of years.",
     "id" => 74,
     "label" => "Patent",
@@ -832,7 +834,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A public performance.",
+    "information" => "A public performance.",
     "id" => 75,
     "label" => "Performance",
     "local_name" => "Performance",
@@ -840,7 +842,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A group of related documents issued at regular intervals.",
+    "information" => "A group of related documents issued at regular intervals.",
     "id" => 76,
     "label" => "Periodical",
     "local_name" => "Periodical",
@@ -848,7 +850,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A communication between an agent and one or more specific recipients.",
+    "information" => "A communication between an agent and one or more specific recipients.",
     "id" => 77,
     "label" => "Personal Communication",
     "local_name" => "PersonalCommunication",
@@ -856,7 +858,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A personal communication manifested in some document.",
+    "information" => "A personal communication manifested in some document.",
     "id" => 78,
     "label" => "Personal Communication Document",
     "local_name" => "PersonalCommunicationDocument",
@@ -864,7 +866,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A compilation of documents published from an event, such as a conference.",
+    "information" => "A compilation of documents published from an event, such as a conference.",
     "id" => 79,
     "label" => "Proceedings",
     "local_name" => "Proceedings",
@@ -872,7 +874,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "An excerpted collection of words.",
+    "information" => "An excerpted collection of words.",
     "id" => 80,
     "label" => "Quote",
     "local_name" => "Quote",
@@ -880,7 +882,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A document that presents authoritative reference information, such as a dictionary or encylopedia .",
     "id" => 81,
     "label" => "Reference Source",
@@ -889,7 +891,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A document describing an account or statement describing in detail an event, situation, or the like, usually as the result of observation, inquiry, etc..",
     "id" => 82,
     "label" => "Report",
@@ -898,7 +900,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A loose, thematic, collection of Documents, often Books.",
+    "information" => "A loose, thematic, collection of Documents, often Books.",
     "id" => 83,
     "label" => "Series",
     "local_name" => "Series",
@@ -906,7 +908,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A slide in a slideshow",
+    "information" => "A slide in a slideshow",
     "id" => 84,
     "label" => "Slide",
     "local_name" => "Slide",
@@ -914,7 +916,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A presentation of a series of slides, usually presented in front of an audience with written text and images.",
     "id" => 85,
     "label" => "Slideshow",
@@ -923,7 +925,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A document describing a standard",
+    "information" => "A document describing a standard",
     "id" => 86,
     "label" => "Standard",
     "local_name" => "Standard",
@@ -931,7 +933,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A bill enacted into law.",
+    "information" => "A bill enacted into law.",
     "id" => 87,
     "label" => "Statute",
     "local_name" => "Statute",
@@ -939,7 +941,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A document created to summarize research findings associated with the completion of an academic degree.",
     "id" => 88,
     "label" => "Thesis",
@@ -948,7 +950,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "The academic degree of a Thesis",
+    "information" => "The academic degree of a Thesis",
     "id" => 89,
     "label" => "Thesis degree",
     "local_name" => "ThesisDegree",
@@ -956,7 +958,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A web page is an online document available (at least initially) on the world wide web. A web page is written first and foremost to appear on the web, as distinct from other online resources such as books, manuscripts or audio documents which use the web primarily as a distribution mechanism alongside other more traditional methods such as print.",
     "id" => 90,
     "label" => "Webpage",
@@ -965,7 +967,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" => "A group of Webpages accessible on the Web.",
+    "information" => "A group of Webpages accessible on the Web.",
     "id" => 91,
     "label" => "Website",
     "local_name" => "Website",
@@ -973,7 +975,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A seminar, discussion group, or the like, that emphasizes zxchange of ideas and the demonstration and application of techniques, skills, etc.",
     "id" => 92,
     "label" => "Workshop",
@@ -982,7 +984,7 @@ resource_class = [
     "vocabulary_id" => 3
   },
   %{
-    "comment" =>
+    "information" =>
       "A foaf:LabelProperty is any RDF property with texual values that serve as labels.",
     "id" => 93,
     "label" => "Label Property",
@@ -991,7 +993,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "A person.",
+    "information" => "A person.",
     "id" => 94,
     "label" => "Person",
     "local_name" => "Person",
@@ -999,7 +1001,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "A document.",
+    "information" => "A document.",
     "id" => 95,
     "label" => "Document",
     "local_name" => "Document",
@@ -1007,7 +1009,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "An organization.",
+    "information" => "An organization.",
     "id" => 96,
     "label" => "Organization",
     "local_name" => "Organization",
@@ -1015,7 +1017,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "A class of Agents.",
+    "information" => "A class of Agents.",
     "id" => 97,
     "label" => "Group",
     "local_name" => "Group",
@@ -1023,7 +1025,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "An agent (eg. person, group, software or physical artifact).",
+    "information" => "An agent (eg. person, group, software or physical artifact).",
     "id" => 98,
     "label" => "Agent",
     "local_name" => "Agent",
@@ -1031,7 +1033,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "A project (a collective endeavour of some kind).",
+    "information" => "A project (a collective endeavour of some kind).",
     "id" => 99,
     "label" => "Project",
     "local_name" => "Project",
@@ -1039,7 +1041,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "An image.",
+    "information" => "An image.",
     "id" => 100,
     "label" => "Image",
     "local_name" => "Image",
@@ -1047,7 +1049,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "A personal profile RDF document.",
+    "information" => "A personal profile RDF document.",
     "id" => 101,
     "label" => "PersonalProfileDocument",
     "local_name" => "PersonalProfileDocument",
@@ -1055,7 +1057,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "An online account.",
+    "information" => "An online account.",
     "id" => 102,
     "label" => "Online Account",
     "local_name" => "OnlineAccount",
@@ -1063,7 +1065,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "An online gaming account.",
+    "information" => "An online gaming account.",
     "id" => 103,
     "label" => "Online Gaming Account",
     "local_name" => "OnlineGamingAccount",
@@ -1071,7 +1073,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "An online e-commerce account.",
+    "information" => "An online e-commerce account.",
     "id" => 104,
     "label" => "Online E-commerce Account",
     "local_name" => "OnlineEcommerceAccount",
@@ -1079,7 +1081,7 @@ resource_class = [
     "vocabulary_id" => 4
   },
   %{
-    "comment" => "An online chat account.",
+    "information" => "An online chat account.",
     "id" => 105,
     "label" => "Online Chat Account",
     "local_name" => "OnlineChatAccount",

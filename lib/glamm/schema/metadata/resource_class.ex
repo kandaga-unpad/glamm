@@ -21,6 +21,6 @@ defmodule Glamm.Metadata.ResourceClass do
   def changeset(resource_class, attrs) do
     resource_class
     |> cast(attrs, [:local_name, :label, :information, :owner_id, :vocabulary_id])
-    |> validate_required([:local_name, :label, :information, :owner_id, :vocabulary_id])
+    |> validate_required([:local_name, :label, :information, :vocabulary_id])
   end
 end

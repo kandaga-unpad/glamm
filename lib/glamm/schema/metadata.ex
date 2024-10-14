@@ -3,7 +3,9 @@ defmodule Glamm.Metadata do
   The Metadata context.
   """
 
+  import Ecto
   import Ecto.Query, warn: false
+
   alias Glamm.Repo
 
   alias Glamm.Metadata.Vocabulary
@@ -243,6 +245,8 @@ defmodule Glamm.Metadata do
   """
   def create_resource_class(attrs \\ %{}) do
     %ResourceClass{}
+    |> assoc(:vocabulary)
+    |> build_assoc(attrs[:vocabulary_id])
     |> ResourceClass.changeset(attrs)
     |> Repo.insert()
   end
@@ -451,7 +455,10 @@ defmodule Glamm.Metadata do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_resource_template_property(%ResourceTemplateProperty{} = resource_template_property, attrs) do
+  def update_resource_template_property(
+        %ResourceTemplateProperty{} = resource_template_property,
+        attrs
+      ) do
     resource_template_property
     |> ResourceTemplateProperty.changeset(attrs)
     |> Repo.update()
@@ -482,7 +489,10 @@ defmodule Glamm.Metadata do
       %Ecto.Changeset{data: %ResourceTemplateProperty{}}
 
   """
-  def change_resource_template_property(%ResourceTemplateProperty{} = resource_template_property, attrs \\ %{}) do
+  def change_resource_template_property(
+        %ResourceTemplateProperty{} = resource_template_property,
+        attrs \\ %{}
+      ) do
     ResourceTemplateProperty.changeset(resource_template_property, attrs)
   end
 end
