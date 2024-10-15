@@ -39,8 +39,12 @@
   </div>
 <% end %>
 
-<%= for node <- @streams.node_list do %>
-  <%= node %>
+<%= for {index, node} <- @streams.node_list do %>
+  <div>
+    <h3><%= node.abbr %></h3>
+    <p><%= node.name %></p>
+    <pre><%= index %></pre>
+  </div>
 <% end %>
 
 <.modal

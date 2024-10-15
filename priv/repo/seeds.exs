@@ -11,30 +11,36 @@
 # and so on) as they will fail if something goes wrong.
 
 # Populate the Vocabularies Metadata
+alias Glamm.Repo
 alias Glamm.Gallery
 alias Glamm.Metadata
+alias Glamm.Metadata.ResourceClass
 
 # Populate the Vocabularies Metadata
 vocab = [
   %{
+    id: 1,
     namespace_url: "http://purl.org/dc/terms/",
     prefix: "dcterms",
     label: "Dublin Core",
     information: "Basic resource metadata (DCMI Metadata Terms)"
   },
   %{
+    id: 2,
     namespace_url: "http://purl.org/dc/dcmitype/",
     prefix: "dctype",
     label: "Dublin Core Type",
     information: "Basic resource types (DCMI Type Vocabulary)"
   },
   %{
+    id: 3,
     namespace_url: "http://purl.org/ontology/bibo/",
     prefix: "bibo",
     label: "Bibliographic Ontology",
     information: "Bibliographic metadata (BIBO)"
   },
   %{
+    id: 4,
     namespace_url: "http://xmlns.com/foaf/0.1/",
     prefix: "foaf",
     label: "Friend of a Friend",
@@ -220,6 +226,11 @@ for node <- node_list do
 end
 
 # Populate the Resource Classes Metadata
+vocabulary_1 = Repo.get!(Metadata.Vocabulary, 1)
+vocabulary_2 = Repo.get!(Metadata.Vocabulary, 2)
+vocabulary_3 = Repo.get!(Metadata.Vocabulary, 3)
+vocabulary_4 = Repo.get!(Metadata.Vocabulary, 4)
+
 resource_class = [
   %{
     "information" => "A resource that acts or has the power to act.",
@@ -1091,5 +1102,19 @@ resource_class = [
 ]
 
 for resource <- resource_class do
-  Metadata.create_resource_class(resource)
+  %ResourceClass{
+    id: resource["id"],
+    label: resource["label"],
+    local_name: resource["local_name"],
+    information: resource["information"],
+    vocabulary_id:
+      case resource["vocabulary_id"] do
+        1 -> vocabulary_1.id
+        2 -> vocabulary_2.id
+        3 -> vocabulary_3.id
+        4 -> vocabulary_4.id
+        _ -> 1
+      end
+  }
+  |> Repo.insert!()
 end
