@@ -11,7 +11,7 @@ defmodule GlammWeb.CollectionLive.FormComponent do
         <%= @title %>
         <:subtitle>Use this form to manage collection records in your database.</:subtitle>
       </.header>
-
+      
       <.simple_form
         for={@form}
         id="collection-form"
@@ -22,6 +22,11 @@ defmodule GlammWeb.CollectionLive.FormComponent do
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:is_public]} type="checkbox" label="Is public" />
         <.input field={@form[:view_scope]} type="text" label="View scope" />
+        <.input
+          type="select"
+          field={@form[:resource_class_id]}
+          options={Enum.map(@resource_class_list, &{&1.local_name, &1.id})}
+        />
         <:actions>
           <.button phx-disable-with="Saving...">Save Collection</.button>
         </:actions>

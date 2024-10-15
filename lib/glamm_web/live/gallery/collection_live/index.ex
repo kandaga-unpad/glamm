@@ -9,12 +9,14 @@ defmodule GlammWeb.Gallery.CollectionLive.Index do
   def mount(_params, _session, socket) do
     socket =
       socket
+      |> assign(:page_title, "Listing Gal collections")
       |> assign(:total_collections, Gallery.length_gal_collections())
+      |> assign(:collection, %Collection{})
       |> stream(:gal_collections, Gallery.list_gal_collections())
       |> stream(:collection_type_list, Gallery.list_gal_collection_type())
       |> stream(:resource_class_list, Metadata.list_resource_class())
       |> stream(:resource_template_list, Metadata.list_resource_template())
-      |> stream(:node_list, Glamm.System.list_nodes())
+      |> assign(:node_list, Glamm.System.list_nodes())
 
     {:ok, socket}
   end
@@ -33,14 +35,14 @@ defmodule GlammWeb.Gallery.CollectionLive.Index do
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Collection")
+    |> assign(:resource_class_list, Metadata.list_resource_class())
     |> assign(:collection, %Collection{})
-
-    dbg(socket)
   end
 
   defp apply_action(socket, :index, _params) do
     socket
     |> assign(:page_title, "Listing Gal collections")
+    |> assign(:resource_class_list, Metadata.list_resource_class())
     |> assign(:collection, nil)
   end
 

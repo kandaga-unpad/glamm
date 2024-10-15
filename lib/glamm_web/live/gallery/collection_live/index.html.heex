@@ -16,14 +16,18 @@
     }
   >
     <:col :let={{_id, collection}} label="Title"><%= collection.title %></:col>
+    
     <:col :let={{_id, collection}} label="Is public"><%= collection.is_public %></:col>
+    
     <:col :let={{_id, collection}} label="View scope"><%= collection.view_scope %></:col>
+    
     <:action :let={{_id, collection}}>
       <div class="sr-only">
         <.link navigate={~p"/manage/gallery/collections/list/#{collection}"}>Show</.link>
       </div>
-      <.link patch={~p"/manage/gallery/collections/list/#{collection}/edit"}>Edit</.link>
+       <.link patch={~p"/manage/gallery/collections/list/#{collection}/edit"}>Edit</.link>
     </:action>
+    
     <:action :let={{id, collection}}>
       <.link
         phx-click={JS.push("delete", value: %{id: collection.id}) |> hide("##{id}")}
@@ -39,14 +43,6 @@
   </div>
 <% end %>
 
-<%= for {index, node} <- @streams.node_list do %>
-  <div>
-    <h3><%= node.abbr %></h3>
-    <p><%= node.name %></p>
-    <pre><%= index %></pre>
-  </div>
-<% end %>
-
 <.modal
   :if={@live_action in [:new, :edit]}
   id="collection-modal"
@@ -59,6 +55,7 @@
     title={@page_title}
     action={@live_action}
     collection={@collection}
+    resource_class_list={@resource_class_list}
     patch={~p"/manage/gallery/collections/list"}
   />
 </.modal>
