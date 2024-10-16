@@ -112,7 +112,6 @@ defmodule GlammWeb.Router do
         {GlammWeb.Utils.NavBarMenuLayout, :load_gallery_menu}
       ] do
       # Gallery Home
-      live "/home", Gallery.HomeLive.Index, :index
       live "/collections", Gallery.CollectionsHomeLive.Index, :index
       live "/metadata", Gallery.MetadataLive.Index, :index
 

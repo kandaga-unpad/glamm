@@ -20,7 +20,7 @@ defmodule GlammWeb.Utils.NavBarMenuLayout do
       %{
         id: 1,
         name: "Gallery Home",
-        url: "/manage/gallery/home"
+        url: "/manage/gallery"
       },
       %{
         id: 2,
@@ -64,7 +64,7 @@ defmodule GlammWeb.Utils.NavBarMenuLayout do
     [
       %{
         id: 1,
-        name: "Collections",
+        name: "Collections List",
         url: "/manage/gallery/collections/list"
       },
       %{

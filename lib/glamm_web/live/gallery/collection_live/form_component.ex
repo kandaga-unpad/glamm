@@ -19,14 +19,37 @@ defmodule GlammWeb.CollectionLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:title]} type="text" label="Title" />
-        <.input field={@form[:is_public]} type="checkbox" label="Is public" />
-        <.input field={@form[:view_scope]} type="text" label="View scope" />
         <.input
-          type="select"
           field={@form[:resource_class_id]}
-          options={Enum.map(@resource_class_list, &{&1.local_name, &1.id})}
+          type="select"
+          label="Resource Class"
+          options={
+            Enum.map(@resource_class_list, fn {category, items} ->
+              {category, Enum.map(items, &{&1.label, &1.id})}
+            end)
+          }
+        /> <.input field={@form[:title]} type="text" label="Title" />
+        <.input
+          field={@form[:collection_type_id]}
+          type="select"
+          label="Collection Type"
+          options={Enum.map(@collection_type_list, &{&1.collection_name, &1.id})}
+          prompt="Type of this Collection"
+        /> <.input field={@form[:is_public]} type="checkbox" label="Is public" />
+        <.input
+          field={@form[:view_scope]}
+          type="select"
+          label="View scope"
+          options={[{"User", "user"}, {"Private", "private"}, {"Admin", "admin"}]}
+          prompt="Scope for accessing this collection"
         />
+        <.input
+          field={@form[:node_id]}
+          type="select"
+          label="Node Collection"
+          options={Enum.map(@node_list, &{&1.name, &1.id})}
+          prompt="Node Location for this collection"
+        /> <.input type="hidden" field={@form[:owner_id]} value={@current_user.id} />
         <:actions>
           <.button phx-disable-with="Saving...">Save Collection</.button>
         </:actions>
