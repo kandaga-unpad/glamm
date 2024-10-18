@@ -1,0 +1,15 @@
+<section class="p-5">
+  <.live_component
+    module={GlammWeb.CollectionLive.FormComponent}
+    id={@collection.id || :new}
+    title={@page_title}
+    action={@live_action}
+    collection={@collection}
+    resource_class_list={@resource_class_list}
+    collection_type_list={@collection_type_list}
+    node_list={@node_list}
+    current_user={@current_user}
+    patch={~p"/manage/gallery/collections/list"}
+  />
+  <.back navigate={~p"/manage/gallery/collections/list"}>Back to gal_collections</.back>
+</section>

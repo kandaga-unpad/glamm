@@ -117,7 +117,7 @@ defmodule GlammWeb.Router do
 
       # Gallery Collection related
       live "/collections/list", Gallery.CollectionLive.Index, :index
-      live "/collections/list/new", Gallery.CollectionLive.Index, :new
+      live "/collections/list/new", Gallery.CollectionLive.New
       live "/collections/list/:id/edit", Gallery.CollectionLive.Index, :edit
       live "/collections/list/:id", Gallery.CollectionLive.Show, :show
       live "/collections/list/:id/show/edit", Gallery.CollectionLive.Show, :edit

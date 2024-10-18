@@ -1,10 +1,10 @@
-defmodule GlammWeb.Gallery.CollectionLive.Show do
+defmodule GlammWeb.Gallery.CollectionLive.New do
   use GlammWeb, :live_view_gallery_dashboard
 
   alias Glamm.Gallery
   alias Glamm.Metadata
+  alias Glamm.Gallery.Collection
 
-  @impl true
   def mount(_params, _session, socket) do
     current_user = socket.assigns.current_user
 
@@ -22,6 +22,9 @@ defmodule GlammWeb.Gallery.CollectionLive.Show do
 
     socket =
       socket
+      |> assign(:page_title, "Add New Collection")
+      |> assign(:total_collections, Gallery.length_gal_collections())
+      |> assign(:collection, %Collection{})
       |> assign(:resource_class_list, resource_list)
       |> assign(:collection_type_list, Gallery.list_gal_collection_type())
       |> assign(:node_list, Glamm.System.list_nodes())
@@ -30,15 +33,4 @@ defmodule GlammWeb.Gallery.CollectionLive.Show do
 
     {:ok, socket}
   end
-
-  @impl true
-  def handle_params(%{"id" => id}, _, socket) do
-    {:noreply,
-     socket
-     |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:collection, Gallery.get_collection!(id))}
-  end
-
-  defp page_title(:show), do: "Show Collection"
-  defp page_title(:edit), do: "Edit Collection"
 end
