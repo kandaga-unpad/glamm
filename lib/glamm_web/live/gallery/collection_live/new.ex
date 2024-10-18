@@ -5,6 +5,7 @@ defmodule GlammWeb.Gallery.CollectionLive.New do
   alias Glamm.Metadata
   alias Glamm.Gallery.Collection
 
+  @impl true
   def mount(_params, _session, socket) do
     current_user = socket.assigns.current_user
 
@@ -32,5 +33,21 @@ defmodule GlammWeb.Gallery.CollectionLive.New do
       |> stream(:gal_collections, Gallery.list_gal_collections())
 
     {:ok, socket}
+  end
+
+  @impl true
+  def handle_params(params, _url, socket) do
+    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  end
+
+  defp apply_action(socket, :new, _params) do
+    socket
+    |> assign(:page_title, "New Collection")
+    |> assign(:collection, %Collection{})
+  end
+
+  @impl true
+  def handle_info({GlammWeb.CollectionLive.FormComponent, {:saved, collection}}, socket) do
+    {:noreply, stream_insert(socket, :gal_collections, collection)}
   end
 end

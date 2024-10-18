@@ -50,6 +50,10 @@ defmodule GlammWeb.CollectionLive.FormComponent do
           options={Enum.map(@node_list, &{&1.name, &1.id})}
           prompt="Node Location for this collection"
         /> <.input type="hidden" field={@form[:owner_id]} value={@current_user.id} />
+        <section>
+          <.live_file_input upload={@uploads.thumbnail} />
+        </section>
+        
         <:actions>
           <.button phx-disable-with="Saving...">Save Collection</.button>
         </:actions>
@@ -101,7 +105,7 @@ defmodule GlammWeb.CollectionLive.FormComponent do
         {:noreply,
          socket
          |> put_flash(:info, "Collection created successfully")
-         |> push_patch(to: socket.assigns.patch)}
+         |> push_navigate(to: socket.assigns.patch)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}

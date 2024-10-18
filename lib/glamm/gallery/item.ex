@@ -44,9 +44,7 @@ defmodule Glamm.Gallery.Item do
       :received_date,
       :invoice,
       :invoice_date,
-      :item_status,
-      :collection_id,
-      :supplier_id
+      :item_status
     ])
   end
 end
