@@ -50,10 +50,6 @@ defmodule GlammWeb.CollectionLive.FormComponent do
           options={Enum.map(@node_list, &{&1.name, &1.id})}
           prompt="Node Location for this collection"
         /> <.input type="hidden" field={@form[:owner_id]} value={@current_user.id} />
-        <section>
-          <.live_file_input upload={@uploads.thumbnail} />
-        </section>
-        
         <:actions>
           <.button phx-disable-with="Saving...">Save Collection</.button>
         </:actions>
