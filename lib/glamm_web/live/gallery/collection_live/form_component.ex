@@ -49,7 +49,38 @@ defmodule GlammWeb.CollectionLive.FormComponent do
           label="Node Collection"
           options={Enum.map(@node_list, &{&1.name, &1.id})}
           prompt="Node Location for this collection"
-        /> <.input type="hidden" field={@form[:owner_id]} value={@current_user.id} />
+        /> <.live_file_input upload={@uploads.thumbnail} />
+        <section>
+          <%!-- render each avatar entry --%>
+          <%= for entry <- @uploads.thumbnail.entries do %>
+            <article class="upload-entry">
+              <figure>
+                <.live_img_preview entry={entry} />
+                <figcaption><%= entry.client_name %></figcaption>
+              </figure>
+               <%!-- entry.progress will update automatically for in-flight entries --%>
+              <progress value={entry.progress} max="100"><%= entry.progress %>%</progress>
+              <%!-- a regular click event whose handler will invoke Phoenix.LiveView.cancel_upload/3 --%>
+              <button
+                type="button"
+                phx-click="cancel-upload"
+                phx-value-ref={entry.ref}
+                aria-label="cancel"
+              >
+                &times;
+              </button>
+               <%!-- Phoenix.Component.upload_errors/2 returns a list of error atoms --%>
+              <%= for err <- upload_errors(@uploads.thumbnail, entry) do %>
+                <p class="alert alert-danger"><%= error_to_string(err) %></p>
+              <% end %>
+            </article>
+          <% end %>
+           <%!-- Phoenix.Component.upload_errors/1 returns a list of error atoms --%>
+          <%= for err <- upload_errors(@uploads.thumbnail) do %>
+            <p class="alert alert-danger"><%= error_to_string(err) %></p>
+          <% end %>
+        </section>
+         <.input type="hidden" field={@form[:owner_id]} value={@current_user.id} />
         <:actions>
           <.button phx-disable-with="Saving...">Save Collection</.button>
         </:actions>
@@ -63,6 +94,8 @@ defmodule GlammWeb.CollectionLive.FormComponent do
     {:ok,
      socket
      |> assign(assigns)
+     |> assign(:uploaded_files, [])
+     |> allow_upload(:thumbnail, accept: ~w(image/*), max_file_size: 2_000_000)
      |> assign_new(:form, fn ->
        to_form(Gallery.change_collection(collection))
      end)}
@@ -74,7 +107,22 @@ defmodule GlammWeb.CollectionLive.FormComponent do
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
 
+  @impl true
+  def handle_event("cancel-upload", %{"ref" => ref}, socket) do
+    {:noreply, cancel_upload(socket, :thumbnail, ref)}
+  end
+
   def handle_event("save", %{"collection" => collection_params}, socket) do
+    uploaded_files =
+      consume_uploaded_entries(socket, :thumbnail, fn %{path: path}, _entry ->
+        dest = Path.join([:code.priv_dir(:glamm), "static", "uploads", Path.basename(path)])
+        # You will need to create `priv/static/uploads` for `File.cp!/2` to work.
+        File.cp!(path, dest)
+        {:ok, "/uploads/#{Path.basename(dest)}"}
+      end)
+
+    collection_params = Map.put(collection_params, :thumbnail, uploaded_files)
+
     save_collection(socket, socket.assigns.action, collection_params)
   end
 
@@ -109,4 +157,7 @@ defmodule GlammWeb.CollectionLive.FormComponent do
   end
 
   defp notify_parent(msg), do: send(self(), {__MODULE__, msg})
+  defp error_to_string(:too_large), do: "Too large"
+  defp error_to_string(:too_many_files), do: "You have selected too many files"
+  defp error_to_string(:not_accepted), do: "You have selected an unacceptable file type"
 end

@@ -39,36 +39,14 @@ defmodule GlammWeb.Gallery.CollectionLive.New do
     {:ok, socket}
   end
 
-  @impl Phoenix.LiveView
-  def handle_event("validate", _params, socket) do
-    {:noreply, socket}
-  end
-
-  @impl Phoenix.LiveView
-  def handle_event("cancel-upload", %{"ref" => ref}, socket) do
-    {:noreply, cancel_upload(socket, :thumbnail, ref)}
-  end
-
-  @impl Phoenix.LiveView
-  def handle_event("save", _params, socket) do
-    uploaded_files =
-      consume_uploaded_entries(socket, :thumbnail, fn %{path: path}, _entry ->
-        dest = Path.join([:code.priv_dir(:glamm), "static", "uploads", Path.basename(path)])
-        # You will need to create `priv/static/uploads` for `File.cp!/2` to work.
-        File.cp!(path, dest)
-        {:ok, "/uploads/#{Path.basename(dest)}"}
-      end)
-
-    {:noreply, update(socket, :uploaded_files, &(&1 ++ uploaded_files))}
-  end
-
-  defp error_to_string(:too_large), do: "Too large"
-  defp error_to_string(:too_many_files), do: "You have selected too many files"
-  defp error_to_string(:not_accepted), do: "You have selected an unacceptable file type"
-
   @impl true
   def handle_params(params, _url, socket) do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+  end
+
+  @impl true
+  def handle_event("cancel-upload", %{"ref" => ref}, socket) do
+    {:noreply, cancel_upload(socket, :thumbnail, ref)}
   end
 
   defp apply_action(socket, :new, _params) do
