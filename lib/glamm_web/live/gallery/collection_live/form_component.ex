@@ -40,7 +40,12 @@ defmodule GlammWeb.CollectionLive.FormComponent do
           field={@form[:view_scope]}
           type="select"
           label="View scope"
-          options={[{"User", "user"}, {"Private", "private"}, {"Admin", "admin"}]}
+          options={[
+            {"Public", "public"},
+            {"User", "user"},
+            {"Private", "private"},
+            {"Admin", "admin"}
+          ]}
           prompt="Scope for accessing this collection"
         />
         <.input
@@ -52,32 +57,36 @@ defmodule GlammWeb.CollectionLive.FormComponent do
         /> <.live_file_input upload={@uploads.thumbnail} />
         <section>
           <%!-- render each avatar entry --%>
-          <%= for entry <- @uploads.thumbnail.entries do %>
-            <article class="upload-entry">
-              <figure>
-                <.live_img_preview entry={entry} />
-                <figcaption><%= entry.client_name %></figcaption>
-              </figure>
-               <%!-- entry.progress will update automatically for in-flight entries --%>
-              <progress value={entry.progress} max="100"><%= entry.progress %>%</progress>
-              <%!-- a regular click event whose handler will invoke Phoenix.LiveView.cancel_upload/3 --%>
-              <button
-                type="button"
-                phx-click="cancel-upload"
-                phx-value-ref={entry.ref}
-                aria-label="cancel"
-              >
-                &times;
-              </button>
-               <%!-- Phoenix.Component.upload_errors/2 returns a list of error atoms --%>
-              <%= for err <- upload_errors(@uploads.thumbnail, entry) do %>
-                <p class="alert alert-danger"><%= error_to_string(err) %></p>
-              <% end %>
-            </article>
-          <% end %>
-           <%!-- Phoenix.Component.upload_errors/1 returns a list of error atoms --%>
-          <%= for err <- upload_errors(@uploads.thumbnail) do %>
-            <p class="alert alert-danger"><%= error_to_string(err) %></p>
+          <%= if @uploads.thumbnail.entries do %>
+            <%= for entry <- @uploads.thumbnail.entries do %>
+              <article class="upload-entry">
+                <figure>
+                  <.live_img_preview entry={entry} />
+                  <figcaption><%= entry.client_name %></figcaption>
+                </figure>
+                 <%!-- entry.progress will update automatically for in-flight entries --%>
+                <progress value={entry.progress} max="100"><%= entry.progress %>%</progress>
+                <%!-- a regular click event whose handler will invoke Phoenix.LiveView.cancel_upload/3 --%>
+                <button
+                  type="button"
+                  phx-click="cancel-upload"
+                  phx-value-ref={entry.ref}
+                  aria-label="cancel"
+                >
+                  &times;
+                </button>
+                 <%!-- Phoenix.Component.upload_errors/2 returns a list of error atoms --%>
+                <%= for err <- upload_errors(@uploads.thumbnail, entry) do %>
+                  <p class="alert alert-danger"><%= error_to_string(err) %></p>
+                <% end %>
+              </article>
+            <% end %>
+             <%!-- Phoenix.Component.upload_errors/1 returns a list of error atoms --%>
+            <%= for err <- upload_errors(@uploads.thumbnail) do %>
+              <p class="alert alert-danger"><%= error_to_string(err) %></p>
+            <% end %>
+          <% else %>
+            <p>No image is selected</p>
           <% end %>
         </section>
          <.input type="hidden" field={@form[:owner_id]} value={@current_user.id} />
@@ -118,10 +127,16 @@ defmodule GlammWeb.CollectionLive.FormComponent do
         dest = Path.join([:code.priv_dir(:glamm), "static", "uploads", Path.basename(path)])
         # You will need to create `priv/static/uploads` for `File.cp!/2` to work.
         File.cp!(path, dest)
-        {:ok, "/uploads/#{Path.basename(dest)}"}
+        {:ok, ~p"/uploads/#{Path.basename(dest)}"}
       end)
 
-    collection_params = Map.put(collection_params, :thumbnail, uploaded_files)
+    thumbnail_map = %{
+      "file_name" => uploaded_files |> List.first(),
+      "description" => "Thumbnail for collection of #{collection_params["title"]}",
+      "uploader_id" => collection_params["owner_id"]
+    }
+
+    collection_params = Map.put(collection_params, "thumbnail", thumbnail_map)
 
     save_collection(socket, socket.assigns.action, collection_params)
   end
@@ -142,16 +157,28 @@ defmodule GlammWeb.CollectionLive.FormComponent do
   end
 
   defp save_collection(socket, :new, collection_params) do
-    case Gallery.create_collection(collection_params) do
-      {:ok, collection} ->
-        notify_parent({:saved, collection})
+    case Gallery.create_assets(collection_params["thumbnail"]) do
+      {:ok, thumbnail} ->
+        collection_params = Map.put(collection_params, :thumbnail_id, thumbnail.id)
 
-        {:noreply,
-         socket
-         |> put_flash(:info, "Collection created successfully")
-         |> push_navigate(to: socket.assigns.patch)}
+        update(socket, :uploaded_files, &(&1 ++ thumbnail.file_name))
+
+        case Gallery.create_collection(collection_params) do
+          {:ok, collection} ->
+            notify_parent({:saved, collection})
+
+            {:noreply,
+             socket
+             |> put_flash(:info, "Collection created successfully")
+             |> push_navigate(to: socket.assigns.patch)}
+
+          {:error, %Ecto.Changeset{} = changeset} ->
+            {:noreply, assign(socket, form: to_form(changeset))}
+        end
 
       {:error, %Ecto.Changeset{} = changeset} ->
+        IO.puts("Error: #{inspect(changeset)}")
+        IO.puts("Collection Params: #{inspect(collection_params)}")
         {:noreply, assign(socket, form: to_form(changeset))}
     end
   end

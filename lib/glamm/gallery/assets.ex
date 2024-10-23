@@ -19,6 +19,6 @@ defmodule Glamm.Gallery.Assets do
   def changeset(assets, attrs) do
     assets
     |> cast(attrs, [:id, :file_name, :description, :uploader_id])
-    |> validate_required([:file_name, :description, :uploader_id])
+    |> validate_required([:file_name, :description])
   end
 end
