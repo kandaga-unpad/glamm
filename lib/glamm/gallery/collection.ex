@@ -53,6 +53,7 @@ defmodule Glamm.Gallery.Collection do
       :view_scope,
       :owner_id,
       :resource_class_id,
+      :thumbnail_id,
       :collection_type_id,
       :node_id
     ])

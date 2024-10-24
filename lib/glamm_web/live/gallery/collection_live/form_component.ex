@@ -159,21 +159,28 @@ defmodule GlammWeb.CollectionLive.FormComponent do
   defp save_collection(socket, :new, collection_params) do
     case Gallery.create_assets(collection_params["thumbnail"]) do
       {:ok, thumbnail} ->
-        collection_params = Map.put(collection_params, :thumbnail_id, thumbnail.id)
+        collection_params = Map.put(collection_params, "thumbnail_id", thumbnail.id)
 
         update(socket, :uploaded_files, &(&1 ++ thumbnail.file_name))
 
-        case Gallery.create_collection(collection_params) do
-          {:ok, collection} ->
-            notify_parent({:saved, collection})
+        if collection_params |> Map.get("thumbnail_id") do
+          case Gallery.create_collection(collection_params) do
+            {:ok, collection} ->
+              notify_parent({:saved, collection})
 
-            {:noreply,
-             socket
-             |> put_flash(:info, "Collection created successfully")
-             |> push_navigate(to: socket.assigns.patch)}
+              {:noreply,
+               socket
+               |> put_flash(:info, "Collection created successfully")
+               |> push_navigate(to: socket.assigns.patch)}
 
-          {:error, %Ecto.Changeset{} = changeset} ->
-            {:noreply, assign(socket, form: to_form(changeset))}
+            {:error, %Ecto.Changeset{} = changeset} ->
+              IO.puts("Error: #{inspect(changeset)}")
+              IO.puts("Collection Params: #{inspect(collection_params)}")
+              {:noreply, assign(socket, form: to_form(changeset))}
+          end
+        else
+          IO.puts("Collection Params: #{inspect(collection_params)}")
+          {:noreply, assign(socket, form: to_form(collection_params))}
         end
 
       {:error, %Ecto.Changeset{} = changeset} ->
