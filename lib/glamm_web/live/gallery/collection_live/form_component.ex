@@ -131,9 +131,9 @@ defmodule GlammWeb.CollectionLive.FormComponent do
       end)
 
     thumbnail_map = %{
-      "file_name" => uploaded_files |> List.first(),
-      "description" => "Thumbnail for collection of #{collection_params["title"]}",
-      "uploader_id" => collection_params["owner_id"]
+      :file_name => uploaded_files |> List.first(),
+      :description => "Thumbnail for collection of #{collection_params["title"]}",
+      :uploader_id => collection_params["owner_id"]
     }
 
     collection_params = Map.put(collection_params, "thumbnail", thumbnail_map)
@@ -159,28 +159,25 @@ defmodule GlammWeb.CollectionLive.FormComponent do
   defp save_collection(socket, :new, collection_params) do
     case Gallery.create_assets(collection_params["thumbnail"]) do
       {:ok, thumbnail} ->
-        collection_params = Map.put(collection_params, "thumbnail_id", thumbnail.id)
-
         update(socket, :uploaded_files, &(&1 ++ thumbnail.file_name))
 
-        if collection_params |> Map.get("thumbnail_id") do
-          case Gallery.create_collection(collection_params) do
-            {:ok, collection} ->
-              notify_parent({:saved, collection})
+        {:ok, thumbnail_id} = Ecto.UUID.cast(thumbnail.id)
 
-              {:noreply,
-               socket
-               |> put_flash(:info, "Collection created successfully")
-               |> push_navigate(to: socket.assigns.patch)}
+        collection_params = collection_params |> Map.put("thumbnail_id", thumbnail_id)
 
-            {:error, %Ecto.Changeset{} = changeset} ->
-              IO.puts("Error: #{inspect(changeset)}")
-              IO.puts("Collection Params: #{inspect(collection_params)}")
-              {:noreply, assign(socket, form: to_form(changeset))}
-          end
-        else
-          IO.puts("Collection Params: #{inspect(collection_params)}")
-          {:noreply, assign(socket, form: to_form(collection_params))}
+        case Gallery.create_collection(collection_params) do
+          {:ok, collection} ->
+            notify_parent({:saved, collection})
+
+            {:noreply,
+             socket
+             |> put_flash(:info, "Collection created successfully")
+             |> push_navigate(to: socket.assigns.patch)}
+
+          {:error, %Ecto.Changeset{} = changeset} ->
+            IO.puts("Error: #{inspect(changeset)}")
+            IO.puts("Collection Params: #{inspect(collection_params)}")
+            {:noreply, assign(socket, form: to_form(changeset))}
         end
 
       {:error, %Ecto.Changeset{} = changeset} ->

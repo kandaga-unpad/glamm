@@ -3,13 +3,13 @@ defmodule Glamm.Repo.Migrations.CreateGalItemValue do
 
   def change do
     create table(:gal_item_value, primary_key: false) do
-      add :id, :uuid, primary_key: true
+      add :id, :binary_id, primary_key: true
       add :type, :string
       add :lang, :string
       add :value, :text
       add :url, :text
       add :scope_view, :string
-      add :collection_id, references(:gal_collections, type: :uuid, on_delete: :delete_all)
+      add :collection_id, references(:gal_collections, type: :binary_id, on_delete: :delete_all)
       add :item_id, references(:gal_items, on_delete: :delete_all)
       add :property_id, references(:metadata_properties, on_delete: :delete_all)
 

@@ -663,7 +663,7 @@ resource_class = [
     "information" =>
       "A written communication addressed to a person or organization and transmitted electronically.",
     "id" => 53,
-    "label" => "EMail",
+    "label" => "Email",
     "local_name" => "Email",
     "owner_id" => nil,
     "vocabulary_id" => 3

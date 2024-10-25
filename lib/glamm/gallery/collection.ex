@@ -12,6 +12,7 @@ defmodule Glamm.Gallery.Collection do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @derive {Phoenix.Param, key: :id}
+
   schema "gal_collections" do
     field :title, :string
     field :is_public, :boolean, default: false

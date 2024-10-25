@@ -10,7 +10,7 @@ defmodule Glamm.Repo.Migrations.CreateGalItems do
       add :invoice, :string
       add :invoice_date, :date
       add :item_status, :string
-      add :collection_id, references(:gal_collections, type: :uuid, on_delete: :delete_all)
+      add :collection_id, references(:gal_collections, type: :binary_id, on_delete: :delete_all)
       add :supplier_id, references(:mst_suppliers, on_delete: :delete_all)
 
       timestamps(type: :utc_datetime)

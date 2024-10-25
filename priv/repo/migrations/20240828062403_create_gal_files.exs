@@ -3,7 +3,7 @@ defmodule Glamm.Repo.Migrations.CreateGalFiles do
 
   def change do
     create table(:gal_files, primary_key: false) do
-      add :id, :uuid, primary_key: true
+      add :id, :binary_id, primary_key: true
       add :file_title, :string
       add :file_type, :string
       add :file_url, :text
