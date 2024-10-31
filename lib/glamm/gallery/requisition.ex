@@ -6,6 +6,7 @@ defmodule Glamm.Gallery.Requisition do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @derive {Phoenix.Param, key: :id}
+
   schema "gal_requisitions" do
     field :owner, :string
     field :description, :string

@@ -25,7 +25,7 @@ defmodule Glamm.Gallery.Collection do
     # field :resource_template_id, :id
     belongs_to :resource_template, ResourceTemplate
     # field :thumbnail_id, :id
-    belongs_to :thumbnail, Assets
+    belongs_to :thumbnail, Assets, type: :binary_id
     # field :collection_type, :id
     belongs_to :collection_type, CollectionType
     # field :node_id, :id

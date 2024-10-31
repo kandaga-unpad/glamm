@@ -26,13 +26,14 @@ defmodule GlammWeb.Gallery.CollectionLive.Show do
       |> assign(:collection_type_list, Gallery.list_gal_collection_type())
       |> assign(:node_list, Glamm.System.list_nodes())
       |> assign(:current_user, current_user)
-      |> stream(:gal_collections, Gallery.list_gal_collections())
 
     {:ok, socket}
   end
 
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
+    dbg(Gallery.get_collection!(id))
+
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))

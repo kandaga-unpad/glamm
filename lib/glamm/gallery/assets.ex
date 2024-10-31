@@ -10,6 +10,7 @@ defmodule Glamm.Gallery.Assets do
   schema "gal_assets" do
     field :description, :string
     field :file_name, :string
+    field :path, :string
     belongs_to :uploader, User
 
     timestamps(type: :utc_datetime)
@@ -18,7 +19,7 @@ defmodule Glamm.Gallery.Assets do
   @doc false
   def changeset(assets, attrs) do
     assets
-    |> cast(attrs, [:id, :file_name, :description, :uploader_id])
-    |> validate_required([:file_name, :description])
+    |> cast(attrs, [:id, :file_name, :path, :description, :uploader_id])
+    |> validate_required([:file_name, :path, :description])
   end
 end

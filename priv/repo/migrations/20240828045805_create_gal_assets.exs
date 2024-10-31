@@ -5,6 +5,7 @@ defmodule Glamm.Repo.Migrations.CreateGalAssets do
     create table(:gal_assets, primary_key: false) do
       add :id, :binary_id, primary_key: true
       add :file_name, :string
+      add :path, :string
       add :description, :text
       add :uploader_id, references(:users, on_delete: :nilify_all)
 

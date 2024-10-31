@@ -131,7 +131,8 @@ defmodule GlammWeb.CollectionLive.FormComponent do
       end)
 
     thumbnail_map = %{
-      :file_name => uploaded_files |> List.first(),
+      :file_name => collection_params["title"],
+      :path => uploaded_files |> List.first(),
       :description => "Thumbnail for collection of #{collection_params["title"]}",
       :uploader_id => collection_params["owner_id"]
     }
