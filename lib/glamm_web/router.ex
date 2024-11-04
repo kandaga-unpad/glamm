@@ -123,7 +123,7 @@ defmodule GlammWeb.Router do
       live "/collections/list/:id/show/edit", Gallery.CollectionLive.Show, :edit
 
       live "/collections/items", Gallery.ItemLive.Index, :index
-      live "/collections/items/new", Gallery.ItemLive.Index, :new
+      live "/collections/items/new", Gallery.CollectionItemLive.New, :new
       live "/collections/items/:id/edit", Gallery.ItemLive.Index, :edit
       live "/collections/items/:id", Gallery.ItemLive.Show, :show
       live "/collections/items/:id/show/edit", Gallery.ItemLive.Show, :edit

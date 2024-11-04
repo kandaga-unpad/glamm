@@ -72,7 +72,7 @@ defmodule GlammWeb.DashboardComponents do
 
   def side_bar_dashboard(assigns) do
     ~H"""
-    <section class="bg-white rounded-xl p-5 max-w-64 w-full h-full">
+    <section class="bg-white rounded-xl p-5 max-w-64 w-full h-full mr-5">
       <div class="flex flex-col gap-2">
         <h5><%= @menu_name %></h5>
          <%= render_slot(@inner_block) %>
