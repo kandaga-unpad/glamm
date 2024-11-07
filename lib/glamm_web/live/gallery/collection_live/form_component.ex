@@ -143,14 +143,28 @@ defmodule GlammWeb.CollectionLive.FormComponent do
   end
 
   defp save_collection(socket, :edit, collection_params) do
-    case Gallery.update_collection(socket.assigns.collection, collection_params) do
-      {:ok, collection} ->
-        notify_parent({:saved, collection})
+    dbg(socket.assigns.collection)
 
-        {:noreply,
-         socket
-         |> put_flash(:info, "Collection updated successfully")
-         |> push_patch(to: socket.assigns.patch)}
+    case Gallery.create_assets(collection_params["thumbnail"]) do
+      {:ok, thumbnail} ->
+        update(socket, :uploaded_files, &(&1 ++ thumbnail.file_name))
+
+        {:ok, thumbnail_id} = Ecto.UUID.cast(thumbnail.id)
+
+        collection_params = collection_params |> Map.put("thumbnail_id", thumbnail_id)
+
+        case Gallery.update_collection(socket.assigns.collection, collection_params) do
+          {:ok, collection} ->
+            notify_parent({:saved, collection})
+
+            {:noreply,
+             socket
+             |> put_flash(:info, "Collection updated successfully")
+             |> push_patch(to: socket.assigns.patch)}
+
+          {:error, %Ecto.Changeset{} = changeset} ->
+            {:noreply, assign(socket, form: to_form(changeset))}
+        end
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}

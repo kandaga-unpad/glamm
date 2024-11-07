@@ -32,8 +32,6 @@ defmodule GlammWeb.Gallery.CollectionLive.Show do
 
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
-    dbg(Gallery.get_collection!(id))
-
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
