@@ -16,7 +16,7 @@ defmodule Glamm.Gallery.Item do
     field :item_status, :string
     has_many :item_value, ItemValue
     # field :collection_id, :id
-    belongs_to :collection, Collection
+    belongs_to :collection, Collection, type: :binary_id
     # field :supplier_id, :id
     belongs_to :supplier, Supplier
 
@@ -40,11 +40,9 @@ defmodule Glamm.Gallery.Item do
     |> validate_required([
       :item_code,
       :inventory_code,
-      :order_date,
-      :received_date,
       :invoice,
-      :invoice_date,
-      :item_status
+      :item_status,
+      :collection_id
     ])
   end
 end

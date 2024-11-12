@@ -6,8 +6,8 @@ defmodule Glamm.Repo.Migrations.CreateResourceClass do
       add :local_name, :string
       add :label, :string
       add :information, :text
-      add :owner_id, references(:users, on_delete: :nilify_all)
-      add :vocabulary_id, references(:metadata_vocabularies, on_delete: :nilify_all)
+      add :owner_id, references(:users)
+      add :vocabulary_id, references(:metadata_vocabularies)
 
       timestamps(type: :utc_datetime)
     end

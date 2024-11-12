@@ -1,10 +1,17 @@
+<.back navigate={~p"/manage/gallery/collections/items"}>Back to Gallery Items</.back>
+
 <section class="p-5">
-  <.live_component
-    module={GlammWeb.ItemLive.FormComponent}
-    id={:new}
-    title={@page_title}
-    action={@live_action}
-    item={@item}
-    patch={~p"/manage/gallery/collections/items"}
-  />
+  <div>
+    <h5>New Items</h5>
+    
+    <.live_component
+      module={GlammWeb.ItemLive.FormComponent}
+      id={:new}
+      title={@page_title}
+      action={@live_action}
+      item={@item}
+      list_collection={@list_collection}
+      patch={~p"/manage/gallery/collections/items"}
+    />
+  </div>
 </section>

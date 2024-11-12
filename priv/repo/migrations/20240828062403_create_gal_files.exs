@@ -9,7 +9,7 @@ defmodule Glamm.Repo.Migrations.CreateGalFiles do
       add :file_url, :text
       add :file_directory, :string
       add :mime_type, :string
-      add :uploader_id, references(:users, on_delete: :nilify_all)
+      add :uploader_id, references(:users)
 
       timestamps(type: :utc_datetime)
     end

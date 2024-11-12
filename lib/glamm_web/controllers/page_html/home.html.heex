@@ -1,7 +1,7 @@
 <.flash_group flash={@flash} />
 <.modal id="advanced-search">
   <h5>Pencarian Lanjutan</h5>
-
+  
   <div>
     <.input type="text" name="keyword" value="" label="Keyword" />
   </div>
@@ -15,26 +15,26 @@
       alt="Cover Background"
     />
   </div>
-
+  
   <div class="relative bg-white/50 h-[550px] w-full">
     <div class="max-w-7xl mx-auto flex flex-col gap-3">
       <div class="flex flex-col items-center justify-center gap-3 py-12 relative z-5 bg-white/80 rounded-b-xl">
         <img src="/images/glamm_icon.svg" alt="" class="h-full w-32" />
         <h5 class="text-center">Gallery, Library, Archive & Museum Management</h5>
-
+        
         <p class="max-w-3xl mx-auto text-center text-sm">
           E-GLAMM (Gallery, Library, Archive & Museum Information Management) is an Information System to manage collections in Galleries, Libraries, Archives, Museums and others types that integrated between them with a unique modular management system according to each component in the GLAM concept.
           <br />
           E-GLAMM is managed by librarians, archivists or curators for each the component (GLAM).
         </p>
       </div>
-
+      
       <div class="max-w-5xl mx-auto flex flex-col w-full gap-4">
         <div class="w-full flex flex-col gap-2">
           <.main_search />
           <div class="flex gap-2">
             <.button class="w-full bg-zinc-700 hover:bg-zinc-500">Semua Koleksi</.button>
-
+            
             <.button class="w-full default-btn" phx-click={show_modal("advanced-search")}>
               Pencarian Lanjutan
             </.button>
@@ -43,10 +43,10 @@
       </div>
     </div>
   </div>
-
+  
   <section class="max-w-5xl mx-auto pt-10">
-    <h1>KandaGLAM</h1>
-
+    <h1>GLAMM</h1>
+    
     <p class="text-justify">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse iusto qui
       possimus? Explicabo vitae doloremque et atque, reiciendis possimus,

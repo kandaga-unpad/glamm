@@ -3,12 +3,14 @@ defmodule GlammWeb.Gallery.ItemLive.Index do
 
   alias Glamm.Gallery
   alias Glamm.Gallery.Item
+  alias Glamm.Gallery.ItemValue
 
   @impl true
   def mount(_params, _session, socket) do
     socket =
       socket
       |> assign(:total_items, Gallery.length_gal_items())
+      |> stream(:list_collection, Gallery.list_gal_collections())
       |> stream(:gal_items, Gallery.list_gal_items())
 
     {:ok, socket}
@@ -29,6 +31,7 @@ defmodule GlammWeb.Gallery.ItemLive.Index do
     socket
     |> assign(:page_title, "New Item")
     |> assign(:item, %Item{})
+    |> assign(:item_value, %ItemValue{})
   end
 
   defp apply_action(socket, :index, _params) do
@@ -40,6 +43,11 @@ defmodule GlammWeb.Gallery.ItemLive.Index do
   @impl true
   def handle_info({GlammWeb.ItemLive.FormComponent, {:saved, item}}, socket) do
     {:noreply, stream_insert(socket, :gal_items, item)}
+  end
+
+  @impl true
+  def handle_info({GlammWeb.ItemValueLive.FormComponent, {:saved, item_value}}, socket) do
+    {:noreply, stream_insert(socket, :gal_item_value, item_value)}
   end
 
   @impl true

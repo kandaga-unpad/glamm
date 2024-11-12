@@ -7,7 +7,7 @@ defmodule Glamm.Repo.Migrations.CreateMetadataVocabularies do
       add :prefix, :string
       add :label, :string
       add :information, :text
-      add :owner_id, references(:users, on_delete: :nothing)
+      add :owner_id, references(:users)
 
       timestamps(type: :utc_datetime)
     end

@@ -7,7 +7,7 @@ defmodule Glamm.Repo.Migrations.CreateGalAssets do
       add :file_name, :string
       add :path, :string
       add :description, :text
-      add :uploader_id, references(:users, on_delete: :nilify_all)
+      add :uploader_id, references(:users)
 
       timestamps(type: :utc_datetime)
     end

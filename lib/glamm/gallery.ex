@@ -190,6 +190,8 @@ defmodule Glamm.Gallery do
 
   """
   def delete_assets(%Assets{} = assets) do
+    source = Path.join([:code.priv_dir(:glamm), "static", "uploads", Path.basename(assets.path)])
+    File.rm!(source)
     Repo.delete(assets)
   end
 

@@ -9,9 +9,9 @@ defmodule Glamm.Repo.Migrations.CreateGalItemValue do
       add :value, :text
       add :url, :text
       add :scope_view, :string
-      add :collection_id, references(:gal_collections, type: :binary_id, on_delete: :delete_all)
-      add :item_id, references(:gal_items, on_delete: :delete_all)
-      add :property_id, references(:metadata_properties, on_delete: :delete_all)
+      add :collection_id, references(:gal_collections, type: :binary_id)
+      add :item_id, references(:gal_items)
+      add :property_id, references(:metadata_properties)
 
       timestamps(type: :utc_datetime)
     end

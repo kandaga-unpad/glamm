@@ -15,7 +15,7 @@ defmodule Glamm.Repo.Migrations.CreateGalRequisitions do
       add :price, :integer
       add :information, :text
       add :req_state, :string
-      add :member_id, references(:users, on_delete: :delete_all), null: false
+      add :member_id, references(:users), null: false
 
       timestamps(type: :utc_datetime)
     end

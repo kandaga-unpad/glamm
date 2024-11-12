@@ -7,12 +7,12 @@ defmodule Glamm.Repo.Migrations.CreateGalCollections do
       add :title, :text
       add :is_public, :boolean, default: false, null: false
       add :view_scope, :string
-      add :owner_id, references(:users, on_delete: :delete_all)
-      add :resource_class_id, references(:resource_class, on_delete: :delete_all)
-      add :resource_template_id, references(:resource_template, on_delete: :delete_all)
-      add :thumbnail_id, references(:gal_assets, on_delete: :delete_all, type: :binary_id)
-      add :collection_type_id, references(:gal_collection_type, on_delete: :delete_all)
-      add :node_id, references(:nodes, on_delete: :delete_all)
+      add :owner_id, references(:users)
+      add :resource_class_id, references(:resource_class)
+      add :resource_template_id, references(:resource_template)
+      add :thumbnail_id, references(:gal_assets, type: :binary_id)
+      add :collection_type_id, references(:gal_collection_type)
+      add :node_id, references(:nodes)
 
       timestamps(type: :utc_datetime)
     end

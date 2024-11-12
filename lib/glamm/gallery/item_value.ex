@@ -15,7 +15,7 @@ defmodule Glamm.Gallery.ItemValue do
     field :lang, :string
     field :scope_view, :string
     # field :collection_id, :id
-    belongs_to :collection, Collection
+    belongs_to :collection, Collection, type: :binary_id
     # field :item_id, :id
     belongs_to :item, Item
     # field :property_id, :id

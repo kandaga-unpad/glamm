@@ -11,7 +11,7 @@ defmodule GlammWeb.ItemLive.FormComponent do
         <%= @title %>
         <:subtitle>Use this form to manage item records in your database.</:subtitle>
       </.header>
-
+      
       <.simple_form
         for={@form}
         id="item-form"
@@ -19,7 +19,13 @@ defmodule GlammWeb.ItemLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:item_code]} type="text" label="Item code" />
+        <.input
+          field={@form[:collection_id]}
+          type="select"
+          label="Collection"
+          options={Enum.map(@list_collection, &{&1.title, &1.id})}
+          prompt="Choose Collection"
+        /> <.input field={@form[:item_code]} type="text" label="Item code" />
         <.input field={@form[:inventory_code]} type="text" label="Inventory code" />
         <.input field={@form[:item_status]} type="text" label="Item Status" />
         <.input field={@form[:order_date]} type="datetime-local" label="Order date" />
@@ -70,6 +76,8 @@ defmodule GlammWeb.ItemLive.FormComponent do
   end
 
   defp save_item(socket, :new, item_params) do
+    dbg(socket.assigns)
+
     case Gallery.create_item(item_params) do
       {:ok, item} ->
         notify_parent({:saved, item})
