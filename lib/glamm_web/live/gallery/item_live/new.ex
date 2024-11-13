@@ -9,6 +9,7 @@ defmodule GlammWeb.Gallery.ItemLive.New do
   def mount(_params, _session, socket) do
     current_user = socket.assigns.current_user
     list_collection = Gallery.list_gal_collections()
+    list_properties = Glamm.Metadata.list_metadata_properties()
 
     socket =
       socket
@@ -17,6 +18,9 @@ defmodule GlammWeb.Gallery.ItemLive.New do
       |> assign(:item, %Item{})
       |> assign(:item_value, %ItemValue{})
       |> assign(:list_collection, list_collection)
+      |> assign(:list_properties, list_properties)
+
+    dbg(socket.assigns.list_properties)
 
     {:ok, socket}
   end

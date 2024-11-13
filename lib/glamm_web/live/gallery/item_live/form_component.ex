@@ -7,11 +7,6 @@ defmodule GlammWeb.ItemLive.FormComponent do
   def render(assigns) do
     ~H"""
     <div>
-      <.header>
-        <%= @title %>
-        <:subtitle>Use this form to manage item records in your database.</:subtitle>
-      </.header>
-      
       <.simple_form
         for={@form}
         id="item-form"
@@ -19,19 +14,22 @@ defmodule GlammWeb.ItemLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input
-          field={@form[:collection_id]}
-          type="select"
-          label="Collection"
-          options={Enum.map(@list_collection, &{&1.title, &1.id})}
-          prompt="Choose Collection"
-        /> <.input field={@form[:item_code]} type="text" label="Item code" />
-        <.input field={@form[:inventory_code]} type="text" label="Inventory code" />
-        <.input field={@form[:item_status]} type="text" label="Item Status" />
-        <.input field={@form[:order_date]} type="datetime-local" label="Order date" />
-        <.input field={@form[:received_date]} type="datetime-local" label="Received date" />
-        <.input field={@form[:invoice]} type="text" label="Invoice" />
-        <.input field={@form[:invoice_date]} type="date" label="Invoice date" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <.input
+            field={@form[:collection_id]}
+            type="select"
+            label="Collection"
+            options={Enum.map(@list_collection, &{&1.title, &1.id})}
+            prompt="Choose Collection"
+          /> <.input field={@form[:item_code]} type="text" label="Item code" />
+          <.input field={@form[:inventory_code]} type="text" label="Inventory code" />
+          <.input field={@form[:item_status]} type="text" label="Item Status" />
+          <.input field={@form[:order_date]} type="datetime-local" label="Order date" />
+          <.input field={@form[:received_date]} type="datetime-local" label="Received date" />
+          <.input field={@form[:invoice]} type="text" label="Invoice" />
+          <.input field={@form[:invoice_date]} type="date" label="Invoice date" />
+        </div>
+        
         <:actions>
           <.button phx-disable-with="Saving...">Save Item</.button>
         </:actions>
@@ -85,7 +83,7 @@ defmodule GlammWeb.ItemLive.FormComponent do
         {:noreply,
          socket
          |> put_flash(:info, "Item created successfully")
-         |> push_patch(to: socket.assigns.patch)}
+         |> push_navigate(to: socket.assigns.patch)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}
