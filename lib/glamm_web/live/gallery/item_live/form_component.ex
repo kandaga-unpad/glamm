@@ -23,8 +23,19 @@ defmodule GlammWeb.ItemLive.FormComponent do
             prompt="Choose Collection"
           /> <.input field={@form[:item_code]} type="text" label="Item code" />
           <.input field={@form[:inventory_code]} type="text" label="Inventory code" />
-          <.input field={@form[:item_status]} type="text" label="Item Status" />
-          <.input field={@form[:order_date]} type="datetime-local" label="Order date" />
+          <.input
+            field={@form[:item_status]}
+            type="select"
+            label="Item Status"
+            options={[
+              {"Available", "available"},
+              {"Loaned", "loaned"},
+              {"Missing", "missing"},
+              {"On-Keep", "keep"},
+              {"Disposed", "disposed"}
+            ]}
+            prompt="Choose item status"
+          /> <.input field={@form[:order_date]} type="datetime-local" label="Order date" />
           <.input field={@form[:received_date]} type="datetime-local" label="Received date" />
           <.input field={@form[:invoice]} type="text" label="Invoice" />
           <.input field={@form[:invoice_date]} type="date" label="Invoice date" />
