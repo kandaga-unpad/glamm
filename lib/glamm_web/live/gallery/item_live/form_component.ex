@@ -14,6 +14,8 @@ defmodule GlammWeb.ItemLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
+        <h6>Item Information</h6>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <.input
             field={@form[:collection_id]}
@@ -28,6 +30,28 @@ defmodule GlammWeb.ItemLive.FormComponent do
           <.input field={@form[:received_date]} type="datetime-local" label="Received date" />
           <.input field={@form[:invoice]} type="text" label="Invoice" />
           <.input field={@form[:invoice_date]} type="date" label="Invoice date" />
+        </div>
+        
+        <h6>Item Metadata</h6>
+        
+        <div class="grid grid-cols-3 gap-5">
+          <div class="col-span-2">
+            <.input
+              field={@form[:chosen]}
+              type="select"
+              label="Chosen Thing"
+              options={[
+                {"Thing 1", 1},
+                {"Thing 2", 2},
+                {"Thing 3", 3}
+              ]}
+              prompt="Choose a thing"
+            />
+          </div>
+          
+          <div>
+            <p>List of available metadata</p>
+          </div>
         </div>
         
         <:actions>
