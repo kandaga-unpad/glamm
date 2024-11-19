@@ -2657,3 +2657,43 @@ end
   comment:
     "A string expressing what the user is happy for the general public (normally) to know about their current activity."
 }
+
+# Populate the Supplier Metadata
+supplier = [
+  %{
+    id: 1,
+    supplier_name: "Pusat Perpustakaan",
+    postal_code: "40132",
+    address: "Jl. Dipati Ukur No. 35 Bandung",
+    phone: "022-2534104",
+    email: "pusat_perpustakaan@glamm.ac.id"
+  },
+  %{
+    id: 2,
+    supplier_name: "Fakultas Teknik Geologi",
+    postal_code: "40132",
+    address: "Jl. Dipati Ukur No. 35 Bandung",
+    phone: "022-2534104",
+    email: "pusat_perpustakaan@glamm.ac.id"
+  },
+  %{
+    id: 3,
+    supplier_name: "Fakultas Teknik Sipil dan Lingkungan",
+    postal_code: "40132",
+    address: "Jl. Dipati Ukur No. 35 Bandung",
+    phone: "022-2534104",
+    email: "pusat_perpustakaan@glamm.ac.id"
+  }
+]
+
+for agent <- supplier do
+  %Supplier{
+    id: agent[:id],
+    supplier_name: agent[:supplier_name],
+    postal_code: agent[:postal_code],
+    address: agent[:address],
+    phone: agent[:phone],
+    email: agent[:email]
+  }
+  |> Repo.insert!()
+end
