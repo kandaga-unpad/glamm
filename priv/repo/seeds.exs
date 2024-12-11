@@ -13,7 +13,9 @@
 # Populate the Vocabularies Metadata
 alias Glamm.Repo
 alias Glamm.Gallery
+alias Glamm.Master.Authority.Supplier
 alias Glamm.Metadata
+alias Glamm.Metadata.Property
 alias Glamm.Metadata.ResourceClass
 
 # Populate the Vocabularies Metadata
@@ -1120,7 +1122,7 @@ end
 properties_list = [
   %{
     id: 1,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "title",
     label: "Title",
@@ -1128,7 +1130,7 @@ properties_list = [
   },
   %{
     id: 2,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "creator",
     label: "Creator",
@@ -1136,7 +1138,7 @@ properties_list = [
   },
   %{
     id: 3,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "subject",
     label: "Subject",
@@ -1144,7 +1146,7 @@ properties_list = [
   },
   %{
     id: 4,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "description",
     label: "Description",
@@ -1152,7 +1154,7 @@ properties_list = [
   },
   %{
     id: 5,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "publisher",
     label: "Publisher",
@@ -1160,7 +1162,7 @@ properties_list = [
   },
   %{
     id: 6,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "contributor",
     label: "Contributor",
@@ -1168,7 +1170,7 @@ properties_list = [
   },
   %{
     id: 7,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "date",
     label: "Date",
@@ -1177,7 +1179,7 @@ properties_list = [
   },
   %{
     id: 8,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "type",
     label: "Type",
@@ -1185,7 +1187,7 @@ properties_list = [
   },
   %{
     id: 9,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "format",
     label: "Format",
@@ -1193,7 +1195,7 @@ properties_list = [
   },
   %{
     id: 10,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "identifier",
     label: "Identifier",
@@ -1201,7 +1203,7 @@ properties_list = [
   },
   %{
     id: 11,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "source",
     label: "Source",
@@ -1209,7 +1211,7 @@ properties_list = [
   },
   %{
     id: 12,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "language",
     label: "Language",
@@ -1217,7 +1219,7 @@ properties_list = [
   },
   %{
     id: 13,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "relation",
     label: "Relation",
@@ -1225,7 +1227,7 @@ properties_list = [
   },
   %{
     id: 14,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "coverage",
     label: "Coverage",
@@ -1234,7 +1236,7 @@ properties_list = [
   },
   %{
     id: 15,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "rights",
     label: "Rights",
@@ -1242,7 +1244,7 @@ properties_list = [
   },
   %{
     id: 16,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "audience",
     label: "Audience",
@@ -1250,7 +1252,7 @@ properties_list = [
   },
   %{
     id: 17,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "alternative",
     label: "Alternative Title",
@@ -1258,7 +1260,7 @@ properties_list = [
   },
   %{
     id: 18,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "tableOfContents",
     label: "Table Of Contents",
@@ -1266,7 +1268,7 @@ properties_list = [
   },
   %{
     id: 19,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "abstract",
     label: "Abstract",
@@ -1274,7 +1276,7 @@ properties_list = [
   },
   %{
     id: 20,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "created",
     label: "Date Created",
@@ -1282,7 +1284,7 @@ properties_list = [
   },
   %{
     id: 21,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "valid",
     label: "Date Valid",
@@ -1290,7 +1292,7 @@ properties_list = [
   },
   %{
     id: 22,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "available",
     label: "Date Available",
@@ -1298,7 +1300,7 @@ properties_list = [
   },
   %{
     id: 23,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "issued",
     label: "Date Issued",
@@ -1306,7 +1308,7 @@ properties_list = [
   },
   %{
     id: 24,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "modified",
     label: "Date Modified",
@@ -1314,7 +1316,7 @@ properties_list = [
   },
   %{
     id: 25,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "extent",
     label: "Extent",
@@ -1322,7 +1324,7 @@ properties_list = [
   },
   %{
     id: 26,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "medium",
     label: "Medium",
@@ -1330,7 +1332,7 @@ properties_list = [
   },
   %{
     id: 27,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "isVersionOf",
     label: "Is Version Of",
@@ -1339,7 +1341,7 @@ properties_list = [
   },
   %{
     id: 28,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "hasVersion",
     label: "Has Version",
@@ -1348,7 +1350,7 @@ properties_list = [
   },
   %{
     id: 29,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "isReplacedBy",
     label: "Is Replaced By",
@@ -1356,7 +1358,7 @@ properties_list = [
   },
   %{
     id: 30,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "replaces",
     label: "Replaces",
@@ -1365,7 +1367,7 @@ properties_list = [
   },
   %{
     id: 31,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "isRequiredBy",
     label: "Is Required By",
@@ -1374,7 +1376,7 @@ properties_list = [
   },
   %{
     id: 32,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "requires",
     label: "Requires",
@@ -1383,7 +1385,7 @@ properties_list = [
   },
   %{
     id: 33,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "isPartOf",
     label: "Is Part Of",
@@ -1392,7 +1394,7 @@ properties_list = [
   },
   %{
     id: 34,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "hasPart",
     label: "Has Part",
@@ -1401,7 +1403,7 @@ properties_list = [
   },
   %{
     id: 35,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "isReferencedBy",
     label: "Is Referenced By",
@@ -1410,7 +1412,7 @@ properties_list = [
   },
   %{
     id: 36,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "references",
     label: "References",
@@ -1419,7 +1421,7 @@ properties_list = [
   },
   %{
     id: 37,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "isFormatOf",
     label: "Is Format Of",
@@ -1428,7 +1430,7 @@ properties_list = [
   },
   %{
     id: 38,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "hasFormat",
     label: "Has Format",
@@ -1437,7 +1439,7 @@ properties_list = [
   },
   %{
     id: 39,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "conformsTo",
     label: "Conforms To",
@@ -1445,7 +1447,7 @@ properties_list = [
   },
   %{
     id: 40,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "spatial",
     label: "Spatial Coverage",
@@ -1453,7 +1455,7 @@ properties_list = [
   },
   %{
     id: 41,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "temporal",
     label: "Temporal Coverage",
@@ -1461,7 +1463,7 @@ properties_list = [
   },
   %{
     id: 42,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "mediator",
     label: "Mediator",
@@ -1470,7 +1472,7 @@ properties_list = [
   },
   %{
     id: 43,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "dateAccepted",
     label: "Date Accepted",
@@ -1478,7 +1480,7 @@ properties_list = [
   },
   %{
     id: 44,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "dateCopyrighted",
     label: "Date Copyrighted",
@@ -1486,7 +1488,7 @@ properties_list = [
   },
   %{
     id: 45,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "dateSubmitted",
     label: "Date Submitted",
@@ -1494,7 +1496,7 @@ properties_list = [
   },
   %{
     id: 46,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "educationLevel",
     label: "Audience Education Level",
@@ -1503,7 +1505,7 @@ properties_list = [
   },
   %{
     id: 47,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "accessRights",
     label: "Access Rights",
@@ -1512,7 +1514,7 @@ properties_list = [
   },
   %{
     id: 48,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "bibliographicCitation",
     label: "Bibliographic Citation",
@@ -1520,7 +1522,7 @@ properties_list = [
   },
   %{
     id: 49,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "license",
     label: "License",
@@ -1528,7 +1530,7 @@ properties_list = [
   },
   %{
     id: 50,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "rightsHolder",
     label: "Rights Holder",
@@ -1536,7 +1538,7 @@ properties_list = [
   },
   %{
     id: 51,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "provenance",
     label: "Provenance",
@@ -1545,7 +1547,7 @@ properties_list = [
   },
   %{
     id: 52,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "instructionalMethod",
     label: "Instructional Method",
@@ -1554,7 +1556,7 @@ properties_list = [
   },
   %{
     id: 53,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "accrualMethod",
     label: "Accrual Method",
@@ -1562,7 +1564,7 @@ properties_list = [
   },
   %{
     id: 54,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "accrualPeriodicity",
     label: "Accrual Periodicity",
@@ -1570,7 +1572,7 @@ properties_list = [
   },
   %{
     id: 55,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 1,
     local_name: "accrualPolicy",
     label: "Accrual Policy",
@@ -1578,7 +1580,7 @@ properties_list = [
   },
   %{
     id: 56,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "affirmedBy",
     label: "affirmedBy",
@@ -1586,7 +1588,7 @@ properties_list = [
   },
   %{
     id: 57,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "annotates",
     label: "annotates",
@@ -1594,7 +1596,7 @@ properties_list = [
   },
   %{
     id: 58,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "authorList",
     label: "list of authors",
@@ -1603,7 +1605,7 @@ properties_list = [
   },
   %{
     id: 59,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "citedBy",
     label: "cited by",
@@ -1611,7 +1613,7 @@ properties_list = [
   },
   %{
     id: 60,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "cites",
     label: "cites",
@@ -1620,7 +1622,7 @@ properties_list = [
   },
   %{
     id: 61,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "contributorList",
     label: "list of contributors",
@@ -1629,7 +1631,7 @@ properties_list = [
   },
   %{
     id: 62,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "court",
     label: "court",
@@ -1638,7 +1640,7 @@ properties_list = [
   },
   %{
     id: 63,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "degree",
     label: "degree",
@@ -1646,7 +1648,7 @@ properties_list = [
   },
   %{
     id: 64,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "director",
     label: "director",
@@ -1654,7 +1656,7 @@ properties_list = [
   },
   %{
     id: 65,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "distributor",
     label: "distributor",
@@ -1662,7 +1664,7 @@ properties_list = [
   },
   %{
     id: 66,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "editor",
     label: "editor",
@@ -1671,7 +1673,7 @@ properties_list = [
   },
   %{
     id: 67,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "editorList",
     label: "list of editors",
@@ -1680,7 +1682,7 @@ properties_list = [
   },
   %{
     id: 68,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "interviewee",
     label: "interviewee",
@@ -1688,7 +1690,7 @@ properties_list = [
   },
   %{
     id: 69,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "interviewer",
     label: "interviewer",
@@ -1696,7 +1698,7 @@ properties_list = [
   },
   %{
     id: 70,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "issuer",
     label: "issuer",
@@ -1705,7 +1707,7 @@ properties_list = [
   },
   %{
     id: 71,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "organizer",
     label: "organizer",
@@ -1714,7 +1716,7 @@ properties_list = [
   },
   %{
     id: 72,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "owner",
     label: "owner",
@@ -1722,15 +1724,15 @@ properties_list = [
   },
   %{
     id: 73,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "performer",
     label: "performer",
-    comment: null
+    comment: nil
   },
   %{
     id: 74,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "presentedAt",
     label: "presented at",
@@ -1738,7 +1740,7 @@ properties_list = [
   },
   %{
     id: 75,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "presents",
     label: "presents",
@@ -1746,7 +1748,7 @@ properties_list = [
   },
   %{
     id: 76,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "producer",
     label: "producer",
@@ -1754,7 +1756,7 @@ properties_list = [
   },
   %{
     id: 77,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "recipient",
     label: "recipient",
@@ -1762,7 +1764,7 @@ properties_list = [
   },
   %{
     id: 78,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "reproducedIn",
     label: "reproducedIn",
@@ -1770,7 +1772,7 @@ properties_list = [
   },
   %{
     id: 79,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "reversedBy",
     label: "reversedBy",
@@ -1778,7 +1780,7 @@ properties_list = [
   },
   %{
     id: 80,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "reviewOf",
     label: "review of",
@@ -1786,7 +1788,7 @@ properties_list = [
   },
   %{
     id: 81,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "status",
     label: "status",
@@ -1794,7 +1796,7 @@ properties_list = [
   },
   %{
     id: 82,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "subsequentLegalDecision",
     label: "subsequentLegalDecision",
@@ -1803,7 +1805,7 @@ properties_list = [
   },
   %{
     id: 83,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "transcriptOf",
     label: "transcript of",
@@ -1811,7 +1813,7 @@ properties_list = [
   },
   %{
     id: 84,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "translationOf",
     label: "translation of",
@@ -1819,7 +1821,7 @@ properties_list = [
   },
   %{
     id: 85,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "translator",
     label: "translator",
@@ -1827,7 +1829,7 @@ properties_list = [
   },
   %{
     id: 86,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "abstract",
     label: "abstract",
@@ -1835,7 +1837,7 @@ properties_list = [
   },
   %{
     id: 87,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "argued",
     label: "date argued",
@@ -1843,15 +1845,15 @@ properties_list = [
   },
   %{
     id: 88,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "asin",
     label: "asin",
-    comment: null
+    comment: nil
   },
   %{
     id: 89,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "chapter",
     label: "chapter",
@@ -1859,15 +1861,15 @@ properties_list = [
   },
   %{
     id: 90,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "coden",
     label: "coden",
-    comment: null
+    comment: nil
   },
   %{
     id: 91,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "content",
     label: "content",
@@ -1876,23 +1878,23 @@ properties_list = [
   },
   %{
     id: 92,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "doi",
     label: "doi",
-    comment: null
+    comment: nil
   },
   %{
     id: 93,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "eanucc13",
     label: "eanucc13",
-    comment: null
+    comment: nil
   },
   %{
     id: 94,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "edition",
     label: "edition",
@@ -1901,71 +1903,71 @@ properties_list = [
   },
   %{
     id: 95,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "eissn",
     label: "eissn",
-    comment: null
+    comment: nil
   },
   %{
     id: 96,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "gtin14",
     label: "gtin14",
-    comment: null
+    comment: nil
   },
   %{
     id: 97,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "handle",
     label: "handle",
-    comment: null
+    comment: nil
   },
   %{
     id: 98,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "identifier",
     label: "identifier",
-    comment: null
+    comment: nil
   },
   %{
     id: 99,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "isbn",
     label: "isbn",
-    comment: null
+    comment: nil
   },
   %{
     id: 100,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "isbn10",
     label: "isbn10",
-    comment: null
+    comment: nil
   },
   %{
     id: 101,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "isbn13",
     label: "isbn13",
-    comment: null
+    comment: nil
   },
   %{
     id: 102,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "issn",
     label: "issn",
-    comment: null
+    comment: nil
   },
   %{
     id: 103,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "issue",
     label: "issue",
@@ -1973,15 +1975,15 @@ properties_list = [
   },
   %{
     id: 104,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "lccn",
     label: "lccn",
-    comment: null
+    comment: nil
   },
   %{
     id: 105,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "locator",
     label: "locator",
@@ -1990,7 +1992,7 @@ properties_list = [
   },
   %{
     id: 106,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "numPages",
     label: "number of pages",
@@ -1998,7 +2000,7 @@ properties_list = [
   },
   %{
     id: 107,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "numVolumes",
     label: "number of volumes",
@@ -2007,7 +2009,7 @@ properties_list = [
   },
   %{
     id: 108,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "number",
     label: "number",
@@ -2015,15 +2017,15 @@ properties_list = [
   },
   %{
     id: 109,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "oclcnum",
     label: "oclcnum",
-    comment: null
+    comment: nil
   },
   %{
     id: 110,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "pageEnd",
     label: "page end",
@@ -2031,7 +2033,7 @@ properties_list = [
   },
   %{
     id: 111,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "pageStart",
     label: "page start",
@@ -2039,7 +2041,7 @@ properties_list = [
   },
   %{
     id: 112,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "pages",
     label: "pages",
@@ -2048,15 +2050,15 @@ properties_list = [
   },
   %{
     id: 113,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "pmid",
     label: "pmid",
-    comment: null
+    comment: nil
   },
   %{
     id: 114,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "prefixName",
     label: "prefix name",
@@ -2064,7 +2066,7 @@ properties_list = [
   },
   %{
     id: 115,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "section",
     label: "section",
@@ -2072,15 +2074,15 @@ properties_list = [
   },
   %{
     id: 116,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "shortDescription",
     label: "shortDescription",
-    comment: null
+    comment: nil
   },
   %{
     id: 117,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "shortTitle",
     label: "short title",
@@ -2088,15 +2090,15 @@ properties_list = [
   },
   %{
     id: 118,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "sici",
     label: "sici",
-    comment: null
+    comment: nil
   },
   %{
     id: 119,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "suffixName",
     label: "suffix name",
@@ -2104,15 +2106,15 @@ properties_list = [
   },
   %{
     id: 120,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "upc",
     label: "upc",
-    comment: null
+    comment: nil
   },
   %{
     id: 121,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "uri",
     label: "uri",
@@ -2120,7 +2122,7 @@ properties_list = [
   },
   %{
     id: 122,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 3,
     local_name: "volume",
     label: "volume",
@@ -2128,7 +2130,7 @@ properties_list = [
   },
   %{
     id: 123,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "mbox",
     label: "personal mailbox",
@@ -2137,7 +2139,7 @@ properties_list = [
   },
   %{
     id: 124,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "mbox_sha1sum",
     label: "sha1sum of a personal mailbox URI name",
@@ -2146,7 +2148,7 @@ properties_list = [
   },
   %{
     id: 125,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "gender",
     label: "gender",
@@ -2154,7 +2156,7 @@ properties_list = [
   },
   %{
     id: 126,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "geekcode",
     label: "geekcode",
@@ -2162,7 +2164,7 @@ properties_list = [
   },
   %{
     id: 127,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "dnaChecksum",
     label: "DNA checksum",
@@ -2170,7 +2172,7 @@ properties_list = [
   },
   %{
     id: 128,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "sha1",
     label: "sha1sum (hex)",
@@ -2178,7 +2180,7 @@ properties_list = [
   },
   %{
     id: 129,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "based_near",
     label: "based near",
@@ -2186,7 +2188,7 @@ properties_list = [
   },
   %{
     id: 130,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "title",
     label: "title",
@@ -2194,7 +2196,7 @@ properties_list = [
   },
   %{
     id: 131,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "nick",
     label: "nickname",
@@ -2203,7 +2205,7 @@ properties_list = [
   },
   %{
     id: 132,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "jabberID",
     label: "jabber ID",
@@ -2211,7 +2213,7 @@ properties_list = [
   },
   %{
     id: 133,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "aimChatID",
     label: "AIM chat ID",
@@ -2219,7 +2221,7 @@ properties_list = [
   },
   %{
     id: 134,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "skypeID",
     label: "Skype ID",
@@ -2227,7 +2229,7 @@ properties_list = [
   },
   %{
     id: 135,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "icqChatID",
     label: "ICQ chat ID",
@@ -2235,7 +2237,7 @@ properties_list = [
   },
   %{
     id: 136,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "yahooChatID",
     label: "Yahoo chat ID",
@@ -2243,7 +2245,7 @@ properties_list = [
   },
   %{
     id: 137,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "msnChatID",
     label: "MSN chat ID",
@@ -2251,7 +2253,7 @@ properties_list = [
   },
   %{
     id: 138,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "name",
     label: "name",
@@ -2259,7 +2261,7 @@ properties_list = [
   },
   %{
     id: 139,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "firstName",
     label: "firstName",
@@ -2267,7 +2269,7 @@ properties_list = [
   },
   %{
     id: 140,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "lastName",
     label: "lastName",
@@ -2275,7 +2277,7 @@ properties_list = [
   },
   %{
     id: 141,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "givenName",
     label: "Given name",
@@ -2283,7 +2285,7 @@ properties_list = [
   },
   %{
     id: 142,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "givenname",
     label: "Given name",
@@ -2291,7 +2293,7 @@ properties_list = [
   },
   %{
     id: 143,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "surname",
     label: "Surname",
@@ -2299,7 +2301,7 @@ properties_list = [
   },
   %{
     id: 144,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "family_name",
     label: "family_name",
@@ -2307,7 +2309,7 @@ properties_list = [
   },
   %{
     id: 145,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "familyName",
     label: "familyName",
@@ -2315,7 +2317,7 @@ properties_list = [
   },
   %{
     id: 146,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "phone",
     label: "phone",
@@ -2324,7 +2326,7 @@ properties_list = [
   },
   %{
     id: 147,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "homepage",
     label: "homepage",
@@ -2332,7 +2334,7 @@ properties_list = [
   },
   %{
     id: 148,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "weblog",
     label: "weblog",
@@ -2340,7 +2342,7 @@ properties_list = [
   },
   %{
     id: 149,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "openid",
     label: "openid",
@@ -2348,7 +2350,7 @@ properties_list = [
   },
   %{
     id: 150,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "tipjar",
     label: "tipjar",
@@ -2356,7 +2358,7 @@ properties_list = [
   },
   %{
     id: 151,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "plan",
     label: "plan",
@@ -2364,7 +2366,7 @@ properties_list = [
   },
   %{
     id: 152,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "made",
     label: "made",
@@ -2372,7 +2374,7 @@ properties_list = [
   },
   %{
     id: 153,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "maker",
     label: "maker",
@@ -2380,7 +2382,7 @@ properties_list = [
   },
   %{
     id: 154,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "img",
     label: "image",
@@ -2389,7 +2391,7 @@ properties_list = [
   },
   %{
     id: 155,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "depiction",
     label: "depiction",
@@ -2397,7 +2399,7 @@ properties_list = [
   },
   %{
     id: 156,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "depicts",
     label: "depicts",
@@ -2405,7 +2407,7 @@ properties_list = [
   },
   %{
     id: 157,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "thumbnail",
     label: "thumbnail",
@@ -2413,7 +2415,7 @@ properties_list = [
   },
   %{
     id: 158,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "myersBriggs",
     label: "myersBriggs",
@@ -2421,7 +2423,7 @@ properties_list = [
   },
   %{
     id: 159,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "workplaceHomepage",
     label: "workplace homepage",
@@ -2429,7 +2431,7 @@ properties_list = [
   },
   %{
     id: 160,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "workInfoHomepage",
     label: "work info homepage",
@@ -2437,7 +2439,7 @@ properties_list = [
   },
   %{
     id: 161,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "schoolHomepage",
     label: "schoolHomepage",
@@ -2445,7 +2447,7 @@ properties_list = [
   },
   %{
     id: 162,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "knows",
     label: "knows",
@@ -2454,7 +2456,7 @@ properties_list = [
   },
   %{
     id: 163,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "interest",
     label: "interest",
@@ -2462,7 +2464,7 @@ properties_list = [
   },
   %{
     id: 164,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "topic_interest",
     label: "topic_interest",
@@ -2470,7 +2472,7 @@ properties_list = [
   },
   %{
     id: 165,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "publications",
     label: "publications",
@@ -2478,7 +2480,7 @@ properties_list = [
   },
   %{
     id: 166,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "currentProject",
     label: "current project",
@@ -2486,7 +2488,7 @@ properties_list = [
   },
   %{
     id: 167,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "pastProject",
     label: "past project",
@@ -2494,7 +2496,7 @@ properties_list = [
   },
   %{
     id: 168,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "fundedBy",
     label: "funded by",
@@ -2502,7 +2504,7 @@ properties_list = [
   },
   %{
     id: 169,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "logo",
     label: "logo",
@@ -2510,7 +2512,7 @@ properties_list = [
   },
   %{
     id: 170,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "topic",
     label: "topic",
@@ -2518,7 +2520,7 @@ properties_list = [
   },
   %{
     id: 171,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "primaryTopic",
     label: "primary topic",
@@ -2526,7 +2528,7 @@ properties_list = [
   },
   %{
     id: 172,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "focus",
     label: "focus",
@@ -2534,7 +2536,7 @@ properties_list = [
   },
   %{
     id: 173,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "isPrimaryTopicOf",
     label: "is primary topic of",
@@ -2542,7 +2544,7 @@ properties_list = [
   },
   %{
     id: 174,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "page",
     label: "page",
@@ -2550,7 +2552,7 @@ properties_list = [
   },
   %{
     id: 175,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "theme",
     label: "theme",
@@ -2558,7 +2560,7 @@ properties_list = [
   },
   %{
     id: 176,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "account",
     label: "account",
@@ -2566,7 +2568,7 @@ properties_list = [
   },
   %{
     id: 177,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "holdsAccount",
     label: "account",
@@ -2574,7 +2576,7 @@ properties_list = [
   },
   %{
     id: 178,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "accountServiceHomepage",
     label: "account service homepage",
@@ -2582,7 +2584,7 @@ properties_list = [
   },
   %{
     id: 179,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "accountName",
     label: "account name",
@@ -2590,7 +2592,7 @@ properties_list = [
   },
   %{
     id: 180,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "member",
     label: "member",
@@ -2598,7 +2600,7 @@ properties_list = [
   },
   %{
     id: 181,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "membershipClass",
     label: "membershipClass",
@@ -2606,7 +2608,7 @@ properties_list = [
   },
   %{
     id: 182,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "birthday",
     label: "birthday",
@@ -2614,7 +2616,7 @@ properties_list = [
   },
   %{
     id: 183,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "age",
     label: "age",
@@ -2622,7 +2624,7 @@ properties_list = [
   },
   %{
     id: 184,
-    owner_id: null,
+    owner_id: nil,
     vocabulary_id: 4,
     local_name: "status",
     label: "status",
@@ -2646,24 +2648,15 @@ for property <- properties_list do
     label: property[:label],
     information: property[:comment]
   }
+  |> Repo.insert!()
 end
-
-%{
-  id: 184,
-  owner_id: null,
-  vocabulary_id: 4,
-  local_name: "status",
-  label: "status",
-  comment:
-    "A string expressing what the user is happy for the general public (normally) to know about their current activity."
-}
 
 # Populate the Supplier Metadata
 supplier = [
   %{
     id: 1,
     supplier_name: "Pusat Perpustakaan",
-    postal_code: "40132",
+    postal_code: 40132,
     address: "Jl. Dipati Ukur No. 35 Bandung",
     phone: "022-2534104",
     email: "pusat_perpustakaan@glamm.ac.id"
@@ -2671,7 +2664,7 @@ supplier = [
   %{
     id: 2,
     supplier_name: "Fakultas Teknik Geologi",
-    postal_code: "40132",
+    postal_code: 40132,
     address: "Jl. Dipati Ukur No. 35 Bandung",
     phone: "022-2534104",
     email: "pusat_perpustakaan@glamm.ac.id"
@@ -2679,7 +2672,7 @@ supplier = [
   %{
     id: 3,
     supplier_name: "Fakultas Teknik Sipil dan Lingkungan",
-    postal_code: "40132",
+    postal_code: 40132,
     address: "Jl. Dipati Ukur No. 35 Bandung",
     phone: "022-2534104",
     email: "pusat_perpustakaan@glamm.ac.id"
