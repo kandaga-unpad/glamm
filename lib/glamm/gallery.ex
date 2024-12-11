@@ -5,7 +5,7 @@ defmodule Glamm.Gallery do
 
   import Ecto.Query, warn: false
   alias Glamm.Repo
-
+  alias Glamm.Gallery.Collection
   alias Glamm.Gallery.CollectionType
 
   @doc """
@@ -191,8 +191,14 @@ defmodule Glamm.Gallery do
   """
   def delete_assets(%Assets{} = assets) do
     source = Path.join([:code.priv_dir(:glamm), "static", "uploads", Path.basename(assets.path)])
-    File.rm!(source)
-    Repo.delete(assets)
+    File.rm(source)
+
+    Repo.transaction(fn ->
+      from(c in Collection, where: c.thumbnail_id == ^assets.id)
+      |> Repo.update_all(set: [thumbnail_id: nil])
+
+      Repo.delete(assets)
+    end)
   end
 
   @doc """

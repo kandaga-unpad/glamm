@@ -20,5 +20,5 @@ defmodule GlammWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :glamm
+  use Gettext.Backend, otp_app: :glamm
 end

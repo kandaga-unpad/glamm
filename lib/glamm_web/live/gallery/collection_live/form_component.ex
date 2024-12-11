@@ -8,7 +8,7 @@ defmodule GlammWeb.CollectionLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage collection records in your database.</:subtitle>
       </.header>
       
@@ -62,10 +62,10 @@ defmodule GlammWeb.CollectionLive.FormComponent do
               <article class="upload-entry">
                 <figure>
                   <.live_img_preview entry={entry} />
-                  <figcaption><%= entry.client_name %></figcaption>
+                  <figcaption>{entry.client_name}</figcaption>
                 </figure>
                  <%!-- entry.progress will update automatically for in-flight entries --%>
-                <progress value={entry.progress} max="100"><%= entry.progress %>%</progress>
+                <progress value={entry.progress} max="100">{entry.progress}%</progress>
                 <%!-- a regular click event whose handler will invoke Phoenix.LiveView.cancel_upload/3 --%>
                 <button
                   type="button"
@@ -77,13 +77,13 @@ defmodule GlammWeb.CollectionLive.FormComponent do
                 </button>
                  <%!-- Phoenix.Component.upload_errors/2 returns a list of error atoms --%>
                 <%= for err <- upload_errors(@uploads.thumbnail, entry) do %>
-                  <p class="alert alert-danger"><%= error_to_string(err) %></p>
+                  <p class="alert alert-danger">{error_to_string(err)}</p>
                 <% end %>
               </article>
             <% end %>
              <%!-- Phoenix.Component.upload_errors/1 returns a list of error atoms --%>
             <%= for err <- upload_errors(@uploads.thumbnail) do %>
-              <p class="alert alert-danger"><%= error_to_string(err) %></p>
+              <p class="alert alert-danger">{error_to_string(err)}</p>
             <% end %>
           <% else %>
             <p>No image is selected</p>
@@ -125,10 +125,15 @@ defmodule GlammWeb.CollectionLive.FormComponent do
     uploaded_files =
       consume_uploaded_entries(socket, :thumbnail, fn %{path: path}, _entry ->
         dest = Path.join([:code.priv_dir(:glamm), "static", "uploads", Path.basename(path)])
+        dbg(dest)
+        dbg(path)
+        dbg(Path.extname(path))
         # You will need to create `priv/static/uploads` for `File.cp!/2` to work.
         File.cp!(path, dest)
         {:ok, ~p"/uploads/#{Path.basename(dest)}"}
       end)
+
+    dbg(uploaded_files)
 
     thumbnail_map = %{
       :file_name => collection_params["title"],
@@ -143,31 +148,46 @@ defmodule GlammWeb.CollectionLive.FormComponent do
   end
 
   defp save_collection(socket, :edit, collection_params) do
-    dbg(socket.assigns.collection)
+    if collection_params["thumbnail"].path === nil do
+      case Gallery.update_collection(socket.assigns.collection, collection_params) do
+        {:ok, collection} ->
+          notify_parent({:saved, collection})
 
-    case Gallery.create_assets(collection_params["thumbnail"]) do
-      {:ok, thumbnail} ->
-        update(socket, :uploaded_files, &(&1 ++ thumbnail.file_name))
+          {:noreply,
+           socket
+           |> put_flash(:info, "Collection updated successfully")
+           |> push_patch(to: socket.assigns.patch)}
 
-        {:ok, thumbnail_id} = Ecto.UUID.cast(thumbnail.id)
+        {:error, %Ecto.Changeset{} = changeset} ->
+          {:noreply, assign(socket, form: to_form(changeset))}
+      end
+    else
+      Gallery.delete_assets(socket.assigns.collection.thumbnail)
 
-        collection_params = collection_params |> Map.put("thumbnail_id", thumbnail_id)
+      case Gallery.create_assets(collection_params["thumbnail"]) do
+        {:ok, thumbnail} ->
+          update(socket, :uploaded_files, &(&1 ++ thumbnail.file_name))
 
-        case Gallery.update_collection(socket.assigns.collection, collection_params) do
-          {:ok, collection} ->
-            notify_parent({:saved, collection})
+          {:ok, thumbnail_id} = Ecto.UUID.cast(thumbnail.id)
 
-            {:noreply,
-             socket
-             |> put_flash(:info, "Collection updated successfully")
-             |> push_patch(to: socket.assigns.patch)}
+          collection_params = collection_params |> Map.put("thumbnail_id", thumbnail_id)
 
-          {:error, %Ecto.Changeset{} = changeset} ->
-            {:noreply, assign(socket, form: to_form(changeset))}
-        end
+          case Gallery.update_collection(socket.assigns.collection, collection_params) do
+            {:ok, collection} ->
+              notify_parent({:saved, collection})
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, form: to_form(changeset))}
+              {:noreply,
+               socket
+               |> put_flash(:info, "Collection updated successfully")
+               |> push_patch(to: socket.assigns.patch)}
+
+            {:error, %Ecto.Changeset{} = changeset} ->
+              {:noreply, assign(socket, form: to_form(changeset))}
+          end
+
+        {:error, %Ecto.Changeset{} = changeset} ->
+          {:noreply, assign(socket, form: to_form(changeset))}
+      end
     end
   end
 

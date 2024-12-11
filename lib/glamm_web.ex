@@ -42,8 +42,9 @@ defmodule GlammWeb do
         formats: [:html, :json],
         layouts: [html: GlammWeb.Layouts]
 
+      use Gettext, backend: GlammWeb.Gettext
+
       import Plug.Conn
-      import GlammWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -128,7 +129,7 @@ defmodule GlammWeb do
       import GlammWeb.CoreComponents
       import GlammWeb.GlamComponents
       import GlammWeb.DashboardComponents
-      import GlammWeb.Gettext
+      use Gettext, backend: GlammWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

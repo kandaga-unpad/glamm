@@ -4,12 +4,13 @@ defmodule GlammWeb.Gallery.ItemLive.New do
   alias Glamm.Gallery
   alias Glamm.Gallery.Item
   alias Glamm.Gallery.ItemValue
+  alias Glamm.Metadata
 
   @impl true
   def mount(_params, _session, socket) do
     current_user = socket.assigns.current_user
     list_collection = Gallery.list_gal_collections()
-    list_properties = Glamm.Metadata.list_metadata_properties()
+    list_properties = Metadata.list_metadata_properties()
 
     socket =
       socket
