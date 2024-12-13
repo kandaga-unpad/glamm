@@ -15,11 +15,11 @@
       fn {_id, collection} -> JS.navigate(~p"/manage/gallery/collections/list/#{collection}") end
     }
   >
-    <:col :let={{_id, collection}} label="Title"><%= collection.title %></:col>
+    <:col :let={{_id, collection}} label="Title">{collection.title}</:col>
     
-    <:col :let={{_id, collection}} label="Is public"><%= collection.is_public %></:col>
+    <:col :let={{_id, collection}} label="Is public">{collection.is_public}</:col>
     
-    <:col :let={{_id, collection}} label="View scope"><%= collection.view_scope %></:col>
+    <:col :let={{_id, collection}} label="View scope">{collection.view_scope}</:col>
     
     <:action :let={{_id, collection}}>
       <div class="sr-only">

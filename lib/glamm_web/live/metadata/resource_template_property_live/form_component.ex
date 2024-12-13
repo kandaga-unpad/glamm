@@ -8,8 +8,10 @@ defmodule GlammWeb.ResourceTemplatePropertyLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
-        <:subtitle>Use this form to manage resource_template_property records in your database.</:subtitle>
+        {@title}
+        <:subtitle>
+          Use this form to manage resource_template_property records in your database.
+        </:subtitle>
       </.header>
 
       <.simple_form
@@ -50,17 +52,37 @@ defmodule GlammWeb.ResourceTemplatePropertyLive.FormComponent do
   end
 
   @impl true
-  def handle_event("validate", %{"resource_template_property" => resource_template_property_params}, socket) do
-    changeset = Metadata.change_resource_template_property(socket.assigns.resource_template_property, resource_template_property_params)
+  def handle_event(
+        "validate",
+        %{"resource_template_property" => resource_template_property_params},
+        socket
+      ) do
+    changeset =
+      Metadata.change_resource_template_property(
+        socket.assigns.resource_template_property,
+        resource_template_property_params
+      )
+
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
 
-  def handle_event("save", %{"resource_template_property" => resource_template_property_params}, socket) do
-    save_resource_template_property(socket, socket.assigns.action, resource_template_property_params)
+  def handle_event(
+        "save",
+        %{"resource_template_property" => resource_template_property_params},
+        socket
+      ) do
+    save_resource_template_property(
+      socket,
+      socket.assigns.action,
+      resource_template_property_params
+    )
   end
 
   defp save_resource_template_property(socket, :edit, resource_template_property_params) do
-    case Metadata.update_resource_template_property(socket.assigns.resource_template_property, resource_template_property_params) do
+    case Metadata.update_resource_template_property(
+           socket.assigns.resource_template_property,
+           resource_template_property_params
+         ) do
       {:ok, resource_template_property} ->
         notify_parent({:saved, resource_template_property})
 

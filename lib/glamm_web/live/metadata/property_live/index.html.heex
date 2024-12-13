@@ -7,7 +7,7 @@
             navigate={item.url}
             class={["default-menu", @current_uri == item.url && "active-menu"]}
           >
-            <%= item.name %>
+            {item.name}
           </.link>
         <% end %>
       </div>
@@ -32,9 +32,9 @@
         fn {_id, property} -> JS.navigate(~p"/manage/metadata_properties/#{property}") end
       }
     >
-      <:col :let={{_id, property}} label="Local name"><%= property.local_name %></:col>
-      <:col :let={{_id, property}} label="Label"><%= property.label %></:col>
-      <:col :let={{_id, property}} label="Information"><%= property.information %></:col>
+      <:col :let={{_id, property}} label="Local name">{property.local_name}</:col>
+      <:col :let={{_id, property}} label="Label">{property.label}</:col>
+      <:col :let={{_id, property}} label="Information">{property.information}</:col>
       <:action :let={{_id, property}}>
         <div class="sr-only">
           <.link navigate={~p"/manage/metadata_properties/#{property}"}>Show</.link>

@@ -8,7 +8,7 @@ defmodule GlammWeb.AssetsLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage assets records in your database.</:subtitle>
       </.header>
 

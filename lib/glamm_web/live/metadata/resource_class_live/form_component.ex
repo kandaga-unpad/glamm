@@ -8,7 +8,7 @@ defmodule GlammWeb.ResourceClassLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage resource_class records in your database.</:subtitle>
       </.header>
 
@@ -42,7 +42,9 @@ defmodule GlammWeb.ResourceClassLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"resource_class" => resource_class_params}, socket) do
-    changeset = Metadata.change_resource_class(socket.assigns.resource_class, resource_class_params)
+    changeset =
+      Metadata.change_resource_class(socket.assigns.resource_class, resource_class_params)
+
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
 

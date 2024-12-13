@@ -1,5 +1,5 @@
 <.header>
-  Collection <%= @collection.id %>
+  Collection {@collection.id}
   <:subtitle>This is a collection record from your database.</:subtitle>
   
   <:actions>
@@ -13,11 +13,11 @@
 </.header>
  <img src={@collection.thumbnail.path} alt="art image" />
 <.list>
-  <:item title="Title"><%= @collection.title %></:item>
+  <:item title="Title">{@collection.title}</:item>
   
-  <:item title="Is public"><%= @collection.is_public %></:item>
+  <:item title="Is public">{@collection.is_public}</:item>
   
-  <:item title="View scope"><%= @collection.view_scope %></:item>
+  <:item title="View scope">{@collection.view_scope}</:item>
 </.list>
 
 <.back navigate={~p"/manage/gallery/collections/list"}>Back to gal_collections</.back>

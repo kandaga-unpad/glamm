@@ -1,36 +1,38 @@
-<.header>
-  Resource class <%= @resource_class.id %>
-  <:subtitle>This is a resource_class record from your database.</:subtitle>
-  <:actions>
-    <.link
-      patch={~p"/manage/resource_class/#{@resource_class}/show/edit"}
-      phx-click={JS.push_focus()}
-    >
-      <.button>Edit resource_class</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="w-full default-card">
+  <.header>
+    Resource class {@resource_class.id}
+    <:subtitle>This is a resource_class record from your database.</:subtitle>
+    <:actions>
+      <.link
+        patch={~p"/manage/resource_class/#{@resource_class}/show/edit"}
+        phx-click={JS.push_focus()}
+      >
+        <.button>Edit resource_class</.button>
+      </.link>
+    </:actions>
+  </.header>
 
-<.list>
-  <:item title="Local name"><%= @resource_class.local_name %></:item>
-  <:item title="Label"><%= @resource_class.label %></:item>
-  <:item title="Information"><%= @resource_class.information %></:item>
-</.list>
+  <.list>
+    <:item title="Local name">{@resource_class.local_name}</:item>
+    <:item title="Label">{@resource_class.label}</:item>
+    <:item title="Information">{@resource_class.information}</:item>
+  </.list>
 
-<.back navigate={~p"/manage/resource_class"}>Back to resource_class</.back>
+  <.back navigate={~p"/manage/resource_class"}>Back to resource_class</.back>
 
-<.modal
-  :if={@live_action == :edit}
-  id="resource_class-modal"
-  show
-  on_cancel={JS.patch(~p"/manage/resource_class/#{@resource_class}")}
->
-  <.live_component
-    module={GlammWeb.ResourceClassLive.FormComponent}
-    id={@resource_class.id}
-    title={@page_title}
-    action={@live_action}
-    resource_class={@resource_class}
-    patch={~p"/manage/resource_class/#{@resource_class}"}
-  />
-</.modal>
+  <.modal
+    :if={@live_action == :edit}
+    id="resource_class-modal"
+    show
+    on_cancel={JS.patch(~p"/manage/resource_class/#{@resource_class}")}
+  >
+    <.live_component
+      module={GlammWeb.ResourceClassLive.FormComponent}
+      id={@resource_class.id}
+      title={@page_title}
+      action={@live_action}
+      resource_class={@resource_class}
+      patch={~p"/manage/resource_class/#{@resource_class}"}
+    />
+  </.modal>
+</div>

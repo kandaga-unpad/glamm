@@ -1,5 +1,5 @@
 <.header>
-  Collection type <%= @collection_type.id %>
+  Collection type {@collection_type.id}
   <:subtitle>This is a collection_type record from your database.</:subtitle>
   <:actions>
     <.link
@@ -12,8 +12,8 @@
 </.header>
 
 <.list>
-  <:item title="Collection name"><%= @collection_type.collection_name %></:item>
-  <:item title="Description"><%= @collection_type.description %></:item>
+  <:item title="Collection name">{@collection_type.collection_name}</:item>
+  <:item title="Description">{@collection_type.description}</:item>
 </.list>
 
 <.back navigate={~p"/manage/gallery/metadata/collection_type"}>Back to gal_collection_type</.back>

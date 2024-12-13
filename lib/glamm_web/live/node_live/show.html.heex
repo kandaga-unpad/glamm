@@ -1,5 +1,5 @@
 <.header>
-  Node <%= @node.id %>
+  Node {@node.id}
   <:subtitle>This is a node record from your database.</:subtitle>
   <:actions>
     <.link patch={~p"/manage/system/nodes/#{@node}/show/edit"} phx-click={JS.push_focus()}>
@@ -9,10 +9,10 @@
 </.header>
 
 <.list>
-  <:item title="Name"><%= @node.name %></:item>
-  <:item title="Abbr"><%= @node.abbr %></:item>
-  <:item title="Groups"><%= @node.groups %></:item>
-  <:item title="Image"><%= @node.image %></:item>
+  <:item title="Name">{@node.name}</:item>
+  <:item title="Abbr">{@node.abbr}</:item>
+  <:item title="Groups">{@node.groups}</:item>
+  <:item title="Image">{@node.image}</:item>
 </.list>
 
 <.back navigate={~p"/manage/system/nodes"}>Back to nodes</.back>

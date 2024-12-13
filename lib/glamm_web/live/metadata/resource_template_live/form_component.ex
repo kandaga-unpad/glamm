@@ -8,7 +8,7 @@ defmodule GlammWeb.ResourceTemplateLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage resource_template records in your database.</:subtitle>
       </.header>
 
@@ -40,7 +40,12 @@ defmodule GlammWeb.ResourceTemplateLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"resource_template" => resource_template_params}, socket) do
-    changeset = Metadata.change_resource_template(socket.assigns.resource_template, resource_template_params)
+    changeset =
+      Metadata.change_resource_template(
+        socket.assigns.resource_template,
+        resource_template_params
+      )
+
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
 
@@ -49,7 +54,10 @@ defmodule GlammWeb.ResourceTemplateLive.FormComponent do
   end
 
   defp save_resource_template(socket, :edit, resource_template_params) do
-    case Metadata.update_resource_template(socket.assigns.resource_template, resource_template_params) do
+    case Metadata.update_resource_template(
+           socket.assigns.resource_template,
+           resource_template_params
+         ) do
       {:ok, resource_template} ->
         notify_parent({:saved, resource_template})
 

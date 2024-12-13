@@ -1,5 +1,5 @@
 <.header>
-  Files <%= @files.id %>
+  Files {@files.id}
   <:subtitle>This is a files record from your database.</:subtitle>
   <:actions>
     <.link
@@ -12,12 +12,12 @@
 </.header>
 
 <.list>
-  <:item title="Id"><%= @files.id %></:item>
-  <:item title="File title"><%= @files.file_title %></:item>
-  <:item title="File type"><%= @files.file_type %></:item>
-  <:item title="File url"><%= @files.file_url %></:item>
-  <:item title="File directory"><%= @files.file_directory %></:item>
-  <:item title="Mime type"><%= @files.mime_type %></:item>
+  <:item title="Id">{@files.id}</:item>
+  <:item title="File title">{@files.file_title}</:item>
+  <:item title="File type">{@files.file_type}</:item>
+  <:item title="File url">{@files.file_url}</:item>
+  <:item title="File directory">{@files.file_directory}</:item>
+  <:item title="Mime type">{@files.mime_type}</:item>
 </.list>
 
 <.back navigate={~p"/manage/gallery/metadata/files"}>Back to gal_files</.back>

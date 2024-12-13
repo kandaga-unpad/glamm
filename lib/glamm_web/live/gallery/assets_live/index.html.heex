@@ -13,9 +13,9 @@
     rows={@streams.gal_assets}
     row_click={fn {_id, assets} -> JS.navigate(~p"/manage/gallery/metadata/assets/#{assets}") end}
   >
-    <:col :let={{_id, assets}} label="Id"><%= assets.id %></:col>
-    <:col :let={{_id, assets}} label="File name"><%= assets.file_name %></:col>
-    <:col :let={{_id, assets}} label="Description"><%= assets.description %></:col>
+    <:col :let={{_id, assets}} label="Id">{assets.id}</:col>
+    <:col :let={{_id, assets}} label="File name">{assets.file_name}</:col>
+    <:col :let={{_id, assets}} label="Description">{assets.description}</:col>
     <:action :let={{_id, assets}}>
       <div class="sr-only">
         <.link navigate={~p"/manage/gallery/metadata/assets/#{assets}"}>Show</.link>

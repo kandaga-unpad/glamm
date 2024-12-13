@@ -1,5 +1,5 @@
 <.header>
-  Item value <%= @item_value.id %>
+  Item value {@item_value.id}
   <:subtitle>This is a item_value record from your database.</:subtitle>
   
   <:actions>
@@ -13,15 +13,15 @@
 </.header>
 
 <.list>
-  <:item title="Type"><%= @item_value.type %></:item>
+  <:item title="Type">{@item_value.type}</:item>
   
-  <:item title="Lang"><%= @item_value.lang %></:item>
+  <:item title="Lang">{@item_value.lang}</:item>
   
-  <:item title="Value"><%= @item_value.value %></:item>
+  <:item title="Value">{@item_value.value}</:item>
   
-  <:item title="Url"><%= @item_value.url %></:item>
+  <:item title="Url">{@item_value.url}</:item>
   
-  <:item title="Scope view"><%= @item_value.scope_view %></:item>
+  <:item title="Scope view">{@item_value.scope_view}</:item>
 </.list>
 
 <.back navigate={~p"/manage/gallery/metadata/items/value"}>Back to gal_item_value</.back>

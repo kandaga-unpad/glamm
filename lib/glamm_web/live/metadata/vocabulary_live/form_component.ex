@@ -8,7 +8,7 @@ defmodule GlammWeb.VocabularyLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage vocabulary records in your database.</:subtitle>
       </.header>
 

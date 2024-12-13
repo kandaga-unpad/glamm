@@ -7,43 +7,43 @@
             navigate={item.url}
             class={["default-menu", @current_uri == item.url && "active-menu"]}
           >
-            <%= item.name %>
+            {item.name}
           </.link>
         <% end %>
       </div>
     </.side_bar_dashboard>
   </div>
   
-  <div class="default-card w-full">
+  <div class="w-full default-card">
     <h5>Manage the Metadata for Your Collections</h5>
     
     <div class="grid grid-cols-3 text-center gap-5">
       <div>
-        <h3>0</h3>
+        <h3>{@prop_count}</h3>
         
         <p>Total Properties</p>
       </div>
       
       <div>
-        <h3>0</h3>
+        <h3>{@rc_count}</h3>
         
         <p>Total Resource Class</p>
       </div>
       
       <div>
-        <h3>0</h3>
+        <h3>{@rt_count}</h3>
         
         <p>Total Resource Template</p>
       </div>
       
       <div>
-        <h3>0</h3>
+        <h3>{@rtp_count}</h3>
         
         <p>Total Resource Template Property</p>
       </div>
       
       <div>
-        <h3><%= @vocabs %></h3>
+        <h3>{@vocab_count}</h3>
         
         <p>Total Vocabularies</p>
       </div>

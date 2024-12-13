@@ -17,19 +17,19 @@
       end
     }
   >
-    <:col :let={{_id, requisition}} label="Member name"><%= requisition.member_name %></:col>
-    <:col :let={{_id, requisition}} label="Identifier"><%= requisition.identifier %></:col>
-    <:col :let={{_id, requisition}} label="Title"><%= requisition.title %></:col>
-    <:col :let={{_id, requisition}} label="Creator"><%= requisition.creator %></:col>
-    <:col :let={{_id, requisition}} label="Owner"><%= requisition.owner %></:col>
-    <:col :let={{_id, requisition}} label="Year created"><%= requisition.year_created %></:col>
-    <:col :let={{_id, requisition}} label="Description"><%= requisition.description %></:col>
+    <:col :let={{_id, requisition}} label="Member name">{requisition.member_name}</:col>
+    <:col :let={{_id, requisition}} label="Identifier">{requisition.identifier}</:col>
+    <:col :let={{_id, requisition}} label="Title">{requisition.title}</:col>
+    <:col :let={{_id, requisition}} label="Creator">{requisition.creator}</:col>
+    <:col :let={{_id, requisition}} label="Owner">{requisition.owner}</:col>
+    <:col :let={{_id, requisition}} label="Year created">{requisition.year_created}</:col>
+    <:col :let={{_id, requisition}} label="Description">{requisition.description}</:col>
     <:col :let={{_id, requisition}} label="Price currency">
-      <%= requisition.price_currency %>
+      {requisition.price_currency}
     </:col>
-    <:col :let={{_id, requisition}} label="Price"><%= requisition.price %></:col>
-    <:col :let={{_id, requisition}} label="Information"><%= requisition.information %></:col>
-    <:col :let={{_id, requisition}} label="Req state"><%= requisition.req_state %></:col>
+    <:col :let={{_id, requisition}} label="Price">{requisition.price}</:col>
+    <:col :let={{_id, requisition}} label="Information">{requisition.information}</:col>
+    <:col :let={{_id, requisition}} label="Req state">{requisition.req_state}</:col>
     <:action :let={{_id, requisition}}>
       <div class="sr-only">
         <.link navigate={~p"/manage/gallery/collections/requisitions/#{requisition}"}>Show</.link>

@@ -44,7 +44,7 @@ defmodule GlammWeb.DashboardComponents do
       <div class="w-full text-blue-500 flex gap-4">
         <%= for menu <- @list_menu do %>
           <.link patch={menu.url} class={["default-menu", @active_nav == menu.url && "active-menu"]}>
-            <%= menu.name %>
+            {menu.name}
           </.link>
         <% end %>
       </div>
@@ -74,8 +74,8 @@ defmodule GlammWeb.DashboardComponents do
     ~H"""
     <section class="bg-white rounded-xl p-5 max-w-64 w-full h-full mr-5">
       <div class="flex flex-col gap-2">
-        <h5><%= @menu_name %></h5>
-         <%= render_slot(@inner_block) %>
+        <h5>{@menu_name}</h5>
+         {render_slot(@inner_block)}
       </div>
     </section>
     """

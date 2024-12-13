@@ -5,7 +5,7 @@
       
       <%= if @current_user do %>
         <div>
-          <p>Hello, <%= @current_user.username %>!</p>
+          <p>Hello, {@current_user.username}!</p>
         </div>
       <% else %>
         <div>
@@ -52,13 +52,13 @@
         <div class="default-card max-w-48">
           <ul>
             <%= for x <- 1..10 do %>
-              <li>Number <%= x %></li>
+              <li>Number {x}</li>
             <% end %>
           </ul>
         </div>
         
         <div class="default-card">
-          <%= @inner_content %>
+          {@inner_content}
         </div>
       </div>
     </section>
@@ -67,6 +67,6 @@
 
 <footer class="flex flex-col items-center bg-zinc-800 text-white">
   <div class="py-5">
-    <p>GLAM Management | <%= Date.utc_today().year %></p>
+    <p>GLAM Management | {Date.utc_today().year}</p>
   </div>
 </footer>

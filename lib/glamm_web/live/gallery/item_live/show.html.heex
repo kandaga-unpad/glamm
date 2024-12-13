@@ -1,5 +1,5 @@
 <.header>
-  Item <%= @item.id %>
+  Item {@item.id}
   <:subtitle>This is a item record from your database.</:subtitle>
   <:actions>
     <.link
@@ -12,12 +12,12 @@
 </.header>
 
 <.list>
-  <:item title="Item code"><%= @item.item_code %></:item>
-  <:item title="Inventory code"><%= @item.inventory_code %></:item>
-  <:item title="Order date"><%= @item.order_date %></:item>
-  <:item title="Received date"><%= @item.received_date %></:item>
-  <:item title="Invoice"><%= @item.invoice %></:item>
-  <:item title="Invoice date"><%= @item.invoice_date %></:item>
+  <:item title="Item code">{@item.item_code}</:item>
+  <:item title="Inventory code">{@item.inventory_code}</:item>
+  <:item title="Order date">{@item.order_date}</:item>
+  <:item title="Received date">{@item.received_date}</:item>
+  <:item title="Invoice">{@item.invoice}</:item>
+  <:item title="Invoice date">{@item.invoice_date}</:item>
 </.list>
 
 <.back navigate={~p"/manage/gallery/collections/items"}>Back to gal_items</.back>

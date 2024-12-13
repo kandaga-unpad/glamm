@@ -46,7 +46,7 @@
         
         <%= if @current_user do %>
           <.link navigate="/manage">
-            <.button class="default-btn"><%= @current_user.username %></.button>
+            <.button class="default-btn">{@current_user.username}</.button>
           </.link>
         <% else %>
           <.link navigate="/users/log_in">
@@ -60,7 +60,7 @@
 
 <main class="content">
   <div class="w-full mb-10">
-    <.flash_group flash={@flash} /> <%= @inner_content %>
+    <.flash_group flash={@flash} /> {@inner_content}
   </div>
 </main>
 

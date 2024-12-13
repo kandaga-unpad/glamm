@@ -8,7 +8,7 @@ defmodule GlammWeb.FilesLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage files records in your database.</:subtitle>
       </.header>
 

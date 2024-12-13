@@ -7,7 +7,7 @@
             navigate={item.url}
             class={["default-menu", @current_uri == item.url && "active-menu"]}
           >
-            <%= item.name %>
+            {item.name}
           </.link>
         <% end %>
       </div>
@@ -35,22 +35,22 @@
       }
     >
       <:col :let={{_id, resource_template_property}} label="Alternate label">
-        <%= resource_template_property.alternate_label %>
+        {resource_template_property.alternate_label}
       </:col>
       <:col :let={{_id, resource_template_property}} label="Alternate information">
-        <%= resource_template_property.alternate_information %>
+        {resource_template_property.alternate_information}
       </:col>
       <:col :let={{_id, resource_template_property}} label="Position">
-        <%= resource_template_property.position %>
+        {resource_template_property.position}
       </:col>
       <:col :let={{_id, resource_template_property}} label="Data type">
-        <%= resource_template_property.data_type %>
+        {resource_template_property.data_type}
       </:col>
       <:col :let={{_id, resource_template_property}} label="Is required">
-        <%= resource_template_property.is_required %>
+        {resource_template_property.is_required}
       </:col>
       <:col :let={{_id, resource_template_property}} label="Is public">
-        <%= resource_template_property.is_public %>
+        {resource_template_property.is_public}
       </:col>
       <:action :let={{_id, resource_template_property}}>
         <div class="sr-only">

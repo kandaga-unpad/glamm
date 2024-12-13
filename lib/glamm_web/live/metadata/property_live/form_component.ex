@@ -8,7 +8,7 @@ defmodule GlammWeb.PropertyLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage property records in your database.</:subtitle>
       </.header>
 

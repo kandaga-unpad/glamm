@@ -1,34 +1,36 @@
-<.header>
-  Resource template <%= @resource_template.id %>
-  <:subtitle>This is a resource_template record from your database.</:subtitle>
-  <:actions>
-    <.link
-      patch={~p"/manage/resource_template/#{@resource_template}/show/edit"}
-      phx-click={JS.push_focus()}
-    >
-      <.button>Edit resource_template</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="w-full default-card">
+  <.header>
+    Resource template {@resource_template.id}
+    <:subtitle>This is a resource_template record from your database.</:subtitle>
+    <:actions>
+      <.link
+        patch={~p"/manage/resource_template/#{@resource_template}/show/edit"}
+        phx-click={JS.push_focus()}
+      >
+        <.button>Edit resource_template</.button>
+      </.link>
+    </:actions>
+  </.header>
 
-<.list>
-  <:item title="Label"><%= @resource_template.label %></:item>
-</.list>
+  <.list>
+    <:item title="Label">{@resource_template.label}</:item>
+  </.list>
 
-<.back navigate={~p"/manage/resource_template"}>Back to resource_template</.back>
+  <.back navigate={~p"/manage/resource_template"}>Back to resource_template</.back>
 
-<.modal
-  :if={@live_action == :edit}
-  id="resource_template-modal"
-  show
-  on_cancel={JS.patch(~p"/manage/resource_template/#{@resource_template}")}
->
-  <.live_component
-    module={GlammWeb.ResourceTemplateLive.FormComponent}
-    id={@resource_template.id}
-    title={@page_title}
-    action={@live_action}
-    resource_template={@resource_template}
-    patch={~p"/manage/resource_template/#{@resource_template}"}
-  />
-</.modal>
+  <.modal
+    :if={@live_action == :edit}
+    id="resource_template-modal"
+    show
+    on_cancel={JS.patch(~p"/manage/resource_template/#{@resource_template}")}
+  >
+    <.live_component
+      module={GlammWeb.ResourceTemplateLive.FormComponent}
+      id={@resource_template.id}
+      title={@page_title}
+      action={@live_action}
+      resource_template={@resource_template}
+      patch={~p"/manage/resource_template/#{@resource_template}"}
+    />
+  </.modal>
+</div>

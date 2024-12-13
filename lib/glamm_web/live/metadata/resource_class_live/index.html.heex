@@ -7,7 +7,7 @@
             navigate={item.url}
             class={["default-menu", @current_uri == item.url && "active-menu"]}
           >
-            <%= item.name %>
+            {item.name}
           </.link>
         <% end %>
       </div>
@@ -34,11 +34,11 @@
       }
     >
       <:col :let={{_id, resource_class}} label="Local name">
-        <%= resource_class.local_name %>
+        {resource_class.local_name}
       </:col>
-      <:col :let={{_id, resource_class}} label="Label"><%= resource_class.label %></:col>
+      <:col :let={{_id, resource_class}} label="Label">{resource_class.label}</:col>
       <:col :let={{_id, resource_class}} label="Information">
-        <%= resource_class.information %>
+        {resource_class.information}
       </:col>
       <:action :let={{_id, resource_class}}>
         <div class="sr-only">

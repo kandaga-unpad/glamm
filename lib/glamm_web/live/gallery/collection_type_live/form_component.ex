@@ -8,7 +8,7 @@ defmodule GlammWeb.CollectionTypeLive.FormComponent do
     ~H"""
     <div>
       <.header>
-        <%= @title %>
+        {@title}
         <:subtitle>Use this form to manage collection_type records in your database.</:subtitle>
       </.header>
 
@@ -41,7 +41,9 @@ defmodule GlammWeb.CollectionTypeLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"collection_type" => collection_type_params}, socket) do
-    changeset = Gallery.change_collection_type(socket.assigns.collection_type, collection_type_params)
+    changeset =
+      Gallery.change_collection_type(socket.assigns.collection_type, collection_type_params)
+
     {:noreply, assign(socket, form: to_form(changeset, action: :validate))}
   end
 

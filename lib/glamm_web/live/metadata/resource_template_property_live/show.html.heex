@@ -1,43 +1,45 @@
-<.header>
-  Resource template property <%= @resource_template_property.id %>
-  <:subtitle>This is a resource_template_property record from your database.</:subtitle>
-  <:actions>
-    <.link
-      patch={~p"/manage/resource_template_property/#{@resource_template_property}/show/edit"}
-      phx-click={JS.push_focus()}
-    >
-      <.button>Edit resource_template_property</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="w-full default-card">
+  <.header>
+    Resource template property {@resource_template_property.id}
+    <:subtitle>This is a resource_template_property record from your database.</:subtitle>
+    <:actions>
+      <.link
+        patch={~p"/manage/resource_template_property/#{@resource_template_property}/show/edit"}
+        phx-click={JS.push_focus()}
+      >
+        <.button>Edit resource_template_property</.button>
+      </.link>
+    </:actions>
+  </.header>
 
-<.list>
-  <:item title="Alternate label"><%= @resource_template_property.alternate_label %></:item>
-  <:item title="Alternate information">
-    <%= @resource_template_property.alternate_information %>
-  </:item>
-  <:item title="Position"><%= @resource_template_property.position %></:item>
-  <:item title="Data type"><%= @resource_template_property.data_type %></:item>
-  <:item title="Is required"><%= @resource_template_property.is_required %></:item>
-  <:item title="Is public"><%= @resource_template_property.is_public %></:item>
-</.list>
+  <.list>
+    <:item title="Alternate label">{@resource_template_property.alternate_label}</:item>
+    <:item title="Alternate information">
+      {@resource_template_property.alternate_information}
+    </:item>
+    <:item title="Position">{@resource_template_property.position}</:item>
+    <:item title="Data type">{@resource_template_property.data_type}</:item>
+    <:item title="Is required">{@resource_template_property.is_required}</:item>
+    <:item title="Is public">{@resource_template_property.is_public}</:item>
+  </.list>
 
-<.back navigate={~p"/manage/resource_template_property"}>
-  Back to resource_template_property
-</.back>
+  <.back navigate={~p"/manage/resource_template_property"}>
+    Back to resource_template_property
+  </.back>
 
-<.modal
-  :if={@live_action == :edit}
-  id="resource_template_property-modal"
-  show
-  on_cancel={JS.patch(~p"/manage/resource_template_property/#{@resource_template_property}")}
->
-  <.live_component
-    module={GlammWeb.ResourceTemplatePropertyLive.FormComponent}
-    id={@resource_template_property.id}
-    title={@page_title}
-    action={@live_action}
-    resource_template_property={@resource_template_property}
-    patch={~p"/manage/resource_template_property/#{@resource_template_property}"}
-  />
-</.modal>
+  <.modal
+    :if={@live_action == :edit}
+    id="resource_template_property-modal"
+    show
+    on_cancel={JS.patch(~p"/manage/resource_template_property/#{@resource_template_property}")}
+  >
+    <.live_component
+      module={GlammWeb.ResourceTemplatePropertyLive.FormComponent}
+      id={@resource_template_property.id}
+      title={@page_title}
+      action={@live_action}
+      resource_template_property={@resource_template_property}
+      patch={~p"/manage/resource_template_property/#{@resource_template_property}"}
+    />
+  </.modal>
+</div>

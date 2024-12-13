@@ -12,10 +12,10 @@
   rows={@streams.nodes}
   row_click={fn {_id, node} -> JS.navigate(~p"/manage/system/nodes/#{node}") end}
 >
-  <:col :let={{_id, node}} label="Name"><%= node.name %></:col>
-  <:col :let={{_id, node}} label="Abbr"><%= node.abbr %></:col>
-  <:col :let={{_id, node}} label="Groups"><%= node.groups %></:col>
-  <:col :let={{_id, node}} label="Image"><%= node.image %></:col>
+  <:col :let={{_id, node}} label="Name">{node.name}</:col>
+  <:col :let={{_id, node}} label="Abbr">{node.abbr}</:col>
+  <:col :let={{_id, node}} label="Groups">{node.groups}</:col>
+  <:col :let={{_id, node}} label="Image">{node.image}</:col>
   <:action :let={{_id, node}}>
     <div class="sr-only">
       <.link navigate={~p"/manage/system/nodes/#{node}"}>Show</.link>
