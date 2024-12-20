@@ -24,16 +24,15 @@
       <div class="sr-only">
         <.link navigate={~p"/manage/gallery/collections/items/#{item}"}>Show</.link>
       </div>
-      <.link patch={~p"/manage/gallery/collections/items/#{item}/edit"}>Edit</.link>
     </:action>
-    <:action :let={{id, item}}>
+    <%!-- <:action :let={{id, item}}>
       <.link
         phx-click={JS.push("delete", value: %{id: item.id}) |> hide("##{id}")}
         data-confirm="Are you sure?"
       >
         Delete
       </.link>
-    </:action>
+    </:action> --%>
   </.table>
 <% else %>
   <div class="text-center text-2xl font-semibold">

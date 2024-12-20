@@ -23,6 +23,13 @@ defmodule GlammWeb.ItemLive.FormComponent do
             label="Collection"
             options={Enum.map(@list_collection, &{&1.title, &1.id})}
             prompt="Choose Collection"
+          />
+          <.input
+            field={@form[:supplier_id]}
+            type="select"
+            label="Supplier"
+            options={Enum.map(@list_supplier, &{&1.supplier_name, &1.id})}
+            prompt="Choose Supplier"
           /> <.input field={@form[:item_code]} type="text" label="Item code" />
           <.input field={@form[:inventory_code]} type="text" label="Inventory code" />
           <.input

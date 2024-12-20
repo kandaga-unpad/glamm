@@ -8,6 +8,9 @@
     >
       <.button>Edit item</.button>
     </.link>
+    <.link phx-click={JS.push("delete", value: %{id: @item.id})} data-confirm="Are you sure?">
+      Delete
+    </.link>
   </:actions>
 </.header>
 
@@ -34,6 +37,9 @@
     title={@page_title}
     action={@live_action}
     item={@item}
-    patch={~p"/manage/gallery/collections/items/#{@item}"}
+    list_collection={@list_collection}
+    list_properties={@list_properties}
+    list_supplier={@list_supplier}
+    patch={~p"/manage/gallery/collections/items"}
   />
 </.modal>
