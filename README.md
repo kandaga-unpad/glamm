@@ -1,4 +1,7 @@
 # Glamm
+This Repository is Archived in favor for newly integrated **Voile Projects**
+
+You can contact the lead developer for any ideas or collaborations.
 
 Information Management System for Managing Gallery, Library, Archive and Museum (with their derivatives). Developed by Knowledge Management Center, Universitas Padjadjaran.
 
